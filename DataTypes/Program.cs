@@ -1,67 +1,66 @@
-﻿char a = 'G';
+﻿//char var = 'h'; // Declaring and Initializing character variable
+//int a, b, c; // Declaring variables a, b and c of int type
 
-// Integer data type is generally
-// used for numeric values
-int i = 89;
+//int age;
 
-short s = 56;
+//float _studentname;
 
-// this will give error as number
-// is larger than short range
-// short s1 = 87878787878;
+//int if; // "if" is a keyword
 
-// long uses Integer values which 
-// may signed or unsigned
-long l = 4564;
+//float 12studentname; // Cannot start with digit
 
-// UInt data type is generally
-// used for unsigned integer values
-uint ui = 95;
+//int enigma;
+//float camp;
 
-ushort us = 76;
-// this will give error as number is
-// larger than short range
+//int y = 7; // Declaring and initializing the variable at same time
+//int x; // Declaring variable x
+//x = 5; // initializing x with value 5
 
-// ulong data type is generally
-// used for unsigned integer values
-ulong ul = 3624573;
+//using System;
+//class EnigmaCamp
+//{
 
-// by default fraction value
-// is double in C#
-double d = 8.358674532;
+//    // only declaration, compiler will 
+//    // provide the default value 0 to it
+//    int y;
 
-// for float use 'f' as suffix
-float f = 3.7330645f;
+//    // Main Method
+//    public static void Main(String[] args)
+//    {
 
-// for float use 'm' as suffix
-decimal dec = 389.5m;
+//        // Compile Time Initialization of variable 'x'
+//        // Assigning value 32 to x
+//        int x = 32;
 
-Console.WriteLine("char: " + a);
-Console.WriteLine("integer: " + i);
-Console.WriteLine("short: " + s);
-Console.WriteLine("long: " + l);
-Console.WriteLine("float: " + f);
-Console.WriteLine("double: " + d);
-Console.WriteLine("decimal: " + dec);
-Console.WriteLine("Unsinged integer: " + ui);
-Console.WriteLine("Unsinged short: " + us);
-Console.WriteLine("Unsinged long: " + ul);
-Console.ReadKey();
+//        // printing the value
+//        Console.WriteLine("Value of x is " + x);
 
-//Reference Type
-string str = "Enigma";
+//        // creating object to access
+//        // the variable y
+//        EnigmaCamp enigma = new EnigmaCamp();
 
-//append in a
-str += "Camp";
-str = str + " For .Net";
-Console.WriteLine(a);
+//        // printing the value
+//        Console.WriteLine("Value of y is " + enigma.y);
+//    }
+//}
 
-// declare object obj
-object obj;
-obj = 20;
-Console.WriteLine(obj);
+// C# program to demonstrate the 
+// Run Time Initialization
+using System;
+class EnigmaCamp
+{
 
-// to show type of object
-// using GetType()
-Console.WriteLine(obj.GetType());
-Console.ReadKey();
+    // Main Method
+    public static void Main(String[] args)
+    {
+
+        // Value will be taken from user 
+        // input and assigned to variable
+        // num
+        int num = Convert.ToInt32(Console.ReadLine());
+
+        // printing the result
+        Console.WriteLine("Value of num is " + num);
+
+    }
+}
