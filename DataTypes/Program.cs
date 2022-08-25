@@ -1,67 +1,135 @@
-﻿char a = 'G';
+﻿//// Here 100 is a constant/literal.
+//int x = 100;
 
-// Integer data type is generally
-// used for numeric values
-int i = 89;
+//int y = 101;
 
-short s = 56;
+//// The octal number should be prefix with 0.
+//int z = 0146;
 
-// this will give error as number
-// is larger than short range
-// short s1 = 87878787878;
+//// The hexa-decimal number should be prefix
+//// with 0X or 0x.
+//int hexa = 0X123Face;
 
-// long uses Integer values which 
-// may signed or unsigned
-long l = 4564;
+//// The binary number should be prefix with 0b.
+//int bin = 0b101;
 
-// UInt data type is generally
-// used for unsigned integer values
-uint ui = 95;
+//// C# program to illustrate the use of Integer Literals
+//using System;
 
-ushort us = 76;
-// this will give error as number is
-// larger than short range
+//class EnigmaCamp
+//{
 
-// ulong data type is generally
-// used for unsigned integer values
-ulong ul = 3624573;
+//    // Main method
+//    public static void Main(String[] args)
+//    {
 
-// by default fraction value
-// is double in C#
-double d = 8.358674532;
+//        // decimal-form literal
+//        int a = 101;
 
-// for float use 'f' as suffix
-float f = 3.7330645f;
+//        // octal-form literal
+//        int b = 0145;
 
-// for float use 'm' as suffix
-decimal dec = 389.5m;
+//        // Hexa-decimal form literal
+//        int c = 0xFace;
 
-Console.WriteLine("char: " + a);
-Console.WriteLine("integer: " + i);
-Console.WriteLine("short: " + s);
-Console.WriteLine("long: " + l);
-Console.WriteLine("float: " + f);
-Console.WriteLine("double: " + d);
-Console.WriteLine("decimal: " + dec);
-Console.WriteLine("Unsinged integer: " + ui);
-Console.WriteLine("Unsinged short: " + us);
-Console.WriteLine("Unsinged long: " + ul);
-Console.ReadKey();
+//        // binary-form literal
+//        int x = 0b101;
 
-//Reference Type
-string str = "Enigma";
+//        Console.WriteLine(a);
+//        Console.WriteLine(b);
+//        Console.WriteLine(c);
+//        Console.WriteLine(x);
+//    }
+//}
 
-//append in a
-str += "Camp";
-str = str + " For .Net";
-Console.WriteLine(a);
+// C# program to illustrate the use of
+// floating-point literals
+//using System;
 
-// declare object obj
-object obj;
-obj = 20;
-Console.WriteLine(obj);
+//class EnigmaCamp
+//{
 
-// to show type of object
-// using GetType()
-Console.WriteLine(obj.GetType());
-Console.ReadKey();
+//    // Main Method
+//    public static void Main(String[] args)
+//    {
+//        // decimal-form literal
+//        double a = 101.230;
+
+//        // It also acts as decimal literal
+//        double b = 0123.222;
+
+//        Console.WriteLine(a);
+//        Console.WriteLine(b);
+//    }
+//}
+
+//using System;
+
+//class EnigmaCamp
+//{
+
+//    // Main Method
+//    public static void Main(String[] args)
+//    {
+
+//        // character literal within single quote
+//        char ch = 'a';
+
+//        // Unicode representation
+//        char c = '\u0061';
+
+//        Console.WriteLine(ch);
+//        Console.WriteLine(c);
+
+//        // Escape character literal
+//        Console.WriteLine("Hello\n\nEnigmaCamp\t!");
+//    }
+//}
+
+//// C# program to illustrate the use of String literals
+//using System;
+
+//class EnigmaCamp
+//{
+
+//    // Main Method
+//    public static void Main(String[] args)
+//    {
+
+//        String s = "Hello EnigmaCamp!";
+//        String s2 = @"Hello EnigmaCamp!";
+//        String s3 = $"Hello EnigmaCamp";
+
+//        // If we assign without "" then it
+//        // treats as a variable
+//        // and causes compiler error
+//        // String s1 = Geeks;
+
+//        Console.WriteLine(s);
+//        Console.WriteLine(s2);
+//    }
+}
+
+// C# program to illustrate the use
+// of boolean literals
+using System;
+
+class EnigmaCamp
+{
+
+    // Main Method
+    public static void Main(String[] args)
+    {
+        bool b = true;
+        bool c = false;
+
+        // these will give compile time error
+        // bool d = 0;
+        // bool e = 1;
+        // Console.WriteLine(d);
+        // Console.WriteLine(e);
+
+        Console.WriteLine(b);
+        Console.WriteLine(c);
+    }
+}
