@@ -1,67 +1,117 @@
-﻿char a = 'G';
+﻿//// C# program to demonstrate the working
+//// of Unary Arithmetic Operators
+//using System;
+//namespace Arithmetic
+//{
 
-// Integer data type is generally
-// used for numeric values
-int i = 89;
+//    class EnigmaCamp
+//    {
+//        // Main Function
+//        static void Main(string[] args)
+//        {
+//            int a = 10, res;
 
-short s = 56;
+//            // post-increment example:
+//            // res is assigned 10 only,
+//            // a is not updated yet
+//            res = a++;
 
-// this will give error as number
-// is larger than short range
-// short s1 = 87878787878;
+//            //a becomes 11 now
+//            Console.WriteLine("a is {0} and res is {1}", a, res);
 
-// long uses Integer values which 
-// may signed or unsigned
-long l = 4564;
+//            // post-decrement example: // res is assigned 11 only, a is not updated yet
+//            res = a--;
 
-// UInt data type is generally
-// used for unsigned integer values
-uint ui = 95;
+//            //a becomes 10 now
+//            Console.WriteLine("a is {0} and res is {1}", a, res);
 
-ushort us = 76;
-// this will give error as number is
-// larger than short range
+//            // pre-increment example: 
+//            // res is assigned 11 now since a
+//            // is updated here itself
+//            res = ++a;
 
-// ulong data type is generally
-// used for unsigned integer values
-ulong ul = 3624573;
+//            // a and res have same values = 11
+//            Console.WriteLine("a is {0} and res is {1}", a, res);
 
-// by default fraction value
-// is double in C#
-double d = 8.358674532;
+//            // pre-decrement example:
+//            // res is assigned 10 only since
+//            // a is updated here itself
+//            res = --a;
 
-// for float use 'f' as suffix
-float f = 3.7330645f;
+//            // a and res have same values = 10
+//            Console.WriteLine("a is {0} and res is {1}", a, res);
+//        }
+//    }
+//}
 
-// for float use 'm' as suffix
-decimal dec = 389.5m;
+// C# program to demonstrate the working
+// of Relational Operators
+//using System;
+//namespace Relational
+//{
 
-Console.WriteLine("char: " + a);
-Console.WriteLine("integer: " + i);
-Console.WriteLine("short: " + s);
-Console.WriteLine("long: " + l);
-Console.WriteLine("float: " + f);
-Console.WriteLine("double: " + d);
-Console.WriteLine("decimal: " + dec);
-Console.WriteLine("Unsinged integer: " + ui);
-Console.WriteLine("Unsinged short: " + us);
-Console.WriteLine("Unsinged long: " + ul);
-Console.ReadKey();
+//    class EnigmaCamp
+//    {
 
-//Reference Type
-string str = "Enigma";
+//        // Main Function
+//        static void Main(string[] args)
+//        {
+//            bool result;
+//            int x = 5, y = 10;
 
-//append in a
-str += "Camp";
-str = str + " For .Net";
-Console.WriteLine(a);
+//            // Equal to Operator
+//            result = (x == y);
+//            Console.WriteLine("Equal to Operator: " + result);
 
-// declare object obj
-object obj;
-obj = 20;
-Console.WriteLine(obj);
+//            // Greater than Operator
+//            result = (x > y);
+//            Console.WriteLine("Greater than Operator: " + result);
 
-// to show type of object
-// using GetType()
-Console.WriteLine(obj.GetType());
-Console.ReadKey();
+//            // Less than Operator
+//            result = (x < y);
+//            Console.WriteLine("Less than Operator: " + result);
+
+//            // Greater than Equal to Operator
+//            result = (x >= y);
+//            Console.WriteLine("Greater than or Equal to: " + result);
+
+//            // Less than Equal to Operator
+//            result = (x <= y);
+//            Console.WriteLine("Lesser than or Equal to: " + result);
+
+//            // Not Equal To Operator
+//            result = (x != y);
+//            Console.WriteLine("Not Equal to Operator: " + result);
+//        }
+//    }
+//}
+
+// C# program to demonstrate the working
+// of Logical Operators
+using System;
+namespace Logical
+{
+
+    class EnigmaCamp
+    {
+
+        // Main Function
+        static void Main(string[] args)
+        {
+            bool a = true, b = false, result;
+
+            // AND operator
+            result = a && b;
+            Console.WriteLine("AND Operator: " + result);
+
+            // OR operator
+            result = a || b;
+            Console.WriteLine("OR Operator: " + result);
+
+            // NOT operator
+            result = !a;
+            Console.WriteLine("NOT Operator: " + result);
+
+        }
+    }
+}
