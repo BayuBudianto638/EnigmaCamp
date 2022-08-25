@@ -88,30 +88,70 @@
 
 // C# program to demonstrate the working
 // of Logical Operators
-using System;
-namespace Logical
-{
+//using System;
+//namespace Logical
+//{
 
+//    class EnigmaCamp
+//    {
+
+//        // Main Function
+//        static void Main(string[] args)
+//        {
+//            bool a = true, b = false, result;
+
+//            // AND operator
+//            result = a && b;
+//            Console.WriteLine("AND Operator: " + result);
+
+//            // OR operator
+//            result = a || b;
+//            Console.WriteLine("OR Operator: " + result);
+
+//            // NOT operator
+//            result = !a;
+//            Console.WriteLine("NOT Operator: " + result);
+
+//        }
+//    }
+//}
+
+// C# program to demonstrate the working
+// of Bitwise Operators
+using System;
+namespace Bitwise
+{
     class EnigmaCamp
     {
 
         // Main Function
         static void Main(string[] args)
         {
-            bool a = true, b = false, result;
+            int x = 5, y = 10, result;
 
-            // AND operator
-            result = a && b;
-            Console.WriteLine("AND Operator: " + result);
+            // Bitwise AND Operator
+            result = x & y;
+            Console.WriteLine("Bitwise AND: " + result);
 
-            // OR operator
-            result = a || b;
-            Console.WriteLine("OR Operator: " + result);
+            // Bitwise OR Operator
+            result = x | y;
+            Console.WriteLine("Bitwise OR: " + result);
 
-            // NOT operator
-            result = !a;
-            Console.WriteLine("NOT Operator: " + result);
+            // Bitwise XOR Operator
+            result = x ^ y;
+            Console.WriteLine("Bitwise XOR: " + result);
 
+            // Bitwise AND Operator
+            result = ~x;
+            Console.WriteLine("Bitwise Complement: " + result);
+
+            // Bitwise LEFT SHIFT Operator
+            result = x << 2;
+            Console.WriteLine("Bitwise Left Shift: " + result);
+
+            // Bitwise RIGHT SHIFT Operator
+            result = x >> 2;
+            Console.WriteLine("Bitwise Right Shift: " + result);
         }
     }
 }
