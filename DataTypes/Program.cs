@@ -319,7 +319,7 @@ string monthName = "Juni";
 var tableMonth = new string[] { "Bulan", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" };
 var listMonth = tableMonth.ToList();
 int month = listMonth.IndexOf(monthName);
-Console.WriteLine($"{month.ToString()}");
+Console.WriteLine($"{month}");
 Console.ReadKey();
 
 
