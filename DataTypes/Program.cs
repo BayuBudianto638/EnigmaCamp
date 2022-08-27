@@ -99,7 +99,7 @@
 // C# program to illustrate the
 // use of break statement
 using System;
-class Geeks
+class EnigmaCamp
 {
     // Main Method
     static public void Main()
