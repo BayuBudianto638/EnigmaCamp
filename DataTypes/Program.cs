@@ -692,82 +692,158 @@
 //}
 
 // CONTOH 5
-// C# program to show how 'base' keyword specifies
-// the base-class constructor that called from
-// derived class and also calling a method 'swap'
-// from derived class using base keyword
+//// C# program to show how 'base' keyword specifies
+//// the base-class constructor that called from
+//// derived class and also calling a method 'swap'
+//// from derived class using base keyword
+//using System;
+//// base class
+//public class clssA
+//{
+//	public int n1, n2;
+//	// default constructor
+//	public clssA()
+//	{
+//		Console.WriteLine("In clssA 'no argument constructor' invoked");
+//	}
+
+//	// parameterized constructor
+//	public clssA(int i, int j)
+//	{
+//		// construct values
+//		n1 = i;
+//		n2 = j;
+//		Console.WriteLine("in clssA 'parameterized constructor' invoked");
+//		Console.WriteLine("the invoked values are " + n1 + " and " + n2);
+//		Console.WriteLine();
+//	}
+
+//	public virtual void swap()
+//	{
+//		Console.WriteLine("swap function of base class(clssA) invoked");
+//		Console.WriteLine("Before swap num1 = {0} and num2 = {1}", n1, n2);
+
+//		// swapping
+//		int t = n1;
+//		n1 = n2;
+//		n2 = t;
+//		Console.WriteLine("After swap num1 = {0} and num2 = {1}", n1, n2);
+//	}
+//}
+
+//// derived class
+//public class DerivedClass : clssA
+//{
+//	// This constructor will instantiate
+//	// 'clssA' [no argument constructor]
+//	// using 'base' keyword
+//	public DerivedClass() : base() { }
+//	// This constructor will instantiate
+//	// 'clssA' [parameterized constructor]
+//	// using 'base' keyword
+//	public DerivedClass(int i, int j) : base(i, j) { }
+//	public override void swap()
+//	{
+//		// it access the swap function of
+//		// 'clssA' using 'base' keyword
+//		base.swap();
+//		Console.WriteLine();
+//		Console.WriteLine("Swap function of derived class invoked");
+//		Console.WriteLine("Before swap num1 = {0} and num2 = {1}", n1, n2);
+
+//		// swapping
+//		int t = n1;
+//		n1 = n2;
+//		n2 = t;
+//		Console.WriteLine("After swap num1 = {0} and num2 = {1}", n1, n2);
+//	}
+
+//	// Main Method
+//	static void Main()
+//	{
+//		// invoke no argument constructor
+//		DerivedClass d1 = new DerivedClass();
+//		Console.WriteLine();
+//		// invoke parameterized constructor
+//		DerivedClass d2 = new DerivedClass(10, 20);
+
+//		// calling swap function
+//		d2.swap();
+//	}
+//}
+
+//// Anonymous Method
+//// C# program to illustrate how to
+//// create an anonymous function
+//using System;
+//class EnigmaCamp
+//{
+//	public delegate void petanim(string pet);
+
+//	// Main method
+//	static public void Main()
+//	{
+//		// An anonymous method with one parameter
+//		petanim p = delegate (string mypet)
+//		{
+//			Console.WriteLine("My favorite pet is: {0}",
+//												mypet);
+//		};
+//		p("Dog");
+//	}
+//}
+
+//// C# program to illustrate how an
+//// anonymous function access variable
+//// defined in outer method
+//using System;
+//class EnigmaCamp
+//{
+//	// Create a delegate
+//	public delegate void petanim(string pet);
+
+//	// Main method
+//	static public void Main()
+//	{
+//		string fav = "Rabbit";
+
+//		// Anonymous method with one parameter
+//		petanim p = delegate (string mypet)
+//		{
+//			Console.WriteLine("My favorite pet is {0}.",
+//												mypet);
+
+//			// Accessing variable defined
+//			// outside the anonymous function
+//			Console.WriteLine("And I like {0} also.", fav);
+//		};
+//		p("Dog");
+//	}
+//}
+
+// C# program to illustrate how an
+// anonymous method passed as a parameter
 using System;
-// base class
-public class clssA
+public delegate void Show(string x);
+class EnigmaCamp
 {
-	public int n1, n2;
-	// default constructor
-	public clssA()
+	// identity method with two parameters
+	public static void identity(Show mypet,
+							string color)
 	{
-		Console.WriteLine("In clssA 'no argument constructor' invoked");
+		color = " Black" + color;
+		mypet(color);
 	}
 
-	// parameterized constructor
-	public clssA(int i, int j)
+	// Main method
+	static public void Main()
 	{
-		// construct values
-		n1 = i;
-		n2 = j;
-		Console.WriteLine("in clssA 'parameterized constructor' invoked");
-		Console.WriteLine("the invoked values are " + n1 + " and " + n2);
-		Console.WriteLine();
-	}
-
-	public virtual void swap()
-	{
-		Console.WriteLine("swap function of base class(clssA) invoked");
-		Console.WriteLine("Before swap num1 = {0} and num2 = {1}", n1, n2);
-
-		// swapping
-		int t = n1;
-		n1 = n2;
-		n2 = t;
-		Console.WriteLine("After swap num1 = {0} and num2 = {1}", n1, n2);
-	}
-}
-
-// derived class
-public class DerivedClass : clssA
-{
-	// This constructor will instantiate
-	// 'clssA' [no argument constructor]
-	// using 'base' keyword
-	public DerivedClass() : base() { }
-	// This constructor will instantiate
-	// 'clssA' [parameterized constructor]
-	// using 'base' keyword
-	public DerivedClass(int i, int j) : base(i, j) { }
-	public override void swap()
-	{
-		// it access the swap function of
-		// 'clssA' using 'base' keyword
-		base.swap();
-		Console.WriteLine();
-		Console.WriteLine("Swap function of derived class invoked");
-		Console.WriteLine("Before swap num1 = {0} and num2 = {1}", n1, n2);
-
-		// swapping
-		int t = n1;
-		n1 = n2;
-		n2 = t;
-		Console.WriteLine("After swap num1 = {0} and num2 = {1}", n1, n2);
-	}
-
-	// Main Method
-	static void Main()
-	{
-		// invoke no argument constructor
-		DerivedClass d1 = new DerivedClass();
-		Console.WriteLine();
-		// invoke parameterized constructor
-		DerivedClass d2 = new DerivedClass(10, 20);
-
-		// calling swap function
-		d2.swap();
+		// Here anonymous method pass as
+		// a parameter in identity method
+		identity(delegate (string color) {
+			Console.WriteLine("The color" +
+			" of my dog is {0}", color);
+		},
+								"White");
 	}
 }
