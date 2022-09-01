@@ -1,37 +1,263 @@
-﻿// CONTOH 1
+﻿//// CONTOH 1
+//using System;
+
+//namespace PolymorphismApplication
+//{
+//    class Printdata
+//    {
+//        void print(int i)
+//        {
+//            Console.WriteLine("Printing int: {0}", i);
+//        }
+
+//        void print(double f)
+//        {
+//            Console.WriteLine("Printing float: {0}", f);
+//        }
+
+//        void print(string s)
+//        {
+//            Console.WriteLine("Printing string: {0}", s);
+//        }
+
+//        static void Main(string[] args)
+//        {
+//            Printdata p = new Printdata();
+
+//            // Call print to print integer
+//            p.print(5);
+
+//            // Call print to print float
+//            p.print(500.263);
+
+//            // Call print to print string
+//            p.print("Hello C#");
+//            Console.ReadKey();
+//        }
+//    }
+//}
+
+//// Contoh 2
+//class Animal  // Base class (parent) 
+//{
+//    public void animalSound()
+//    {
+//        Console.WriteLine("The animal makes a sound");
+//    }
+//}
+
+//class Pig : Animal  // Derived class (child) 
+//{
+//    public void animalSound()
+//    {
+//        Console.WriteLine("The pig says: wee wee");
+//    }
+//}
+
+//class Dog : Animal  // Derived class (child) 
+//{
+//    public void animalSound()
+//    {
+//        Console.WriteLine("The dog says: woof woof");
+//    }
+//}
+
+//class MainClass
+//{
+//    static void Main()
+//    {
+//        Pig pig = new Pig();
+//        pig.animalSound();
+
+//        Dog dog = new Dog();
+//        dog.animalSound();
+
+//        Console.ReadKey();
+//    }
+//}
+
+
+//// Contoh 3
+//class Animal  // Base class (parent) 
+//{
+//    public void animalSound()
+//    {
+//        Console.WriteLine("The animal makes a sound");
+//    }
+//}
+
+//class Pig : Animal  // Derived class (child) 
+//{
+//    public void animalSound()
+//    {
+//        Console.WriteLine("The pig says: wee wee");
+//    }
+//}
+
+//class Dog : Animal  // Derived class (child) 
+//{
+//    public void animalSound()
+//    {
+//        Console.WriteLine("The dog says: bow wow");
+//    }
+//}
+
+//class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        Animal myAnimal = new Animal();  // Create a Animal object
+//        Animal myPig = new Pig();  // Create a Pig object
+//        Animal myDog = new Dog();  // Create a Dog object
+
+//        myAnimal.animalSound();
+//        myPig.animalSound();
+//        myDog.animalSound();
+
+//        Console.ReadKey();
+//    }
+//}
+
+
+//// Contoh 4
+//class Animal  // Base class (parent) 
+//{
+//    public virtual void animalSound()
+//    {
+//        Console.WriteLine("The animal makes a sound");
+//    }
+//}
+
+//class Pig : Animal  // Derived class (child) 
+//{
+//    public override void animalSound()
+//    {
+//        Console.WriteLine("The pig says: wee wee");
+//    }
+//}
+
+//class Dog : Animal  // Derived class (child) 
+//{
+//    public override void animalSound()
+//    {
+//        Console.WriteLine("The dog says: woof woof");
+//    }
+//}
+
+//class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        Animal myAnimal = new Animal();  // Create a Animal object
+//        Animal myPig = new Pig();  // Create a Pig object
+//        Animal myDog = new Dog();  // Create a Dog object
+
+//        myAnimal.animalSound();
+//        myPig.animalSound();
+//        myDog.animalSound();
+//    }
+//}
+
+//// Dynamic Polimorphism
+//using System;
+
+//namespace PolymorphismApplication
+//{
+//    abstract class Shape
+//    {
+//        public abstract int area();
+//    }
+
+//    class Rectangle : Shape
+//    {
+//        private int length;
+//        private int width;
+
+//        public Rectangle(int a = 0, int b = 0)
+//        {
+//            length = a;
+//            width = b;
+//        }
+//        public override int area()
+//        {
+//            Console.WriteLine("Rectangle class area :");
+//            return (width * length);
+//        }
+//    }
+
+//    class RectangleTester
+//    {
+//        static void Main(string[] args)
+//        {
+//            Rectangle r = new Rectangle(10, 7);
+//            double a = r.area();
+//            Console.WriteLine("Area: {0}", a);
+//            Console.ReadKey();
+//        }
+//    }
+//}
+
 using System;
 
 namespace PolymorphismApplication
 {
-    class Printdata
+    class Shape
     {
-        void print(int i)
-        {
-            Console.WriteLine("Printing int: {0}", i);
-        }
+        protected int width, height;
 
-        void print(double f)
+        public Shape(int a = 0, int b = 0)
         {
-            Console.WriteLine("Printing float: {0}", f);
+            width = a;
+            height = b;
         }
-
-        void print(string s)
+        public virtual int area()
         {
-            Console.WriteLine("Printing string: {0}", s);
+            Console.WriteLine("Parent class area :");
+            return 0;
         }
+    }
+    class Rectangle : Shape
+    {
+        public Rectangle(int a = 0, int b = 0) : base(a, b)
+        {
 
+        }
+        public override int area()
+        {
+            Console.WriteLine("Rectangle class area :");
+            return (width * height);
+        }
+    }
+    class Triangle : Shape
+    {
+        public Triangle(int a = 0, int b = 0) : base(a, b)
+        {
+        }
+        public override int area()
+        {
+            Console.WriteLine("Triangle class area :");
+            return (width * height / 2);
+        }
+    }
+    class Caller
+    {
+        public void CallArea(Shape sh)
+        {
+            int a;
+            a = sh.area();
+            Console.WriteLine("Area: {0}", a);
+        }
+    }
+    class Tester
+    {
         static void Main(string[] args)
         {
-            Printdata p = new Printdata();
+            Caller c = new Caller();
+            Rectangle r = new Rectangle(10, 7);
+            Triangle t = new Triangle(10, 5);
 
-            // Call print to print integer
-            p.print(5);
-
-            // Call print to print float
-            p.print(500.263);
-
-            // Call print to print string
-            p.print("Hello C#");
+            c.CallArea(r);
+            c.CallArea(t);
             Console.ReadKey();
         }
     }
