@@ -861,6 +861,112 @@
 //    }
 //}
 
+// MULTIPLE INHERITANCE
+// C# program to illustrate how to
+// implement multiple class inheritance
+// using interfaces
+using System;
+using System.Collections;
+
+// Interface 1
+interface EC1
+{
+    void languages();
+}
+
+// Parent class 1
+class Enigma1 : EC1
+{
+
+    // Providing the implementation
+    // of languages() method
+    public void languages()
+    {
+
+        // Creating ArrayList
+        ArrayList My_list = new ArrayList();
+
+        // Adding elements in the
+        // My_list ArrayList
+        My_list.Add("C");
+        My_list.Add("C++");
+        My_list.Add("C#");
+        My_list.Add("Java");
+
+        Console.WriteLine("Languages provided by EnigmaCamp:");
+        foreach (var elements in My_list)
+        {
+            Console.WriteLine(elements);
+        }
+    }
+}
+
+// Interface 2
+interface EC2
+{
+    void courses();
+}
+
+// Parent class 2
+class Enigma2 : EC2
+{
+
+    // Providing the implementation
+    // of courses() method
+    public void courses()
+    {
+
+        // Creating ArrayList
+        ArrayList My_list = new ArrayList();
+
+        // Adding elements in the
+        // My_list ArrayList
+        My_list.Add("System Design");
+        My_list.Add("Fork Python");
+        My_list.Add("Enigma Classes DSA");
+        My_list.Add("Fork Java");
+
+        Console.WriteLine("\nCourses provided by EnigmaCamp:");
+        foreach (var elements in My_list)
+        {
+            Console.WriteLine(elements);
+        }
+    }
+}
+
+// Child class
+class EnigmaCamp_Class : EC1, EC2
+{
+
+    // Creating objects of Geeks1 and Geeks2 class
+    Enigma1 obj1 = new Enigma1();
+    Enigma2 obj2 = new Enigma2();
+
+    public void languages()
+    {
+        obj1.languages();
+    }
+
+    public void courses()
+    {
+        obj2.courses();
+    }
+}
+
+// Driver Class
+public class EnigmaCamp
+{
+    // Main method
+    static public void Main()
+    {
+        // Creating object of GeeksforGeeks class
+        EnigmaCamp_Class obj = new EnigmaCamp_Class();
+        obj.languages();
+        obj.courses();
+    }
+}
+
+
 //// Hierarchical Inheritance
 //// Contoh 1
 //// C# program to illustrate the above concept
@@ -1116,31 +1222,31 @@
 //    }
 //}
 
-// Contoh 3
-// Hybrid Inheritance via Interface
-// with different file and how to implement it
-// the file are IFeline and IBigCats, with Class Harimau that implement IBigCats and IFeline
-using DataTypes;
-class EnigmaCamp
-{
-    // Main method
-    static void Main(String[] args)
-    {
-        // creating the object
-        // class of Talent
-        Harimau obj = new Harimau();
+//// Contoh 3
+//// Hybrid Inheritance via Interface
+//// with different file and how to implement it
+//// the file are IFeline and IBigCats, with Class Harimau that implement IBigCats and IFeline
+//using DataTypes;
+//class EnigmaCamp
+//{
+//    // Main method
+//    static void Main(String[] args)
+//    {
+//        // creating the object
+//        // class of Talent
+//        Harimau obj = new Harimau();
 
-        // calling the method
-        // using object 'obj'
-        obj.JenisKucing("Harimau");
-        obj.Mengaum();
-        obj.Makan();
-        obj.BAB();
-        obj.Tidur();
+//        // calling the method
+//        // using object 'obj'
+//        obj.JenisKucing("Harimau");
+//        obj.Mengaum();
+//        obj.Makan();
+//        obj.BAB();
+//        obj.Tidur();
 
-        Console.ReadKey();
-    }
-}
+//        Console.ReadKey();
+//    }
+//}
 
 
 // Encapsulation
