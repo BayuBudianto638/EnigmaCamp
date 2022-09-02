@@ -1,6 +1,8 @@
-﻿using EnigmaCore.Interface;
+﻿using DataTypes;
+using EnigmaCore.Interface;
 using EnigmaService.DefaultService;
 using Microsoft.Extensions.DependencyInjection;
+using System.Security.Cryptography;
 
 class Program
 {
@@ -25,7 +27,8 @@ class Program
         Console.WriteLine("Choose an option:");
         Console.WriteLine("1) Create Student");
         Console.WriteLine("2) Update Student");
-        Console.WriteLine("3) Exit");
+        Console.WriteLine("3) Get All Student");
+        Console.WriteLine("4) Exit");
         Console.Write("\r\nSelect an option: ");
 
         switch (Console.ReadLine())
@@ -37,6 +40,9 @@ class Program
                 UpdateStudent();
                 return true;
             case "3":
+                GetAllStudent();
+                return true;
+            case "4":
                 return false;
             default:
                 return true;
@@ -54,6 +60,24 @@ class Program
     {
         Console.Clear();
         Console.WriteLine("Update Student");
+        Console.ReadKey();
+    }
+
+    private static void GetAllStudent()
+    {
+        Console.Clear();
+
+        var context = new SchoolContext();
+
+        var data = context.Students.ToList();
+
+        Console.WriteLine("Students");
+        Console.WriteLine("---------------------");
+        foreach(var item in data)
+        {
+            Console.WriteLine($"{item.StudentId} - {item.Name}");
+        }
+
         Console.ReadKey();
     }
 }
