@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EnigmaCore\EnigmaCore.csproj" />
     <ProjectReference Include="..\EnigmaData\EnigmaData.csproj" />
+    <ProjectReference Include="..\EnigmaService\EnigmaService.csproj" />
   </ItemGroup>
 
 </Project>
