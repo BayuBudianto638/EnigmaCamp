@@ -1,58 +1,58 @@
-﻿// CONTOH 1
-//public interface IMonster
-//{
-//    public void Makan();
-//    public void Tidur();
-//}
+﻿//CONTOH 1
+public interface IMonster
+{
+    public void Makan();
+    public void Tidur();
+}
 
-//public class Kaiju : IMonster
-//{
-//    public void Makan()
-//    {
-//        Console.WriteLine("Kaiju Makan");
-//    }
+public class Kaiju : IMonster
+{
+    public void Makan()
+    {
+        Console.WriteLine("Kaiju Makan");
+    }
 
-//    public void Tidur()
-//    {
-//        Console.WriteLine("Kaiju Tidur");
-//    }
-//}
+    public void Tidur()
+    {
+        Console.WriteLine("Kaiju Tidur");
+    }
+}
 
-//public class Dinosaurus : IMonster
-//{
-//    public void Makan()
-//    {
-//        Console.WriteLine("Dinosaurus Makan");
-//    }
+public class Dinosaurus : IMonster
+{
+    public void Makan()
+    {
+        Console.WriteLine("Dinosaurus Makan");
+    }
 
-//    public void Tidur()
-//    {
-//        Console.WriteLine("Dinosaurus Tidur");
-//    }
-//}
+    public void Tidur()
+    {
+        Console.WriteLine("Dinosaurus Tidur");
+    }
+}
 
-//public class KeturunanKaiju: Kaiju
-//{
+public class KeturunanKaiju : Kaiju
+{
 
-//}
+}
 
-//class program
-//{
-//    static void Main()
-//    {
-//        Kaiju kaiju  = new Kaiju();
-//        kaiju.Makan();
-//        kaiju.Tidur();
+class program
+{
+    static void Main()
+    {
+        Kaiju kaiju = new Kaiju();
+        kaiju.Makan();
+        kaiju.Tidur();
 
-//        Dinosaurus dino = new Dinosaurus();
-//        dino.Makan();
-//        dino.Tidur();
+        Dinosaurus dino = new Dinosaurus();
+        dino.Makan();
+        dino.Tidur();
 
-//        KeturunanKaiju ketKaiju = new KeturunanKaiju();
-//        ketKaiju.Makan();
-//        ketKaiju.Tidur();
-//    }
-//}
+        KeturunanKaiju ketKaiju = new KeturunanKaiju();
+        ketKaiju.Makan();
+        ketKaiju.Tidur();
+    }
+}
 
 
 // CONTOH 2
@@ -258,54 +258,54 @@
 // CONTOH 6
 // Interface using Dependcy Injection
 // Penjelasan lengkap di SOLID Principles
-using DataTypes.Interface;
-using Microsoft.Extensions.DependencyInjection;
-public class Barang : IBarang
-{
-    public void GetBarangById()
-    {
-        Console.WriteLine("GetBarangById");
-    }
+//using DataTypes.Interface;
+//using Microsoft.Extensions.DependencyInjection;
+//public class Barang : IBarang
+//{
+//    public void GetBarangById()
+//    {
+//        Console.WriteLine("GetBarangById");
+//    }
 
-    public void Simpan()
-    {
-        Console.WriteLine("Simpan Barang");
-    }
+//    public void Simpan()
+//    {
+//        Console.WriteLine("Simpan Barang");
+//    }
 
-    public void Update()
-    {
-        Console.WriteLine("Update Barang");
-    }
-}
+//    public void Update()
+//    {
+//        Console.WriteLine("Update Barang");
+//    }
+//}
 
-public class Transaksi : ITransaksi
-{
-    private readonly IBarang _barang;
+//public class Transaksi : ITransaksi
+//{
+//    private readonly IBarang _barang;
 
-    public Transaksi (IBarang barang)
-    {
-        _barang = barang;
-    }
+//    public Transaksi (IBarang barang)
+//    {
+//        _barang = barang;
+//    }
 
-    public void SimpanTransaksi()
-    {
-        _barang.GetBarangById();
-        Console.WriteLine("Simpan Transaksi");
-    }
-}
+//    public void SimpanTransaksi()
+//    {
+//        _barang.GetBarangById();
+//        Console.WriteLine("Simpan Transaksi");
+//    }
+//}
 
-class Program
-{
-    static void Main()
-    {
-        //setup our DI
-        var serviceProvider = new ServiceCollection()
-            .AddSingleton<IBarang, Barang>()
-            .AddSingleton<ITransaksi, Transaksi>()
-            .BuildServiceProvider();
+//class Program
+//{
+//    static void Main()
+//    {
+//        //setup our DI
+//        var serviceProvider = new ServiceCollection()
+//            .AddSingleton<IBarang, Barang>()
+//            .AddSingleton<ITransaksi, Transaksi>()
+//            .BuildServiceProvider();
 
-        //do the actual work here
-        var transaksi = serviceProvider.GetService<ITransaksi>();
-        transaksi.SimpanTransaksi();
-    }
-}
+//        //do the actual work here
+//        var transaksi = serviceProvider.GetService<ITransaksi>();
+//        transaksi.SimpanTransaksi();
+//    }
+//}
