@@ -1,4 +1,5 @@
-﻿using EnigmaCore.Interface;
+﻿using AutoMapper;
+using EnigmaCore.Interface;
 using EnigmaCore.Model;
 using EnigmaData.Database;
 using System;
@@ -12,9 +13,11 @@ namespace EnigmaService.DefaultService
     public class StudentService : IStudent
     {
         private readonly SchoolContext _schoolContext;
-        public StudentService(SchoolContext schoolContext)
+        private IMapper _mapper;
+        public StudentService(SchoolContext schoolContext, IMapper mapper)
         {
             _schoolContext = schoolContext;
+            _mapper = mapper;
         }
 
         public void DeleteStudent(int studentId)
@@ -25,18 +28,7 @@ namespace EnigmaService.DefaultService
         public List<StudentModel> GetAllStudent()
         {
             var listStudent = _schoolContext.Students.ToList();
-
-            var studentModelList = new List<StudentModel>();
-
-            foreach (var item in listStudent)
-            {
-                var student = new StudentModel();
-
-                student.StudentId = item.StudentId;
-                student.Name = item.Name;
-
-                studentModelList.Add(student);
-            }
+            var studentModelList = _mapper.Map<List<StudentModel>>(listStudent);
 
             return studentModelList;
         }
@@ -50,7 +42,6 @@ namespace EnigmaService.DefaultService
 
             _schoolContext.Students.Add(student);
             _schoolContext.SaveChanges();
-
         }
 
         public void UpdateStudent(StudentModel studentModel)
