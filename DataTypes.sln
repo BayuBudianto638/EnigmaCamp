@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTypes", "DataTypes\DataTypes.csproj", "{65CC3A98-2D9D-4C5F-B832-71EDB21245D4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnigmaCore", "EnigmaCore\EnigmaCore.csproj", "{875F617D-0D6A-4634-8EA5-ACB4232E553C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnigmaData", "EnigmaData\EnigmaData.csproj", "{9AFEC6F9-F298-4B7E-9992-8EC4185387C1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnigmaService", "EnigmaService\EnigmaService.csproj", "{35648B10-A2BD-4731-9D83-6E8BF031E31E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECWebApi", "ECWebApi\ECWebApi.csproj", "{F6911839-5C85-4144-8EAB-7A2FED09008F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECWebApi", "ECWebApi\ECWebApi.csproj", "{F6911839-5C85-4144-8EAB-7A2FED09008F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{65CC3A98-2D9D-4C5F-B832-71EDB21245D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65CC3A98-2D9D-4C5F-B832-71EDB21245D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65CC3A98-2D9D-4C5F-B832-71EDB21245D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65CC3A98-2D9D-4C5F-B832-71EDB21245D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{875F617D-0D6A-4634-8EA5-ACB4232E553C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{875F617D-0D6A-4634-8EA5-ACB4232E553C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{875F617D-0D6A-4634-8EA5-ACB4232E553C}.Release|Any CPU.ActiveCfg = Release|Any CPU
