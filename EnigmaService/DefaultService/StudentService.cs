@@ -1,5 +1,6 @@
 ﻿using EnigmaCore.Interface;
 using EnigmaCore.Model;
+using EnigmaData.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,12 @@ namespace EnigmaService.DefaultService
 {
     public class StudentService : IStudent
     {
+        private readonly SchoolContext _schoolContext;
+        public StudentService(SchoolContext schoolContext)
+        {
+            _schoolContext = schoolContext;
+        }
+
         public void DeleteStudent(int studentId)
         {
             throw new NotImplementedException();
@@ -17,17 +24,49 @@ namespace EnigmaService.DefaultService
 
         public List<StudentModel> GetAllStudent()
         {
-            throw new NotImplementedException();
+            var listStudent = _schoolContext.Students.ToList();
+
+            var studentModelList = new List<StudentModel>();
+
+            foreach (var item in listStudent)
+            {
+                var student = new StudentModel();
+
+                student.StudentId = item.StudentId;
+                student.Name = item.Name;
+
+                studentModelList.Add(student);
+            }
+
+            return studentModelList;
         }
 
-        public void SaveStudent(StudentModel student)
+        public void SaveStudent(StudentModel studentModel)
         {
-            throw new NotImplementedException();
+            var student = new Student()
+            {
+                Name = ""
+            };
+
+            _schoolContext.Students.Add(student);
+            _schoolContext.SaveChanges();
+
         }
 
-        public void UpdateStudent(StudentModel student)
+        public void UpdateStudent(StudentModel studentModel)
         {
-            throw new NotImplementedException();
+            var student = _schoolContext.Students.FirstOrDefault(w => w.Name == studentModel.Name);
+
+            if (student != null)
+            {
+                student = new Student()
+                {
+                    Name = ""
+                };
+
+                _schoolContext.Students.Add(student);
+                _schoolContext.SaveChanges();
+            };
         }
     }
 }

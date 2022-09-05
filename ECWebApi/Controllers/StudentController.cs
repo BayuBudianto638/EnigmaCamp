@@ -1,5 +1,4 @@
-﻿using DataTypes;
-using EnigmaCore.Interface;
+﻿using EnigmaCore.Interface;
 using EnigmaCore.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +17,7 @@ namespace ECWebApi.Controllers
         }
 
         [HttpGet(Name = "GetAllStudent")]
+        [Produces("application/json")]
         public List<StudentModel> GetAllStudent()
         {
             var studentList = _studentService.GetAllStudent();

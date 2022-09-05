@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EnigmaCore\EnigmaCore.csproj" />
+    <ProjectReference Include="..\EnigmaData\EnigmaData.csproj" />
   </ItemGroup>
 
 </Project>
