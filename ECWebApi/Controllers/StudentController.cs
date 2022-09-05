@@ -24,5 +24,11 @@ namespace ECWebApi.Controllers
 
             return studentList;
         }
+
+        [HttpPost(Name = "SaveStudent")]
+        public void SaveStudent([FromBody] StudentModel studentModel)
+        {
+            _studentService.SaveStudent(studentModel);
+        }
     }
 }

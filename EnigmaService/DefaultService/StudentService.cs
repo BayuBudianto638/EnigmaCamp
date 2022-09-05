@@ -22,7 +22,13 @@ namespace EnigmaService.DefaultService
 
         public void DeleteStudent(int studentId)
         {
-            throw new NotImplementedException();
+            var student = _schoolContext.Students.FirstOrDefault(x => x.StudentId == studentId);
+
+            if (student != null)
+            {
+                _schoolContext.Students.Remove(student);
+                _schoolContext.SaveChanges();
+            }
         }
 
         public List<StudentModel> GetAllStudent()
@@ -37,7 +43,7 @@ namespace EnigmaService.DefaultService
         {
             var student = new Student()
             {
-                Name = ""
+                Name = studentModel.Name
             };
 
             _schoolContext.Students.Add(student);
@@ -52,10 +58,10 @@ namespace EnigmaService.DefaultService
             {
                 student = new Student()
                 {
-                    Name = ""
+                    Name = studentModel.Name
                 };
 
-                _schoolContext.Students.Add(student);
+                _schoolContext.Students.Update(student);
                 _schoolContext.SaveChanges();
             };
         }
