@@ -1,6 +1,5 @@
 using AutoMapper;
 using ECWebApi.ConfigProfile;
-using ECWebApi.Model;
 using EnigmaCore.Interface;
 using EnigmaData.Database;
 using EnigmaService.DefaultService;
