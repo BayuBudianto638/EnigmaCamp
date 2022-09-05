@@ -1,22 +1,22 @@
-﻿// Contoh 1
-using DataTypes;
-using DataTypes.Model;
-class program
-{
-    static void Main()
-    {
-        using (var context = new SchoolContext())
-        {
-            var student = new Student()
-            {
-                Name = "Anton Medan"
-            };
+﻿//// Contoh 1
+//using DataTypes;
+//using DataTypes.Model;
+//class program
+//{
+//    static void Main()
+//    {
+//        using (var context = new SchoolContext())
+//        {
+//            var student = new Student()
+//            {
+//                Name = "Anton Medan"
+//            };
 
-            context.Students.Add(student);
-            context.SaveChanges();
-        }
-    }
-}
+//            context.Students.Add(student);
+//            context.SaveChanges();
+//        }
+//    }
+//}
 
 // Contoh 2 menggunakan Interface, class service dan Dependency Injection
 //using DataTypes.Interface;
@@ -37,53 +37,98 @@ class program
 //}
 
 
-// Contoh 3 Using Menu like basic Pascal/C++ Console
-//class Program
-//{
-//    static void Main(string[] args)
-//    {
-//        bool showMenu = true;
-//        while (showMenu)
-//        {
-//            showMenu = MainMenu();
-//        }
-//    }
+//Contoh 3 Using Menu like basic Pascal/C++ Console
+using DataTypes.Model;
+using DataTypes;
+using Microsoft.EntityFrameworkCore;
 
-//    private static bool MainMenu()
-//    {
-//        Console.Clear();
-//        Console.WriteLine("Choose an option:");
-//        Console.WriteLine("1) Create Student");
-//        Console.WriteLine("2) Update Student");
-//        Console.WriteLine("3) Exit");
-//        Console.Write("\r\nSelect an option: ");
+class Program
+{
+    static void Main(string[] args)
+    {
+        bool showMenu = true;
+        while (showMenu)
+        {
+            showMenu = MainMenu();
+        }
+    }
 
-//        switch (Console.ReadLine())
-//        {
-//            case "1":
-//                CreateStudent();
-//                return true;
-//            case "2":
-//                UpdateStudent();
-//                return true;
-//            case "3":
-//                return false;
-//            default:
-//                return true;
-//        }
-//    }
+    private static bool MainMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("Choose an option:");
+        Console.WriteLine("1) Create Student");
+        Console.WriteLine("2) Update Student");
+        Console.WriteLine("3) Exit");
+        Console.Write("\r\nSelect an option: ");
 
-//    private static void CreateStudent()
-//    {
-//        Console.Clear();
-//        Console.WriteLine("Create Student");
-//        Console.ReadKey();
-//    }
+        switch (Console.ReadLine())
+        {
+            case "1":
+                CreateStudent();
+                return true;
+            case "2":
+                UpdateStudent();
+                return true;
+            case "3":
+                return false;
+            default:
+                return true;
+        }
+    }
 
-//    private static void UpdateStudent()
-//    {
-//        Console.Clear();
-//        Console.WriteLine("Update Student");
-//        Console.ReadKey();
-//    }
-//}
+    private static void CreateStudent()
+    {
+        Console.Clear();
+        Console.WriteLine("Create Student");
+        Console.WriteLine("---------------");
+        Console.Write("Nama:");
+        string nama = Console.ReadLine();
+
+        using (var context = new SchoolContext())
+        {
+            var student = new Student()
+            {
+                Name = nama
+            };
+
+            context.Students.Add(student);
+            context.SaveChanges();
+        }
+
+        Console.ReadKey();
+    }
+
+    private static void UpdateStudent()
+    {
+        Console.Clear();
+        Console.WriteLine("Update Student");
+        Console.WriteLine("---------------");
+        Console.Write("Cari nama:");
+        string cariNama = Console.ReadLine();        
+
+        using (var context = new SchoolContext())
+        {
+            var student = context.Students.FirstOrDefault(w => w.Name == cariNama);
+
+            if (student != null)
+            {
+                Console.Write("Masukkan Nama:");
+                string nama = Console.ReadLine();
+                student = new Student()
+                {
+                    Name = nama
+                };
+
+                context.Students.Add(student);
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("Nama tidak ditemukan");
+            }          
+        }
+
+        Console.ReadKey();
+    }
+}
