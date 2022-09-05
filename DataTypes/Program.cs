@@ -1,5 +1,6 @@
 ﻿using DataTypes;
 using EnigmaCore.Interface;
+using EnigmaData.Database;
 using EnigmaService.DefaultService;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Cryptography;
@@ -53,6 +54,21 @@ class Program
     {
         Console.Clear();
         Console.WriteLine("Create Student");
+        Console.WriteLine("---------------");
+        Console.Write("Nama:");
+        string nama = Console.ReadLine();
+
+        using (var context = new SchoolContext())
+        {
+            var student = new Student()
+            {
+                Name = nama
+            };
+
+            context.Students.Add(student);
+            context.SaveChanges();
+        }
+
         Console.ReadKey();
     }
 
@@ -60,6 +76,32 @@ class Program
     {
         Console.Clear();
         Console.WriteLine("Update Student");
+        Console.WriteLine("---------------");
+        Console.Write("Cari nama:");
+        string cariNama = Console.ReadLine();
+
+        using (var context = new SchoolContext())
+        {
+            var student = context.Students.FirstOrDefault(w => w.Name == cariNama);
+
+            if (student != null)
+            {
+                Console.Write("Masukkan Nama:");
+                string nama = Console.ReadLine();
+                student = new Student()
+                {
+                    Name = nama
+                };
+
+                context.Students.Add(student);
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("Nama tidak ditemukan");
+            }
+        }
+
         Console.ReadKey();
     }
 
