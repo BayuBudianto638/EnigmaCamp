@@ -26,7 +26,6 @@ namespace ECWebApi.Controllers
             {
                 var studentList = _studentService.GetAllStudent();
 
-                //return studentList;
                 return Requests.Response(this, new ApiStatus(200), studentList, "");
             }
             catch(Exception ex)
@@ -41,6 +40,7 @@ namespace ECWebApi.Controllers
             try
             {
                 _studentService.SaveStudent(studentModel);
+
                 return Requests.Response(this, new ApiStatus(200), "Success", "Success");
             }
             catch(Exception ex)
