@@ -45,7 +45,7 @@ namespace EnigmaService.DefaultService
         {
             var student = new Student()
             {
-                Name = ""
+                Name = studentModel.Name
             };
 
             _schoolContext.Students.Add(student);
@@ -61,7 +61,7 @@ namespace EnigmaService.DefaultService
             {
                 student = new Student()
                 {
-                    Name = ""
+                    Name = studentModel.Name
                 };
 
                 _schoolContext.Students.Add(student);
