@@ -1,7 +1,9 @@
-﻿using EnigmaCore.Interface;
+﻿using EnigmaCore.Helper;
+using EnigmaCore.Interface;
 using EnigmaCore.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.NetworkInformation;
 
 namespace ECWebApi.Controllers
 {
@@ -18,17 +20,33 @@ namespace ECWebApi.Controllers
 
         [HttpGet(Name = "GetAllStudent")]
         [Produces("application/json")]
-        public List<StudentModel> GetAllStudent()
+        public IActionResult GetAllStudent()
         {
-            var studentList = _studentService.GetAllStudent();
+            try
+            {
+                var studentList = _studentService.GetAllStudent();
 
-            return studentList;
+                //return studentList;
+                return Requests.Response(this, new ApiStatus(200), studentList, "");
+            }
+            catch(Exception ex)
+            {
+                return Requests.Response(this, new ApiStatus(500), null, ex.Message);
+            }
         }
 
         [HttpPost(Name = "SaveStudent")]
-        public void SaveStudent([FromBody] StudentModel studentModel)
+        public IActionResult SaveStudent([FromBody] StudentModel studentModel)
         {
-            _studentService.SaveStudent(studentModel);
+            try
+            {
+                _studentService.SaveStudent(studentModel);
+                return Requests.Response(this, new ApiStatus(200), "Success", "Success");
+            }
+            catch(Exception ex)
+            {
+                return Requests.Response(this, new ApiStatus(500), null, ex.Message);
+            }
         }
     }
 }
