@@ -44,7 +44,7 @@ namespace EnigmaService.DefaultService
         {
             try
             {
-                
+
                 var student = new Student()
                 {
                     Name = studentModel.Name
@@ -61,25 +61,36 @@ namespace EnigmaService.DefaultService
             catch (DbException ex)
             {
                 _schoolContext.Database.RollbackTransaction();
-                return ( false, "Error");
+                return (false, "Error");
             }
 
         }
 
         public void UpdateStudent(StudentModel studentModel)
         {
-            var student = _schoolContext.Students.FirstOrDefault(w => w.Name == studentModel.Name);
-
-            if (student != null)
+            try
             {
-                student = new Student()
-                {
-                    Name = studentModel.Name
-                };
+                var student = _schoolContext.Students.FirstOrDefault(w => w.Name == studentModel.Name);
 
-                _schoolContext.Students.Update(student);
-                _schoolContext.SaveChanges();
-            };
+                if (student != null)
+                {
+                    student = new Student()
+                    {
+                        Name = studentModel.Name
+                    };
+
+                    _schoolContext.Database.BeginTransaction();
+
+                    _schoolContext.Students.Update(student);
+                    _schoolContext.SaveChanges();
+
+                    _schoolContext.Database.CommitTransaction();
+                };
+            }
+            catch (DbException ex)
+            {
+                _schoolContext.Database.RollbackTransaction();
+            }
         }
     }
 }
