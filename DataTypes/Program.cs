@@ -19,9 +19,7 @@
 //}
 
 // Contoh 2 menggunakan Interface, class service dan Dependency Injection
-//using DataTypes;
 //using DataTypes.Interface;
-//using DataTypes.Model;
 //using DataTypes.Service;
 //using Microsoft.Extensions.DependencyInjection;
 
@@ -29,19 +27,20 @@
 //{
 //    static void Main()
 //    {
-//        var serviceProvider = new ServiceCollection()
-//            .AddLogging()
-//            .AddSingleton<IStudent, StudentService>()
-//            //.AddSingleton<ICour, BarService>()
-//            .BuildServiceProvider();
+//               var serviceProvider = new ServiceCollection()
+//                   .AddLogging()
+//                   .AddSingleton<IStudent, StudentService>()
+//                   //.AddSingleton<ICour, BarService>()
+//                   .BuildServiceProvider();
 
 //    }
 //}
 
 
 //Contoh 3 Using Menu like basic Pascal/C++ Console
-using DataTypes;
 using DataTypes.Model;
+using DataTypes;
+using Microsoft.EntityFrameworkCore;
 
 class Program
 {
@@ -82,19 +81,20 @@ class Program
     {
         Console.Clear();
         Console.WriteLine("Create Student");
-        Console.WriteLine("--------------");
-        Console.WriteLine("Masukkan Nama:");
+        Console.WriteLine("---------------");
+        Console.Write("Nama:");
+        string nama = Console.ReadLine();
 
-        string name = Console.ReadLine();
-        var _schoolContext = new SchoolContext();
-
-        var student = new Student()
+        using (var context = new SchoolContext())
         {
-            Name = name
-        };
+            var student = new Student()
+            {
+                Name = nama
+            };
 
-        _schoolContext.Students.Add(student);
-        _schoolContext.SaveChanges();
+            context.Students.Add(student);
+            context.SaveChanges();
+        }
 
         Console.ReadKey();
     }
@@ -103,29 +103,31 @@ class Program
     {
         Console.Clear();
         Console.WriteLine("Update Student");
-        Console.WriteLine("----------------");
-        Console.Write("Cari Siswa?");
-        var oldName = Console.ReadLine();
+        Console.WriteLine("---------------");
+        Console.Write("Cari nama:");
+        string cariNama = Console.ReadLine();        
 
-        var _schoolContext = new SchoolContext();
-        var student = _schoolContext.Students.FirstOrDefault(w => w.Name == oldName);
-
-        if (student == null)
+        using (var context = new SchoolContext())
         {
-            Console.WriteLine("Data tidak ditemukan!");
-            Console.ReadKey();
+            var student = context.Students.FirstOrDefault(w => w.Name == cariNama);
+
+            if (student != null)
+            {
+                Console.Write("Masukkan Nama:");
+                string nama = Console.ReadLine();
+                student = new Student()
+                {
+                    Name = nama
+                };
+
+                context.Students.Add(student);
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("Nama tidak ditemukan");
+            }          
         }
-
-        Console.WriteLine("Masukkan Nama:");
-        string newName = Console.ReadLine();
-
-        student = new Student()
-        {
-            Name = newName
-        };
-
-        _schoolContext.Students.Add(student);
-        _schoolContext.SaveChanges();
 
         Console.ReadKey();
     }
