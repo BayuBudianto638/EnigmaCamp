@@ -4,6 +4,7 @@ using EnigmaCore.Model;
 using EnigmaData.Database;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,15 +40,30 @@ namespace EnigmaService.DefaultService
             return studentModelList;
         }
 
-        public void SaveStudent(StudentModel studentModel)
+        public (bool, string) SaveStudent(StudentModel studentModel)
         {
-            var student = new Student()
+            try
             {
-                Name = studentModel.Name
-            };
+                
+                var student = new Student()
+                {
+                    Name = studentModel.Name
+                };
 
-            _schoolContext.Students.Add(student);
-            _schoolContext.SaveChanges();
+                _schoolContext.Database.BeginTransaction();
+
+                _schoolContext.Students.Add(student);
+                _schoolContext.SaveChanges();
+
+                _schoolContext.Database.CommitTransaction();
+                return (true, "Success");
+            }
+            catch (DbException ex)
+            {
+                _schoolContext.Database.RollbackTransaction();
+                return ( false, "Error");
+            }
+
         }
 
         public void UpdateStudent(StudentModel studentModel)

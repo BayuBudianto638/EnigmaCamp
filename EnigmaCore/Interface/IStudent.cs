@@ -9,7 +9,7 @@ namespace EnigmaCore.Interface
 {
     public interface IStudent
     {
-        void SaveStudent(StudentModel student);
+        (bool, string) SaveStudent(StudentModel student);
         void UpdateStudent(StudentModel student);
         void DeleteStudent(int studentId);
         List<StudentModel> GetAllStudent();

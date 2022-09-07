@@ -28,7 +28,7 @@ namespace ECWebApi.Controllers
 
                 return Requests.Response(this, new ApiStatus(200), studentList, "");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Requests.Response(this, new ApiStatus(500), null, ex.Message);
             }
@@ -39,11 +39,15 @@ namespace ECWebApi.Controllers
         {
             try
             {
-                _studentService.SaveStudent(studentModel);
+                var (isAdded, isMessage) = _studentService.SaveStudent(studentModel);
+                if (!isAdded)
+                {
+                    return Requests.Response(this, new ApiStatus(406), isMessage, "Error");
+                }
 
                 return Requests.Response(this, new ApiStatus(200), "Success", "Success");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Requests.Response(this, new ApiStatus(500), null, ex.Message);
             }
