@@ -1,6 +1,7 @@
 ﻿using EnigmaCore.Helper;
 using EnigmaCore.Interface;
 using EnigmaCore.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.NetworkInformation;
@@ -20,6 +21,7 @@ namespace ECWebApi.Controllers
 
         [HttpGet(Name = "GetAllStudent")]
         [Produces("application/json")]
+        [Authorize]
         public IActionResult GetAllStudent()
         {
             try
@@ -35,6 +37,7 @@ namespace ECWebApi.Controllers
         }
 
         [HttpPost(Name = "SaveStudent")]
+        [Authorize]
         public IActionResult SaveStudent([FromBody] StudentModel studentModel)
         {
             try
