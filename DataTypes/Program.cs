@@ -41,11 +41,19 @@
 using DataTypes.Model;
 using DataTypes;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using DataTypes.Interface;
+using DataTypes.Service;
 
 class Program
 {
     static void Main(string[] args)
     {
+        var serviceProvider = new ServiceCollection()
+            .AddLogging()
+            .AddSingleton<IStudent, StudentService>()
+            .BuildServiceProvider();
+
         bool showMenu = true;
         while (showMenu)
         {
@@ -85,16 +93,11 @@ class Program
         Console.Write("Nama:");
         string nama = Console.ReadLine();
 
-        using (var context = new SchoolContext())
-        {
-            var student = new Student()
-            {
-                Name = nama
-            };
+        var student = new Student();
+        student.Name = nama;
 
-            context.Students.Add(student);
-            context.SaveChanges();
-        }
+        var studentService = new StudentService();
+        studentService.SimpanStudent(student);
 
         Console.ReadKey();
     }
@@ -115,13 +118,12 @@ class Program
             {
                 Console.Write("Masukkan Nama:");
                 string nama = Console.ReadLine();
-                student = new Student()
-                {
-                    Name = nama
-                };
 
-                context.Students.Add(student);
-                context.SaveChanges();
+                student.StudentId = student.StudentId;
+                student.Name = nama;
+
+                var studentService = new StudentService();
+                studentService.UpdateStudent(student);
             }
             else
             {

@@ -10,7 +10,7 @@ namespace DataTypes.Interface
     public interface IStudent
     {
         void SimpanStudent(Student student);
-        void UpdateStudent(int studentId);
+        void UpdateStudent(Student student);
         Student GetById(int studentId);
         List<Student> GetAllStudents();
 

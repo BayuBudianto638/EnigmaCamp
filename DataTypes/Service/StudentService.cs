@@ -37,7 +37,7 @@ namespace DataTypes.Service
             {
                 var std = new Student()
                 {
-                    Name = "Bill"
+                    Name = student.Name
                 };
 
                 context.Students.Add(std);
@@ -45,16 +45,16 @@ namespace DataTypes.Service
             }
         }
 
-        public void UpdateStudent(int studentId)
+        public void UpdateStudent(Student student)
         {
             using (var context = new SchoolContext())
             {
-                var std = new Student()
-                {
-                    Name = "Bill"
-                };
+                var studentData = context.Students.FirstOrDefault(w => w.StudentId 
+                                        == student.StudentId);
 
-                context.Students.Update(std);
+                studentData.Name = student.Name;
+
+                context.Students.Update(studentData);
                 context.SaveChanges();
             }
         }
