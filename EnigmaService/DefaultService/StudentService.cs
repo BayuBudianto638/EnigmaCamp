@@ -34,6 +34,7 @@ namespace EnigmaService.DefaultService
         public List<StudentModel> GetAllStudent()
         {
             var listStudent = _schoolContext.Students.ToList();
+
             var studentModelList = _mapper.Map<List<StudentModel>>(listStudent);
 
             return studentModelList;
@@ -67,3 +68,15 @@ namespace EnigmaService.DefaultService
         }
     }
 }
+
+
+
+//var studentModelList = new List<StudentModel>();
+//foreach (var item in listStudent)
+//{
+//    var student = new StudentModel();
+//    student.StudentId = item.StudentId;
+//    student.Name = item.Name;
+
+//    studentModelList.Add(student);
+//}

@@ -30,5 +30,12 @@ namespace ECWebApi.Controllers
         {
             _studentService.SaveStudent(studentModel);
         }
+
+
+        [HttpPost(Name = "SaveStudent")]
+        public void UpdateStudent([FromBody] StudentModel studentModel)
+        {
+            _studentService.UpdateStudent(studentModel);
+        }
     }
 }
