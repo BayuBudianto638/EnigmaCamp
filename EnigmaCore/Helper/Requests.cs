@@ -48,7 +48,6 @@ namespace EnigmaCore.Helper
                 };
             }
 
-
             return Controller.StatusCode(statusCode.StatusCode, _);
         }
     }
