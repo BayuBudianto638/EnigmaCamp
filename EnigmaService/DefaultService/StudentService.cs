@@ -12,14 +12,10 @@ namespace EnigmaService.DefaultService
     public class StudentService : IStudent
     {
         private readonly SchoolContext _schoolContext;
+
         public StudentService(SchoolContext schoolContext)
         {
             _schoolContext = schoolContext;
-        }
-
-        public StudentService()
-        {
-
         }
 
         public void DeleteStudent(int studentId)
