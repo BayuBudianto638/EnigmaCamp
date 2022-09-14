@@ -17,6 +17,11 @@ namespace EnigmaService.DefaultService
             _schoolContext = schoolContext;
         }
 
+        public StudentService()
+        {
+
+        }
+
         public void DeleteStudent(int studentId)
         {
             throw new NotImplementedException();
