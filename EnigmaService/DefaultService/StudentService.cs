@@ -55,7 +55,8 @@ namespace EnigmaService.DefaultService
 
         public void UpdateStudent(StudentModel studentModel)
         {
-            var student = _schoolContext.Students.FirstOrDefault(w => w.Name == studentModel.Name);
+            var student = _schoolContext.Students.FirstOrDefault(
+                w => w.Name == studentModel.Name);
 
             if (student != null)
             {
@@ -64,7 +65,7 @@ namespace EnigmaService.DefaultService
                     Name = studentModel.Name
                 };
 
-                _schoolContext.Students.Add(student);
+                _schoolContext.Students.Update(student);
                 _schoolContext.SaveChanges();
             };
         }
