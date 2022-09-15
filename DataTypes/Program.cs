@@ -1,4 +1,66 @@
-﻿//// C# program to illustrate while loop
+﻿using System;
+class EnigmaCamp
+{
+    // Main Method
+    static public void Main()
+    {
+        // EnigmaCamp is printed only 2 times
+        // because of break statement
+        List<int> list = new List<int>();
+        int size = 10;
+
+        list = Enumerable.Range(1, size).Select(i => i).ToList();
+
+        // FOR
+        Console.WriteLine("FOR");
+        for (int i = 1; i <= list.Count; i++)
+        {
+            Console.WriteLine($"{i}");
+        }
+
+        Console.WriteLine("WHILE");
+        // WHILE
+        int item = 1;
+        while (item <= list.Count)
+        {
+            Console.WriteLine($"{item}");
+            item++;
+        }
+
+        Console.WriteLine("FOREACH");
+        // FOREACH
+        foreach (var i in list)
+        {
+            Console.WriteLine($"{i}");
+        }
+
+        // LINQ FOREACH
+        Console.WriteLine("LINQ_FOREACH");
+        list.Sort();
+        list.ForEach(i =>
+        {
+            Console.WriteLine($"{i}");
+        });
+
+        // PARALLEL FOREACH
+        Console.WriteLine("PARALLEL FOREACH");
+        list.Sort();
+        Parallel.ForEach(list, i =>
+        {
+            Console.WriteLine($"{i}");
+        });
+
+        // PARALLEL LINQ
+        Console.WriteLine("PARALLEL LINQ");
+        list.Sort();
+        list.AsParallel().ForAll(i =>
+        {
+            Console.WriteLine($"{i}");
+        });
+    }
+}
+
+//// C# program to illustrate while loop
 //using System;
 //class whileLoopDemo
 //{
@@ -197,34 +259,34 @@
 //	}
 //}
 
-// C# Program to illustrate the use
-// of throw keyword
-using System;
-class EnigmaCamp
-{
-	// taking null in the string
-	static string sub = null;
-	// method to display subject name
-	static void displaysubject(string sub1)
-	{
-		if (sub1 == null)
-			throw new NullReferenceException("Exception Message");
-	}
+//// C# Program to illustrate the use
+//// of throw keyword
+//using System;
+//class EnigmaCamp
+//{
+//	// taking null in the string
+//	static string sub = null;
+//	// method to display subject name
+//	static void displaysubject(string sub1)
+//	{
+//		if (sub1 == null)
+//			throw new NullReferenceException("Exception Message");
+//	}
 
-	// Main Method
-	static void Main(string[] args)
-	{
-		// using try catch block to
-		// handle the Exception
-		try
-		{
-			// calling the static method
-			displaysubject(sub);
-		}
+//	// Main Method
+//	static void Main(string[] args)
+//	{
+//		// using try catch block to
+//		// handle the Exception
+//		try
+//		{
+//			// calling the static method
+//			displaysubject(sub);
+//		}
 
-		catch (Exception exp)
-		{
-			Console.WriteLine(exp.Message);
-		}
-	}
-}
+//		catch (Exception exp)
+//		{
+//			Console.WriteLine(exp.Message);
+//		}
+//	}
+//}
