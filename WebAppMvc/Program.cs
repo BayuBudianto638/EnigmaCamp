@@ -1,10 +1,13 @@
+using WebAppCore.Interface;
 using WebAppMvc.Database;
+using WebAppService.DefaultService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<DapperContext>();
+builder.Services.AddTransient<ICompanyAppService, CompanyAppService>();
 
 var app = builder.Build();
 
