@@ -17,7 +17,7 @@ namespace WebAppTest
             newCompany.Address = "Oregon";
             newCompany.Country = "USA";
 
-            var result = companyService.Setup(_ => _.Create(newCompany)).Returns(newCompany);
+            var result = companyService.Setup(service => service.Create(newCompany)).Returns(newCompany);
 
             Assert.NotNull(result);
         }
