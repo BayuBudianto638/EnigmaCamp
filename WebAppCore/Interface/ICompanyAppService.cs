@@ -9,6 +9,6 @@ namespace WebAppCore.Interface
 {
     public interface ICompanyAppService
     {
-        Task<IEnumerable<CompanyDto>> GetCompanies();
+        IEnumerable<CompanyDto> GetCompanies();
     }
 }

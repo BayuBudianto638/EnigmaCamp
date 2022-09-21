@@ -13,5 +13,6 @@ namespace WebAppData.Model
         public int Age { get; set; }
         public string Position { get; set; }
         public int CompanyId { get; set; }
+        public virtual Company company { get; set; }
     }
 }

@@ -1,12 +1,14 @@
+using Microsoft.Data.SqlClient;
+using System.Data;
 using WebAppCore.Interface;
-using WebAppMvc.Database;
 using WebAppService.DefaultService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<DapperContext>();
+string dbConnectionString = builder.Configuration.GetConnectionString("SqlConnection");
+builder.Services.AddTransient<IDbConnection>((sp) => new SqlConnection(dbConnectionString));
 builder.Services.AddTransient<ICompanyAppService, CompanyAppService>();
 
 var app = builder.Build();
