@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,10 +15,12 @@ namespace WebAppService.DefaultService
     public class CompanyAppService : ICompanyAppService
     {
         private readonly IDbConnection _dbConnection;
+        private readonly IConfiguration _configs;
 
-        public CompanyAppService(IDbConnection dbConnection)
+        public CompanyAppService(IDbConnection dbConnection, IConfiguration configs)
         {
             _dbConnection = dbConnection;
+            _configs = configs;
         }
 
         public CompanyDto Create(CompanyDto company)
@@ -76,6 +80,31 @@ namespace WebAppService.DefaultService
                 company.Address,
                 company.Country
             });
+        }
+
+        public async Task<CompanyDto> GetDataPegawaiDirektur(string authorizevalue)
+        {
+            try
+            {
+                string url = _configs.GetSection("Server").GetSection("APIMDM").Value;
+                using (var client = new HttpClient { BaseAddress = new Uri(url) })
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", authorizevalue);
+
+                    HttpResponseMessage message = await client.GetAsync("api/v1/Mdmpegawai");
+                    var strResponse = await message.Content.ReadAsStringAsync();
+                    var objResponse = JsonConvert.DeserializeObject<CompanyDto>(strResponse);
+
+                    if (!message.IsSuccessStatusCode)
+                        return null;
+                    else
+                        return objResponse;
+                }
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
