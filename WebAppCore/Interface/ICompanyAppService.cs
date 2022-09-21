@@ -10,5 +10,9 @@ namespace WebAppCore.Interface
     public interface ICompanyAppService
     {
         IEnumerable<CompanyDto> GetCompanies();
+        CompanyDto Create(CompanyDto company);
+        CompanyDto GetById(int Id);
+        void Update(CompanyDto company);
+        void Delete(int Id);
     }
 }

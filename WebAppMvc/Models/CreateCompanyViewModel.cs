@@ -1,0 +1,16 @@
+﻿using Mvc.JQuery.DataTables;
+using Mvc.JQuery.DataTables.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace WebAppMvc.Models
+{
+    public class CreateCompanyViewModel
+    {
+        [DataTables(DisplayName = "Name", SortDirection = SortDirection.Ascending, Searchable = true, Width = "250px")]
+        public string Name { get; set; }
+        [DataTables(DisplayName = "Address", Sortable = false)]
+        public string Address { get; set; }
+        [DataTables(DisplayName = "Country", Sortable = false)]
+        public string Country { get; set; }
+    }
+}

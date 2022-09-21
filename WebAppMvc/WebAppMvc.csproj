@@ -11,11 +11,11 @@
     <PackageReference Include="datatables.net" Version="1.12.1" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Mvc.JQuery.DataTables.AspNetCore" Version="1.5.56" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\WebAppCore\WebAppCore.csproj" />
-    <ProjectReference Include="..\WebAppData\WebAppData.csproj" />
     <ProjectReference Include="..\WebAppService\WebAppService.csproj" />
   </ItemGroup>
 

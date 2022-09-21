@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppMvc", "WebAppMvc\WebAppMvc.csproj", "{AE21DFE9-983D-40FF-A332-51FF887C6C79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppMvc", "WebAppMvc\WebAppMvc.csproj", "{AE21DFE9-983D-40FF-A332-51FF887C6C79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppCore", "WebAppCore\WebAppCore.csproj", "{37BA5D2A-8178-4BA8-8CE9-5CD891C810A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppCore", "WebAppCore\WebAppCore.csproj", "{37BA5D2A-8178-4BA8-8CE9-5CD891C810A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppData", "WebAppData\WebAppData.csproj", "{580B621D-03B2-45FF-B0B0-75EDF607B79F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppService", "WebAppService\WebAppService.csproj", "{3663BBFA-4DCF-4512-9B28-A1BD2A4DE26B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppService", "WebAppService\WebAppService.csproj", "{3663BBFA-4DCF-4512-9B28-A1BD2A4DE26B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{37BA5D2A-8178-4BA8-8CE9-5CD891C810A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37BA5D2A-8178-4BA8-8CE9-5CD891C810A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37BA5D2A-8178-4BA8-8CE9-5CD891C810A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{580B621D-03B2-45FF-B0B0-75EDF607B79F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{580B621D-03B2-45FF-B0B0-75EDF607B79F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{580B621D-03B2-45FF-B0B0-75EDF607B79F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{580B621D-03B2-45FF-B0B0-75EDF607B79F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3663BBFA-4DCF-4512-9B28-A1BD2A4DE26B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3663BBFA-4DCF-4512-9B28-A1BD2A4DE26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3663BBFA-4DCF-4512-9B28-A1BD2A4DE26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
