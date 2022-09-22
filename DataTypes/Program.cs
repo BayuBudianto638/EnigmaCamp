@@ -78,6 +78,7 @@ class superman
         int umur = 10;
         bool isMale = false;
         float a = 10;
+        char chr = 'b';
 
         Console.WriteLine("Nama Saya :" + nama);
         Console.WriteLine(@"Nama Saya :
