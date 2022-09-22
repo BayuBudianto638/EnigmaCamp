@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataTypes.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20220902042229_CreateSchoolDB")]
-    partial class CreateSchoolDB
+    [Migration("20220922091306_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

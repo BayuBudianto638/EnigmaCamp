@@ -4,7 +4,7 @@
 
 namespace DataTypes.Migrations
 {
-    public partial class CreateSchoolDB : Migration
+    public partial class initialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
