@@ -43,8 +43,8 @@
 //}
 
 
-//// CONTOH 2
-//// INSERT TABLE VIA ADO.NET
+// CONTOH 2
+// INSERT TABLE VIA ADO.NET
 //using System;
 //using System.Data.SqlClient;
 //using System.Xml.Linq;
@@ -66,7 +66,7 @@
 //                con = new SqlConnection("data source=---NAMA LOCALHOST---; database=student; integrated security=SSPI");
 //                // writing sql query  
 //                SqlCommand cm = new SqlCommand(@"insert into student  
-//                (studentid, name)values('101', 'Ronald Trump')", con);  
+//                (studentid, name)values('101', 'Ronald Trump')", con);
 //                // Opening Connection  
 //                con.Open();
 //                // Executing the SQL query  
@@ -87,49 +87,56 @@
 //    }
 //}
 
-//// CONTOH 3
-//// Get Data via ADONET
-//using System;
-//using System.Data.SqlClient;
-//namespace EnigmaCampADONetConsole
-//{
-//    class Program
-//    {
-//        static void Main(string[] args)
-//        {
-//            new Program().CreateTable();
-//        }
-//        public void CreateTable()
-//        {
-//            SqlConnection con = null;
-//            try
-//            {
-//                // Creating Connection  
-//                con = new SqlConnection("data source=---NAMA LOCALHOST---; database=student; integrated security=SSPI");
-//                // writing sql query  
-//                SqlCommand cm = new SqlCommand("Select * from student", con);
-//                // Opening Connection  
-//                con.Open();
-//                // Executing the SQL query  
-//                SqlDataReader sdr = cm.ExecuteReader();
-//                // Iterating Data  
-//                while (sdr.Read())
-//                {
-//                    Console.WriteLine(sdr["id"] + " " + sdr["name"] + " "); // Displaying Record  
-//                }
-//            }
-//            catch (Exception e)
-//            {
-//                Console.WriteLine("OOPs, something went wrong.\n" + e);
-//            }
-//            // Closing the connection  
-//            finally
-//            {
-//                con.Close();
-//            }
-//        }
-//    }
-//}
+// CONTOH 3
+// Get Data via ADONET
+using System;
+using System.Data.SqlClient;
+namespace EnigmaCampADONetConsole
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            new Program().CreateTable();
+        }
+        public void CreateTable()
+        {
+            SqlConnection con = null;
+            SqlTransaction sqlTransaction = null;
+            try
+            {
+                // Creating Connection  
+                con = new SqlConnection("data source=---NAMA LOCALHOST---; database=student; integrated security=SSPI");
+
+                sqlTransaction = con.BeginTransaction();
+                // writing sql query  
+                SqlCommand cm = new SqlCommand("Select * from student", con);
+                // Opening Connection  
+                con.Open();
+                // Executing the SQL query  
+                SqlDataReader sdr = cm.ExecuteReader();
+                sqlTransaction.Commit();
+                
+                // Iterating Data  
+                while (sdr.Read())
+                {
+                    Console.WriteLine(sdr["id"] + " " + sdr["name"] + " "); // Displaying Record  
+                }
+            }
+            catch (Exception e)
+            {
+                sqlTransaction.Rollback();
+                Console.WriteLine("OOPs, something went wrong.\n" + e);
+            }
+            // Closing the connection  
+            finally
+            {
+                con.Close();
+            }
+        }
+    }
+}
+
 
 //// CONTOH 4
 //// Menghapus Data
