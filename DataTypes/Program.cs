@@ -40,8 +40,6 @@
 //Contoh 3 Using Menu like basic Pascal/C++ Console
 using DataTypes.Model;
 using DataTypes;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using DataTypes.Interface;
 using DataTypes.Service;
 
@@ -49,11 +47,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        var serviceProvider = new ServiceCollection()
-            .AddLogging()
-            .AddSingleton<IStudent, StudentService>()
-            .BuildServiceProvider();
-
         bool showMenu = true;
         while (showMenu)
         {
@@ -108,28 +101,26 @@ class Program
         Console.WriteLine("Update Student");
         Console.WriteLine("---------------");
         Console.Write("Cari nama:");
-        string cariNama = Console.ReadLine();        
+        string cariNama = Console.ReadLine();
 
-        using (var context = new SchoolContext())
-        {
-            var student = context.Students.FirstOrDefault(w => w.Name == cariNama);
 
-            if (student != null)
-            {
-                Console.Write("Masukkan Nama:");
-                string nama = Console.ReadLine();
+        //var student = context.Students.FirstOrDefault(w => w.Name == cariNama);
 
-                student.StudentId = student.StudentId;
-                student.Name = nama;
+        //if (student != null)
+        //{
+        //    Console.Write("Masukkan Nama:");
+        //    string nama = Console.ReadLine();
 
-                var studentService = new StudentService();
-                studentService.UpdateStudent(student);
-            }
-            else
-            {
-                Console.WriteLine("Nama tidak ditemukan");
-            }          
-        }
+        //    student.StudentId = student.StudentId;
+        //    student.Name = nama;
+
+        //    var studentService = new StudentService();
+        //    studentService.UpdateStudent(student);
+        //}
+        //else
+        //{
+        //    Console.WriteLine("Nama tidak ditemukan");
+        //}
 
         Console.ReadKey();
     }
