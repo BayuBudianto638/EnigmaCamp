@@ -54,7 +54,7 @@ string str = "Enigma";
 //append in a
 str += "Camp";
 str = str + " For .Net";
-Console.WriteLine(a);
+Console.WriteLine(str);
 
 // declare object obj
 object obj;
