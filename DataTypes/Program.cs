@@ -1,849 +1,1139 @@
-﻿//// C# program to illustrate
-//// method calling
+﻿//// C# program to illustrate creating an array
+//// of integers, puts some values in the array,
+//// and prints each value to standard output.
 //using System;
 //namespace EnigmaCamp
 //{
-//	class EnigmaCamp
+//	class GFG
 //	{
-//		// Here Sum() method asks for two
-//		// parameters from the user and
-//		// calculates the sum of these
-//		// and finally returns the result.
-//		static int Sum(int x, int y)
+//		// Main Method
+//		public static void Main()
 //		{
-//			// there are two local variables
-//			// 'a' and 'b' where 'a' is assigned
-//			// the value of parameter 'x' and
-//			// 'b' is assigned the value of
-//			// parameter 'y'
-//			int a = x;
-//			int b = y;
+//			// declares an Array of integers.
+//			int[] intArray;
 
-//			// The local variable calculates
-//			// the sum of 'a' and 'b'
-//			// and returns the result
-//			// which is of 'int' type.
-//			int result = a + b;
+//			// allocating memory for 5 integers.
+//			intArray = new int[5];
 
-//			return result;
+//			// initialize the first elements
+//			// of the array
+//			intArray[0] = 10;
+
+//			// initialize the second elements
+//			// of the array
+//			intArray[1] = 20;
+
+//			// so on...
+//			intArray[2] = 30;
+//			intArray[3] = 40;
+//			intArray[4] = 50;
+
+//			// accessing the elements
+//			// using for loop
+//			Console.Write("For loop :");
+//			for (int i = 0; i < intArray.Length; i++)
+//				Console.Write(" " + intArray[i]);
+
+//			Console.WriteLine("");
+//			Console.Write("For-each loop :");
+
+//			// using for-each loop
+//			foreach (int i in intArray)
+//				Console.Write(" " + i);
+
+//			Console.WriteLine("");
+//			Console.Write("while loop :");
+
+//			// using while loop
+//			int j = 0;
+//			while (j < intArray.Length)
+//			{
+//				Console.Write(" " + intArray[j]);
+//				j++;
+//			}
+
+//			Console.WriteLine("");
+//			Console.Write("Do-while loop :");
+
+//			// using do-while loop
+//			int k = 0;
+//			do
+//			{
+//				Console.Write(" " + intArray[k]);
+//				k++;
+//			} while (k < intArray.Length);
 //		}
+//	}
+//}
+
+
+//// C# program to creating an array
+//// of the string as week days, store
+//// day values in the weekdays,
+//// and prints each value.
+//using System;
+//namespace EnigmaCamp
+//{
+
+//	class Enigma
+//	{
 
 //		// Main Method
-//		static void Main(string[] args)
+//		public static void Main()
 //		{
-//			int a = 12;
-//			int b = 23;
 
-//			// Method Sum() is invoked and
-//			// the returned value is stored
-//			// in the local variable say 'c'
-//			int c = Sum(a, b);
+//			// declares a 1D Array of string.
+//			string[] weekDays;
 
-//			// Display Result
-//			Console.WriteLine("The Value of the sum is " + c);
+//			// allocating memory for days.
+//			weekDays = new string[] {"Sun", "Mon", "Tue", "Wed",
+//									"Thu", "Fri", "Sat"};
+
+//			// Displaying Elements of array
+//			foreach (string day in weekDays)
+//				Console.Write(day + " ");
 //		}
 //	}
 //}
 
-//// C# program to illustrate method Without
-//// Parameters & Without Return Type
+//// C# program to illustrate creating
+//// an multi- dimensional array
+//// puts some values in the array,
+//// and print them
 //using System;
 //namespace EnigmaCamp
 //{
-//    class EnigmaCamp
-//    {
-//        // Here the method 'PrintSentence()'
-//        // neither takes any parameter nor
-//        // returns any value. It simply performs
-//        // the required operations and prints
-//        // the result within it.
-//        static void PrintSentence()
-//        {
-//            Console.WriteLine("No parameters and return type void");
-//        }
-
-//        // Main Method
-//        static void Main(string[] args)
-//        {
-//            // Method Invoking or Method calling
-//            PrintSentence();
-//        }
-//    }
-//}
-
-//// C# program to illustrate the method Without
-//// Parameters & With Return Value Type
-//using System;
-//namespace EnigmaCamp
-//{
-//    class EnigmaCamp
-//    {
-//        // This method takes no parameter,
-//        // however returns the result obtained
-//        static int sum()
-//        {
-//            int a = 78, b = 70, add;
-//            add = a + b;
-//            return add;
-//        }
-
-//        // Main Method
-//        static void Main(string[] args)
-//        {
-//            // Here the calling variable
-//            // is 'getresult'
-//            int getresult = sum();
-
-//            // Printing the value of
-//            // 'getresult' variable
-//            Console.WriteLine(getresult);
-//        }
-//    }
-//}
-
-//// C# program to illustrate Method With
-//// Parameters & Without Return Value Type
-//using System;
-//namespace EnigmaCamp
-//{
-//    class EnigmaCamp
-//    {
-//        // This method take the side of
-//        // the square as a parameter and
-//        // after obtaining the result,
-//        // it simply print it without
-//        // returning anything..
-//        static void perimeter(int p)
-//        {
-//            // Displaying the perimeter
-//            // of the square
-//            Console.WriteLine("Perimeter of the Square is " + 4 * p);
-//        }
-
-//        // Main Method
-//        static void Main(string[] args)
-//        {
-//            // side of square
-//            int p = 5;
-
-//            // Method invoking
-//            perimeter(p);
-//        }
-//    }
-//}
-
-//// C# program to illustrate Method With
-//// Parameters & With Return Value Type
-//using System;
-//namespace EnigmaCamp
-//{
-//    class EnigmaCamp
-//    {
-//        // This method asks a number from
-//        // the user and using that it
-//        // calculates the factorial
-//        // of it and returns the result
-//        static int factorial(int n)
-//        {
-//            int f = 1;
-
-//            // Method to calculate the
-//            // factorial of a number
-//            for (int i = 1; i <= n; i++)
-//            {
-//                f = f * i;
-//            }
-
-//            return f;
-//        }
-
-//        // Main Method
-//        static void Main(string[] args)
-//        {
-//            int p = 4;
-
-//            // displaying result by calling the function
-//            Console.WriteLine("Factorial is : " + factorial(p));
-//        }
-//    }
-//}
-
-
-// METHOD OVERLOADING
-//// C# program to demonstrate the function
-//// overloading by changing the Number
-//// of parameters
-//using System;
-//class EnigmaCamp
-//{
-//    // adding two integer values.
-//    public int Add(int a, int b)
-//    {
-//        int sum = a + b;
-//        return sum;
-//    }
-
-//    // adding three integer values.
-//    public int Add(int a, int b, int c)
-//    {
-//        int sum = a + b + c;
-//        return sum;
-//    }
-
-//    // Main Method
-//    public static void Main(String[] args)
-//    {
-//        // Creating Object
-//        EnigmaCamp ob = new EnigmaCamp();
-
-//        int sum1 = ob.Add(1, 2);
-//        Console.WriteLine("sum of the two "
-//                        + "integer value : " + sum1);
-
-//        int sum2 = ob.Add(1, 2, 3);
-//        Console.WriteLine("sum of the three "
-//                        + "integer value : " + sum2);
-//    }
-//}
-
-//// C# program to demonstrate the function
-//// overloading by changing the Data types
-//// of the parameters
-//using System;
-//class EnigmaCamp
-//{
-
-//	// adding three integer values.
-//	public int Add(int a, int b, int c)
+//	class Enigma
 //	{
-//		int sum = a + b + c;
-//		return sum;
-//	}
-
-//	// adding three double values.
-//	public double Add(double a, double b, double c)
-//	{
-//		double sum = a + b + c;
-//		return sum;
-//	}
-
-//	// Main Method
-//	public static void Main(String[] args)
-//	{
-//		// Creating Object
-//		EnigmaCamp ob = new EnigmaCamp();
-
-//		int sum2 = ob.Add(1, 2, 3);
-//		Console.WriteLine("sum of the three "
-//						+ "integer value : " + sum2);
-//		double sum3 = ob.Add(1.0, 2.0, 3.0);
-//		Console.WriteLine("sum of the three "
-//						+ "double value : " + sum3);
-//	}
-//}
-
-//// C# program to demonstrate the function
-//// overloading by changing the
-//// Order of the parameters
-//using System;
-//class EnigmaCamp
-//{
-//	// Method
-//	public void Identity(String name, int id)
-//	{
-//		Console.WriteLine("Name1 : " + name + ", "
-//						+ "Id1 : " + id);
-//	}
-
-//	// Method
-//	public void Identity(int id, String name)
-//	{
-//		Console.WriteLine("Name2 : " + name + ", "
-//						+ "Id2 : " + id);
-//	}
-
-//	// Main Method
-//	public static void Main(String[] args)
-//	{
-//		// Creating Object
-//		EnigmaCamp obj = new EnigmaCamp();
-
-//		obj.Identity("Akku", 1);
-//		obj.Identity(2, "Abby");
-//	}
-//}
-
-//// C# program to show error when method signature
-//// is the same and the return type is different.
-//using System;
-//class EnigmaCamp
-//{
-//	// adding two integer value.
-//	public int Add(int a, int b)
-//	{
-//		int sum = a + b;
-//		return sum;
-//	}
-
-//	// adding three integer value.
-//	public double Add(int a, int b)
-//	{
-//		double sum = a + b + 0.0;
-//		return sum;
-//	}
-
-//	// Main Method
-//	public static void Main(String[] args)
-//	{
-//		// Creating Object
-//		EnigmaCamp ob = new EnigmaCamp();
-
-//		int sum1 = ob.Add(1, 2);
-//		Console.WriteLine("sum of the two "
-//						+ "integer value :" + sum1);
-
-//		int sum2 = ob.Add(1, 2);
-//		Console.WriteLine("sum of the three "
-//						+ "integer value :" + sum2);
-//	}
-//}
-
-
-// METHOD PARAMETERS
-//// C# program to illustrate the
-//// concept of the named parameters
-//using System;
-//public class EnigmaCamp
-//{
-
-//	// addstr contain three parameters
-//	public static void addstr(string s1, string s2, string s3)
-//	{
-//		string result = s1 + s2 + s3;
-//		Console.WriteLine("Final string is: " + result);
-//	}
-
-//	// Main Method
-//	static public void Main()
-//	{
-//		// calling the static method with named
-//		// parameters without any order
-//		addstr(s1: "Enigma", s2: " ", s3: "Camp");
-
-//	}
-//}
-
-//// C# program to illustrate the
-//// concept of ref parameter
-//using System;
-//class EnigmaCamp
-//{
-//	// Main Method
-//	public static void Main()
-//	{
-//		// Assigning value
-//		string val = "Dog";
-
-//		// Pass as a reference parameter
-//		CompareValue(ref val);
-
-//		// Display the given value
-//		Console.WriteLine(val);
-//	}
-
-//	static void CompareValue(ref string val1)
-//	{
-//		// Compare the value
-//		if (val1 == "Dog")
+//		// Main Method
+//		public static void Main()
 //		{
-//			Console.WriteLine("Matched!");
+//			// Two-dimensional array
+//			int[,] intarray = new int[,] { { 1, 2 },
+//										{ 3, 4 },
+//										{ 5, 6 },
+//										{ 7, 8 } };
+
+//			// The same array with dimensions
+//			// specified 4 row and 2 column.
+//			int[,] intarray_d = new int[4, 2] { { 1, 2 }, { 3, 4 },
+//											{ 5, 6 }, { 7, 8 } };
+
+//			// A similar array with string elements.
+//			string[,] str = new string[4, 2] { { "one", "two" },
+//											{ "three", "four" },
+//											{ "five", "six" },
+//											{ "seven", "eight" } };
+
+//			// Three-dimensional array.
+//			int[,,] intarray3D = new int[,,] { { { 1, 2, 3 },
+//											{ 4, 5, 6 } },
+//											{ { 7, 8, 9 },
+//										{ 10, 11, 12 } } };
+
+
+//			// The same array with dimensions
+//			// specified 2, 2 and 3.
+//			int[,,] intarray3Dd = new int[2, 2, 3] { { { 1, 2, 3 },
+//												{ 4, 5, 6 } },
+//												{ { 7, 8, 9 },
+//												{ 10, 11, 12 } } };
+
+//			// Accessing array elements.
+//			Console.WriteLine("2DArray[0][0] : " + intarray[0, 0]);
+//			Console.WriteLine("2DArray[0][1] : " + intarray[0, 1]);
+//			Console.WriteLine("2DArray[1][1] : " + intarray[1, 1]);
+//			Console.WriteLine("2DArray[2][0] " + intarray[2, 0]);
+
+//			Console.WriteLine("2DArray[1][1] (other) : "
+//									+ intarray_d[1, 1]);
+
+//			Console.WriteLine("2DArray[1][0] (other)"
+//								+ intarray_d[1, 0]);
+
+//			Console.WriteLine("3DArray[1][0][1] : "
+//							+ intarray3D[1, 0, 1]);
+
+//			Console.WriteLine("3DArray[1][1][2] : "
+//							+ intarray3D[1, 1, 2]);
+
+//			Console.WriteLine("3DArray[0][1][1] (other): "
+//								+ intarray3Dd[0, 1, 1]);
+
+//			Console.WriteLine("3DArray[1][0][2] (other): "
+//								+ intarray3Dd[1, 0, 2]);
+
+//			// using nested loop show string elements
+//			Console.WriteLine("To String element");
+//			for (int i = 0; i < 4; i++)
+//				for (int j = 0; j < 2; j++)
+//					Console.Write(str[i, j] + " ");
 //		}
-
-//		// Assigning new value
-//		val1 = "Cat";
 //	}
 //}
 
-//// C# program to illustrate the
-//// concept of out parameter
-//using System;
-//class EnigmaCamp
-//{
-//    // Main method
-//    static public void Main()
-//    {
-//        // Creating variable
-//        // without assigning value
-//        int num;
-
-//        // Pass variable num to the method
-//        // using out keyword
-//        AddNum(out num);
-
-//        // Display the value of num
-//        Console.WriteLine("The sum of"
-//        + " the value is: {0}", num);
-//    }
-
-//    // Method in which out parameter is passed
-//    // and this method returns the value of
-//    // the passed parameter
-//    public static void AddNum(out int num)
-//    {
-//        num = 40;
-//        num += num;
-//    }
-//}
-
-//// C# program to illustrate the
-//// concept of optional parameters
-//using System;
-//class EnigmaCamp
-//{
-
-//	// This method contains two regular
-//	// parameters, i.e. ename and eid
-//	// And two optional parameters, i.e.
-//	// bgrp and dept
-//	static public void detail(string ename,
-//							int eid,
-//							string bgrp = "A+",
-//					string dept = "Review-Team")
-
-//	{
-//		Console.WriteLine("Employee name: {0}", ename);
-//		Console.WriteLine("Employee ID: {0}", eid);
-//		Console.WriteLine("Blood Group: {0}", bgrp);
-//		Console.WriteLine("Department: {0}", dept);
-//	}
-
-//	// Main Method
-//	static public void Main()
-//	{
-//		// Calling the detail method
-//		detail("XYZ", 123);
-//		detail("ABC", 456, "B-");
-//		detail("DEF", 789, "B+",
-//		"Software Developer");
-//	}
-//}
-
-//// C# program to illustrate the concept
-//// of the dynamic parameters
-//using System;
-//class EnigmaCamp
-//{
-//	// Method which contains dynamic parameter
-//	public static void mulval(dynamic val)
-//	{
-//		val *= val;
-//		Console.WriteLine(val);
-//	}
-
-//	// Main method
-//	static public void Main()
-//	{
-//		// Calling mulval method
-//		mulval(30);
-//	}
-//}
-
-//// C# program to illustrate value parameters
-//using System;
-//public class EnigmaCamp
-//{
-//	// Main Method
-//	static public void Main()
-//	{
-//		// The value of the parameter
-//		// is already assigned
-//		string str1 = "Enigma";
-//		string str2 = "Camp";
-//		string res = addstr(str1, str2);
-//		Console.WriteLine(res);
-//	}
-
-//	public static string addstr(string s1, string s2)
-//	{
-//		return s1 + s2;
-//	}
-//}
-
-//// C# program to illustrate params
+//// C# program to single-dimensional jagged array
+//// that contains two single-dimensional array
+//// elements of different sizes.
 //using System;
 //namespace EnigmaCamp
 //{
-//	class EnigmaCamp
-//	{
-//		// function containing params parameters
-//		public static int mulval(params int[] num)
-//		{
-//			int res = 1;
 
-//			// foreach loop
-//			foreach (int j in num)
+//	class Enigma
+//	{
+//		// Main Method
+//		public static void Main()
+//		{
+//			/*----------2D Array---------------*/
+//			// Declare the array of two elements:
+//			int[][] arr = new int[2][];
+
+//			// Initialize the elements:
+//			arr[0] = new int[5] { 1, 3, 5, 7, 9 };
+//			arr[1] = new int[4] { 2, 4, 6, 8 };
+
+//			// Another way of Declare and
+//			// Initialize of elements
+//			int[][] arr1 = { new int[] { 1, 3, 5, 7, 9 },
+//						new int[] { 2, 4, 6, 8 } };
+
+//			// Display the array elements:
+//			for (int i = 0; i < arr.Length; i++)
 //			{
-//				res *= j;
+//				System.Console.Write("Element [" + i + "] Array: ");
+//				for (int j = 0; j < arr[i].Length; j++)
+//					Console.Write(arr[i][j] + " ");
+//				Console.WriteLine();
 //			}
-//			return res;
-//		}
 
-//		static void Main(string[] args)
+//			Console.WriteLine("Another Array");
+
+//			// Display the another array elements:
+//			for (int i = 0; i < arr1.Length; i++)
+//			{
+//				System.Console.Write("Element [" + i + "] Array: ");
+//				for (int j = 0; j < arr1[i].Length; j++)
+//					Console.Write(arr1[i][j] + " ");
+//				Console.WriteLine();
+//			}
+//		}
+//	}
+//}
+
+//// C# program to single-dimensional jagged array
+//// that contains three two-dimensional array
+//// elements of different sizes.
+//using System;
+//namespace EnigmaCamp
+//{
+//	class Enigma
+//	{
+//		// Main Method
+//		public static void Main()
 //		{
-//			// Calling mulval method
-//			int x = mulval(20, 49, 56, 69, 78);
+//			int[][,] arr = new int[3][,] {new int[, ] {{1, 3}, {5, 7}},
+//									new int[, ] {{0, 2}, {4, 6}, {8, 10}},
+//									new int[, ] {{11, 22}, {99, 88}, {0, 9}}};
 
-//			// show result
-//			Console.WriteLine(x);
+//			// Display the array elements:
+//			for (int i = 0; i < arr.Length; i++)
+//			{
+//				int x = 0;
+//				for (int j = 0; j < arr[i].GetLength(x); j++)
+//				{
+//					for (int k = 0; k < arr[j].Rank; k++)
+//						Console.Write(" arr[" + i + "][" + j + ", " + k + "]:"
+//													+ arr[i][j, k] + " ");
+//					Console.WriteLine();
+//				}
+//				x++;
+//				Console.WriteLine();
+//			}
 //		}
 //	}
 //}
 
-////METHOD OVERRIDING
-//// C# program to demonstrate the method overriding
-//// without using 'virtual' and 'override' modifiers
+//// C# program to illustrate the declaration
+//// and Initialization of Jagged Arrays
 //using System;
-//// base class name 'baseClass'
-//class baseClass
-//{
-//	public void show()
-//	{
-//		Console.WriteLine("Base class");
-//	}
-//}
-
-//// derived class name 'derived'
-//// 'baseClass' inherit here
-//class derived : baseClass
-//{
-//	// overriding
-//	new public void show()
-//	{
-//		Console.WriteLine("Derived class");
-//	}
-//}
-
 //class EnigmaCamp
 //{
 //	// Main Method
 //	public static void Main()
 //	{
-//		// 'obj' is the object of
-//		// class 'baseClass'
-//		baseClass obj = new baseClass();
+//		// Declare the Jagged Array of four elements:
+//		int[][] jagged_arr = new int[4][];
 
-//		// invokes the method 'show()'
-//		// of class 'baseClass'
-//		obj.show();
-//		obj = new derived();
+//		// Initialize the elements
+//		jagged_arr[0] = new int[] { 1, 2, 3, 4 };
+//		jagged_arr[1] = new int[] { 11, 34, 67 };
+//		jagged_arr[2] = new int[] { 89, 23 };
+//		jagged_arr[3] = new int[] { 0, 45, 78, 53, 99 };
 
-//		// it also invokes the method
-//		// 'show()' of class 'baseClass'
-//		obj.show();
+//		// Display the array elements:
+//		for (int n = 0; n < jagged_arr.Length; n++)
+//		{
+
+//			// Print the row number
+//			System.Console.Write("Row({0}): ", n);
+
+//			for (int k = 0; k < jagged_arr[n].Length; k++)
+//			{
+
+//				// Print the elements in the row
+//				System.Console.Write("{0} ", jagged_arr[n][k]);
+//			}
+//			System.Console.WriteLine();
+//		}
 //	}
 //}
 
-//// C# program to illustrate the use of
-////'virtual' and 'override' modifiers
+//// C# program to illustrate the Mixing of 1-D
+//// Jagged Array with the four 2-D array
 //using System;
-//class baseClass
+//namespace EnigmaCamp
 //{
-//		// show() is 'virtual' here
-//	public virtual void show()
+//	class Enigma
 //	{
-//		Console.WriteLine("Base class");
+//		// Main Method
+//		public static void Main()
+//		{
+//			// Declaration and Initialization of
+//			// Jagged array with 4 2-D arrays
+//			int[][,] jagged_arr1 = new int[4][,] {new int[, ] {{1, 3}, {5, 7}},
+//									new int[, ] {{0, 2}, {4, 6}, {8, 10}},
+//									new int[, ] {{7, 8}, {3, 1}, {0, 6}},
+//									new int[, ] {{11, 22}, {99, 88}, {0, 9}}};
+
+//			// Display the array elements:
+//			// Length method returns the number of
+//			// arrays contained in the jagged array
+//			for (int i = 0; i < jagged_arr1.Length; i++)
+//			{
+//				int x = 0;
+
+//				// GetLength method takes integer x which
+//				// specifies the dimension of the array
+//				for (int j = 0; j < jagged_arr1[i].GetLength(x); j++)
+//				{
+
+//					// Rank is used to determine the total
+//					// dimensions of an array
+//					for (int k = 0; k < jagged_arr1[j].Rank; k++)
+//						Console.Write("Jagged_Array[" + i + "][" + j + ", " + k + "]: "
+//													+ jagged_arr1[i][j, k] + " ");
+//					Console.WriteLine();
+//				}
+//				x++;
+//				Console.WriteLine();
+//			}
+//		}
 //	}
 //}
 
-//// class 'baseClass' inherit
-//// class 'derived'
-//class derived : baseClass
+// ARRAY CLASS
+
+//// C# program to creating an array
+//// of the string as coffee name, store
+//// coffee name in the store,
+//// and prints each value.
+//using System;
+//namespace EnigmaCamp
 //{
-//	//'show()' is 'override' here
-//	public override void show()
+//    class Enigma
+//    {
+//        // Main Method
+//        public static void Main()
+//        {
+//            // declares an 1D Array of string
+//            string[] store;
+
+//            // allocating memory for coffee names.
+//            store = new string[] {"Americano, ", "Cafe au lait, ",
+//                            "Espresso, ", "Cappuccino, ",
+//                            "Long Black, ", "Macchiato" };
+
+//            // Displaying Elements of the array
+//            Console.WriteLine("Different types of coffee: ");
+//            Console.WriteLine();
+//            foreach (string coffeename in store)
+//                Console.WriteLine(coffeename + " ");
+//        }
+//    }
+//}
+
+//// C# program to illustrate
+//// Length property of Array class
+//using System;
+//namespace EnigmaCamp
+//{
+//	class EC
 //	{
-//		Console.WriteLine("Derived class");
+//		// Main Method
+//		public static void Main()
+//		{
+//			// declares an 1D Array of string.
+//			string[] topic;
+
+//			// allocating memory for topic.
+//			topic = new string[] {"Array, ", "String, ",
+//							"Stack, ", "Queue, ",
+//							"Exception, ", "Operators"};
+
+//			// Displaying Elements of the array
+//			Console.WriteLine("Topic of C#:");
+//			Console.WriteLine();
+
+//			// Here we calculate and print
+//			// the length of the array, i.e. 6
+//			Console.WriteLine("Length of the array: {0}",
+//										topic.Length);
+//			foreach (string ele in topic)
+//				Console.WriteLine(ele + " ");
+//		}
 //	}
 //}
 
+//// C# program to illustrate the
+//// Rank property of Array class
+//using System;
+//namespace EnigmaCamp
+//{
+//	class EC
+//	{
+//		// Main Method
+//		public static void Main()
+//		{
+
+//			// declares an 1D Array of string.
+//			string[] topic;
+
+//			// allocating memory for topic.
+//			topic = new string[] {"Array, ", "String, ",
+//							"Stack, ", "Queue, ",
+//							"Exception, ", "Operators" };
+
+//			// Displaying Elements of array
+//			Console.WriteLine("Topic of C#:");
+//			Console.WriteLine();
+
+//			// Rank property provides the dimension rank
+//			// here we use 1-D array so it return 1
+//			// if we use 2-D array then it will return 2
+//			Console.WriteLine("Rank of the array: {0}",
+//											topic.Rank);
+//			foreach (string ele in topic)
+//				Console.WriteLine(ele + " ");
+//		}
+//	}
+//}
+
+//// C# program to illustrate the Reverse() Method
+//using System;
+//namespace EnigmaCamp
+//{
+//	class EC
+//	{
+//		// Main Method
+//		public static void Main()
+//		{
+//			// declares an 1D Array of string.
+//			string[] topic;
+
+//			// allocating memory for topic.
+//			topic = new string[] {"Array, ", "String, ",
+//							"Stack, ", "Queue, ",
+//							"Exception, ", "Operators" };
+
+//			// Displaying Elements of
+//			// the array before reverse
+//			Console.WriteLine("Topic of C# before reverse:");
+//			Console.WriteLine();
+//			foreach (string ele in topic)
+//			{
+//				Console.WriteLine(ele + " ");
+//			}
+//			Console.WriteLine();
+
+//			// using Reverse() method to
+//			// reverse the given array
+//			Array.Reverse(topic);
+
+//			// Displaying Elements of array after reverse
+//			Console.WriteLine("Topic of C# after reverse:");
+//			Console.WriteLine();
+//			foreach (string val in topic)
+//			{
+//				Console.WriteLine(val + " ");
+//			}
+//		}
+//	}
+//}
+
+
+// C# program to illustrate the Sort() Method
+using System;
+namespace EnigmaCamp
+{
+	class EC
+	{
+		// Main Method
+		public static void Main()
+		{
+			// declares an 1D Array of string.
+			string[] topic;
+
+			// allocating memory for topic.
+			topic = new string[] {"Array, ", "String, ",
+							"Stack, ", "Queue, ",
+							"Exception, ", "Operators" };
+
+			// Displaying Elements of the array before sort
+			Console.WriteLine("Topic of C# before reverse:");
+			Console.WriteLine();
+			foreach (string ele in topic)
+			{
+				Console.WriteLine(ele + " ");
+			}
+			Console.WriteLine();
+
+			// using Sort() method to
+			// sort the given array
+			Array.Sort(topic);
+
+			// Displaying Elements of
+			// array after sort
+			Console.WriteLine("Topic of C# after reverse:");
+			Console.WriteLine();
+			foreach (string val in topic)
+			{
+				Console.WriteLine(val + " ");
+			}
+		}
+	}
+}
+
+//ARRAY SORT
+
+//// C# Program to illustrate the use
+//// of the Array.Sort<T>(T[]) Method
+//using System;
+//using System.Collections.Generic;
 //class EnigmaCamp
 //{
+
 //	// Main Method
 //	public static void Main()
 //	{
-//		baseClass obj;
-//		// 'obj' is the object
-//		// of class 'baseClass'
-//		obj = new baseClass();
+//		// array elements
+//		string[] arr = new string[5] { "A",
+//					"D", "X", "G", "M" };
 
-//		// it invokes 'show()'
-//		// of class 'baseClass'
-//		obj.show();
-//		// the same object 'obj' is now
-//		// the object of class 'derived'
-//		obj = new derived();
-//		// it invokes 'show()' of class 'derived'
-//		// 'show()' of class 'derived' is overridden
-//		// for 'override' modifier
-//		obj.show();
+//		foreach (string g in arr)
+//		{
+//			Console.WriteLine(g);
+//			// display original array
+//		}
+
+//		Console.WriteLine("\nAfter Sort:");
+//		Array.Sort(arr);
+
+//		foreach (string g in arr)
+//		{
+//			Console.WriteLine(g);
+//			// display sorted array
+//		}
+
+//		Console.WriteLine("\nB sorts between :");
+
+//		// binary Search for "B"
+//		int index = Array.BinarySearch(arr, "B");
+
+//		// call "sortT" function
+//		// which is the Sort<T>(T[]) function
+//		sortT(arr, index);
+
+//		Console.WriteLine("\nF sorts between :");
+//		index = Array.BinarySearch(arr, "F");
+//		sortT(arr, index);
+//	}
+
+//	public static void sortT<T>(T[] arr, int index)
+//	{
+//		// If the index is negative,
+//		// it represents the bitwise
+//		// complement of the next larger
+//		// element in the array.
+//		if (index < 0)
+//		{
+//			index = ~index;
+
+//			if (index == 0)
+//				Console.Write("beginning of array");
+//			else
+//				Console.Write("{0} and ", arr[index - 1]);
+
+//			if (index == arr.Length)
+//				Console.WriteLine("end of array.");
+//			else
+//				Console.WriteLine("{0}", arr[index]);
+//		}
 //	}
 //}
 
-
-////CONTOH 3
-//// C# program to show the use of 'base'
-//// keyword in method overriding
+//// C# program to demonstrate the use of the
+//// Array.Sort<T>(T[], IComparer<T>) method
 //using System;
-//// base class
-//public class web
+//using System.Collections.Generic;
+//public class EnigmaCamp : IComparer<string>
 //{
-//	string name = "EnigmaCamp";
-//	// 'showdata()' is member method,
-//	// declare as virtual
-//	public virtual void showdata()
+//	public int Compare(string x, string y)
 //	{
-//		Console.WriteLine("Website Name: " + name);
-//	}
-//}
-
-//// derived class
-//// class 'web' is inherits
-//// class 'stream'
-//class stream : web
-//{
-//	string s = "Computer Science";
-//	//'showdata()' is overridden
-//	// in derived class
-//	public override void showdata()
-//	{
-//		// Calling 'showdata()' of base
-//		// class using 'base' keyword
-//		base.showdata();
-//		Console.WriteLine("About: " + s);
+//		// Compare x and y in reverse order.
+//		return x.CompareTo(y);
 //	}
 //}
 
 //class EC
 //{
 //	// Main Method
-//	static void Main()
+//	public static void Main()
 //	{
-//		// 'E' is object of class stream
-//		// also works as object of
-//		// class 'web'
-//		stream E = new stream();
-//		// it first invokes 'showdata()'
-//		// of class 'web' then it invokes
-//		// 'showdata()' of class 'stream'
-//		E.showdata();
+//		// array elements
+//		string[] arr = new string[5] {"A",
+//					"D", "X", "G", "M" };
+
+//		foreach (string g in arr)
+//		{
+
+//			// display original array
+//			Console.WriteLine(g);
+//		}
+
+//		Console.WriteLine("\nAfter Sort: ");
+//		EnigmaCamp ec = new EnigmaCamp();
+
+//		// Sort<T>(T[], IComparer<T>) method
+//		Array.Sort(arr, ec);
+
+//		foreach (string g in arr)
+//		{
+//			// display sorted array
+//			Console.WriteLine(g);
+//		}
+
+//		Console.WriteLine("\nD Sorts between :");
+
+//		// binary Search for "D"
+//		int index = Array.BinarySearch(arr, "D");
+
+//		// call "sortT" function
+//		sortT(arr, index);
+
+//		Console.WriteLine("\nF Sorts between :");
+//		index = Array.BinarySearch(arr, "F");
+//		sortT(arr, index);
+//	}
+
+//	public static void sortT<T>(T[] arr, int index)
+//	{
+//		if (index < 0)
+//		{
+
+//			// If the index is negative,
+//			// it represents the bitwise
+//			// complement of the next
+//			// larger element in the array.
+//			index = ~index;
+
+//			Console.Write("Not found. Sorts between: ");
+
+//			if (index == 0)
+//				Console.Write("Beginning of array and ");
+//			else
+//				Console.Write("{0} and ", arr[index - 1]);
+
+//			if (index == arr.Length)
+//				Console.WriteLine("end of array.");
+//			else
+//				Console.WriteLine("{0}.", arr[index]);
+//		}
+//		else
+//		{
+//			Console.WriteLine("Found at index {0}.", index);
+//		}
 //	}
 //}
 
-//// CONTOH4
-//// C# program to show how base keyword
-//// specifies the calling of base-class
-//// constructor from the derived class
-//// when derived class instances are created
+
+//// C# program to demonstrate the use of
+//// Array.Sort<T>(T[], Int32, Int32) method
 //using System;
-//// base class
-//public class clssA
+//using System.Collections.Generic;
+//public class EnigmaCamp : IComparer<string>
 //{
-//	int n1, n2;
-//	// default constructor
-//	public clssA()
+//	public int Compare(string x, string y)
 //	{
-//		Console.WriteLine("Default Constructor Invoked");
-//	}
-
-//	// parameterized constructor
-//	public clssA(int i, int j)
-//	{
-//		// construct values
-//		n1 = i;
-//		n2 = j;
-//		Console.WriteLine("Parameterized Constructor Invoked");
-//		Console.WriteLine("Invoked Values are: " + n1 + " and " + n2);
+//		// Compare y and x in reverse order.
+//		return y.CompareTo(x);
 //	}
 //}
 
-//// derived class
-//public class DerivedClass : clssA
+//public class Example
 //{
-//	// This constructor will instantiate
-//	// 'clssA()' [no argument constructor]
-//	// using 'base' keyword
-//	public DerivedClass() : base() { }
-
-//	// This constructor will instantiate
-//	// 'clssA(int i, int j)' [parameterized
-//	// constructor] using 'base' keyword
-//	public DerivedClass(int i, int j) : base(i, j) { }
-
 //	// Main Method
-//	static void Main()
+//	public static void Main()
 //	{
-//		// invoke no argument constructor
-//		DerivedClass d1 = new DerivedClass();
-//		Console.WriteLine();
-//		// invoke parameterized constructor
-//		DerivedClass d2 = new DerivedClass(10, 20);
+//		// Array elements
+//		string[] arr = {"AB", "CD",
+//		"GH", "EF", "MN", "IJ"};
 
+//		Console.WriteLine("Original Array :");
+
+//		Display(arr);
+
+//		Console.WriteLine("\nSort the array between " +
+//									"index 1 to 4");
+
+//		// Array.Sort(T[], Int32, Int32) method
+//		// sort will happen in between
+//		// index 1 to 4
+//		Array.Sort(arr, 1, 4);
+//		Display(arr);
+
+//		Console.WriteLine("\nSort the array reversely" +
+//						" in between index 1 to 4");
+
+//		// sort will happen in between
+//		// index 1 to 4 reversely		
+//		Array.Sort(arr, 1, 4, new EnigmaCamp());
+
+//		Display(arr);
+//	}
+
+//	public static void Display(string[] arr)
+//	{
+//		foreach (string g in arr)
+//		{
+//			Console.WriteLine(g);
+//		}
 //	}
 //}
 
-// CONTOH 5
-//// C# program to show how 'base' keyword specifies
-//// the base-class constructor that called from
-//// derived class and also calling a method 'swap'
-//// from derived class using base keyword
+//// C# program to demonstrate the use of the
+//// Array.Sort<T>(T[ ], Comparison<T>) Method
 //using System;
-//// base class
-//public class clssA
-//{
-//	public int n1, n2;
-//	// default constructor
-//	public clssA()
-//	{
-//		Console.WriteLine("In clssA 'no argument constructor' invoked");
-//	}
-
-//	// parameterized constructor
-//	public clssA(int i, int j)
-//	{
-//		// construct values
-//		n1 = i;
-//		n2 = j;
-//		Console.WriteLine("in clssA 'parameterized constructor' invoked");
-//		Console.WriteLine("the invoked values are " + n1 + " and " + n2);
-//		Console.WriteLine();
-//	}
-
-//	public virtual void swap()
-//	{
-//		Console.WriteLine("swap function of base class(clssA) invoked");
-//		Console.WriteLine("Before swap num1 = {0} and num2 = {1}", n1, n2);
-
-//		// swapping
-//		int t = n1;
-//		n1 = n2;
-//		n2 = t;
-//		Console.WriteLine("After swap num1 = {0} and num2 = {1}", n1, n2);
-//	}
-//}
-
-//// derived class
-//public class DerivedClass : clssA
-//{
-//	// This constructor will instantiate
-//	// 'clssA' [no argument constructor]
-//	// using 'base' keyword
-//	public DerivedClass() : base() { }
-//	// This constructor will instantiate
-//	// 'clssA' [parameterized constructor]
-//	// using 'base' keyword
-//	public DerivedClass(int i, int j) : base(i, j) { }
-//	public override void swap()
-//	{
-//		// it access the swap function of
-//		// 'clssA' using 'base' keyword
-//		base.swap();
-//		Console.WriteLine();
-//		Console.WriteLine("Swap function of derived class invoked");
-//		Console.WriteLine("Before swap num1 = {0} and num2 = {1}", n1, n2);
-
-//		// swapping
-//		int t = n1;
-//		n1 = n2;
-//		n2 = t;
-//		Console.WriteLine("After swap num1 = {0} and num2 = {1}", n1, n2);
-//	}
-
-//	// Main Method
-//	static void Main()
-//	{
-//		// invoke no argument constructor
-//		DerivedClass d1 = new DerivedClass();
-//		Console.WriteLine();
-//		// invoke parameterized constructor
-//		DerivedClass d2 = new DerivedClass(10, 20);
-
-//		// calling swap function
-//		d2.swap();
-//	}
-//}
-
-//// Anonymous Method
-//// C# program to illustrate how to
-//// create an anonymous function
-//using System;
+//using System.Collections.Generic;
 //class EnigmaCamp
 //{
-//	public delegate void petanim(string pet);
+//	private static int CompareComp(string x, string y)
+//	{
+//		if (y == null && x == null)
+//		{
+//			// If x and y is null
+//			// then x and y are same
+//			return 0;
+//		}
+//		else
+//		{
+//			// If x is null but y is not
+//			// null then y is greater.
+//			return -1;
+//		}
+//	}
 
 //	// Main method
-//	static public void Main()
+//	public static void Main()
 //	{
-//		// An anonymous method with one parameter
-//		petanim p = delegate (string mypet)
+//		string[] arr = {"Java", "C++", "Scala",
+//						"C", "Ruby", "Python"};
+
+//		Console.WriteLine("Original Array: ");
+
+//		// display original array
+//		Display(arr);
+
+//		Console.WriteLine("\nSort with Comparison: ");
+
+//		// Array.Sort<T>(T[], Comparison<T>)
+//		// Method
+//		Array.Sort(arr, CompareComp);
+
+//		// display sorted array
+//		Display(arr);
+
+//	}
+
+//	// Display function
+//	public static void Display(string[] arr)
+//	{
+//		foreach (string g in arr)
 //		{
-//			Console.WriteLine("My favorite pet is: {0}",
-//												mypet);
-//		};
-//		p("Dog");
+//			Console.WriteLine(g);
+//		}
 //	}
 //}
 
-//// C# program to illustrate how an
-//// anonymous function access variable
-//// defined in outer method
+//// ARRAY RANK
+//// Contoh 1
+//// C# program to illustrate the
+//// Array.Rank Property
 //using System;
+//namespace EnigmaCamp
+//{
+//	class EC
+//	{
+
+//		// Main Method
+//		public static void Main()
+//		{
+//			// declares a 1D Array of string.
+//			string[] weekDays;
+
+//			// allocating memory for days.
+//			weekDays = new string[] {"Sun", "Mon", "Tue", "Wed",
+//									"Thu", "Fri", "Sat" };
+
+//			// using Rank Property
+//			Console.WriteLine("Dimension of weekDays array: "
+//										+ weekDays.Rank);
+//		}
+//	}
+//}
+
+//// Contoh 2
+//// C# program to illustrate the
+//// Array.Rank Property
+//using System;
+//namespace EnigmaCamp
+//{
+//	class EC
+//	{
+//		// Main Method
+//		public static void Main()
+//		{
+//			// declaring an 2-D array
+//			int[,] arr2d = new int[4, 2];
+
+//			// declaring an 3-D array
+//			int[,,] arr3d = new int[4, 2, 3];
+
+//			// declaring an jagged array
+//			int[][] jdarr = new int[2][];
+
+//			// using Rank Property
+//			Console.WriteLine("Dimension of arr2d array: "
+//											+ arr2d.Rank);
+
+//			Console.WriteLine("Dimension of arr3d array: "
+//											+ arr3d.Rank);
+
+//			// for the jagged array it
+//			// will always return 1
+//			Console.WriteLine("Dimension of jdarr array: "
+//											+ jdarr.Rank);
+//		}
+//	}
+//}
+
+// ArrayList
+//// C# program to demonstrate the ArrayList
+//using System;
+//using System.Collections;
 //class EnigmaCamp
 //{
-//	// Create a delegate
-//	public delegate void petanim(string pet);
-
-//	// Main method
+//	// Main Method
 //	static public void Main()
 //	{
-//		string fav = "Rabbit";
 
-//		// Anonymous method with one parameter
-//		petanim p = delegate (string mypet)
+//		// Creating ArrayList
+//		ArrayList My_array = new ArrayList();
+
+//		// Adding elements in the
+//		// My_array ArrayList
+//		// This ArrayList contains elements
+//		// of different types
+//		My_array.Add(12.56);
+//		My_array.Add("EnigmaCamp");
+//		My_array.Add(null);
+//		My_array.Add('E');
+//		My_array.Add(1234);
+
+//		// Accessing the elements
+//		// of My_array ArrayList
+//		// Using foreach loop
+//		foreach (var elements in My_array)
 //		{
-//			Console.WriteLine("My favorite pet is {0}.",
-//												mypet);
-
-//			// Accessing variable defined
-//			// outside the anonymous function
-//			Console.WriteLine("And I like {0} also.", fav);
-//		};
-//		p("Dog");
+//			Console.WriteLine(elements);
+//		}
 //	}
 //}
 
-// C# program to illustrate how an
-// anonymous method passed as a parameter
-using System;
-public delegate void Show(string x);
-class EnigmaCamp
-{
-	// identity method with two parameters
-	public static void identity(Show mypet,
-							string color)
-	{
-		color = " Black" + color;
-		mypet(color);
-	}
+//// C# program to find the number of
+//// elements and capacity of ArrayList
+//using System;
+//using System.Collections;
+//class EnigmaCamp
+//{
+//	// Driver code
+//	public static void Main()
+//	{
+//		// Creating an ArrayList
+//		ArrayList myList = new ArrayList();
 
-	// Main method
-	static public void Main()
-	{
-		// Here anonymous method pass as
-		// a parameter in identity method
-		identity(delegate (string color) {
-			Console.WriteLine("The color" +
-			" of my dog is {0}", color);
-		},
-								"White");
-	}
-}
+//		// Adding elements to ArrayList
+//		myList.Add(1);
+//		myList.Add(2);
+//		myList.Add(3);
+//		myList.Add(4);
+//		myList.Add(5);
+
+//		// Displaying count of elements of ArrayList
+//		Console.WriteLine("Number of elements: " + myList.Count);
+
+//		// Displaying Current capacity of ArrayList
+//		Console.WriteLine("Current capacity: " + myList.Capacity);
+//	}
+//}
+
+//// C# program to illustrate how
+//// to remove elements from the
+//// ArrayList
+//using System;
+//using System.Collections;
+//class EnigmaCamp
+//{
+//	static public void Main()
+//	{
+//		// Creating ArrayList
+//		ArrayList My_array = new ArrayList();
+
+//		// Adding elements in the
+//		// My_array ArrayList
+//		// This ArrayList contains elements
+//		// of the same types
+//		My_array.Add('G');
+//		My_array.Add('E');
+//		My_array.Add('E');
+//		My_array.Add('K');
+//		My_array.Add('S');
+//		My_array.Add('F');
+//		My_array.Add('O');
+//		My_array.Add('R');
+//		My_array.Add('G');
+//		My_array.Add('E');
+//		My_array.Add('E');
+//		My_array.Add('K');
+//		My_array.Add('S');
+
+//		Console.WriteLine("Initial number of elements : "
+//									+ My_array.Count);
+
+//		// Remove the 'G' element
+//		// from the ArrayList
+//		// Using Remove() method
+//		My_array.Remove('G');
+//		Console.WriteLine("After Remove() method the " +
+//			"number of elements: " + My_array.Count);
+
+//		// Remove the element present at index 8
+//		// Using RemoveAt() method
+//		My_array.RemoveAt(8);
+//		Console.WriteLine("After RemoveAt() method the " +
+//				"number of elements: " + My_array.Count);
+
+//		// Remove 3 elements starting from index 1
+//		// using RemoveRange() method
+//		My_array.RemoveRange(1, 3);
+//		Console.WriteLine("After RemoveRange() method the" +
+//				" number of elements: " + My_array.Count);
+
+//		// Remove the all element
+//		// present in ArrayList
+//		// Using Clear() method
+//		My_array.Clear();
+//		Console.WriteLine("After Clear() method the " +
+//			"number of elements: " + My_array.Count);
+//	}
+//}
+
+//// C# program to illustrate
+//// sorting of ArrayList
+//using System;
+//using System.Collections;
+//public class EnigmaCamp
+//{
+//	static public void Main()
+//	{
+//		// Creating ArrayList
+//		ArrayList My_array = new ArrayList();
+
+//		// Adding elements in the
+//		// My_array ArrayList
+//		// This ArrayList contains
+//		// elements of the same types
+//		My_array.Add(1);
+//		My_array.Add(6);
+//		My_array.Add(40);
+//		My_array.Add(10);
+//		My_array.Add(5);
+//		My_array.Add(3);
+//		My_array.Add(2);
+//		My_array.Add(4);
+
+//		// ArrayList before sorting
+//		Console.WriteLine("ArrayList before using Sort() method:");
+
+//		foreach (var elements in My_array)
+//		{
+//			Console.WriteLine(elements);
+//		}
+
+//		// Sort the elements of the ArrayList
+//		// Using sort() method
+//		My_array.Sort();
+
+//		// ArrayList after sorting
+//		Console.WriteLine("ArrayList after using Sort() method:");
+//		foreach (var elements in My_array)
+//		{
+//			Console.WriteLine(elements);
+//		}
+//	}
+//}
+
+//ARRAYLIST CLASS
+// C# code to create an ArrayList
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+//class EnigmaCamp
+//{
+
+//	// Driver code
+//	public static void Main()
+//	{
+//		// Creating an ArrayList
+//		ArrayList myList = new ArrayList();
+
+//		// Adding elements to ArrayList
+//		myList.Add("Hello");
+//		myList.Add("World");
+
+//		Console.WriteLine("Count : " + myList.Count);
+//		Console.WriteLine("Capacity : " + myList.Capacity);
+//	}
+//}
+
+//// C# program to illustrate the
+//// ArrayList Class Properties
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+//class EnigmaCamp
+//{
+//	// Driver code
+//	public static void Main()
+//	{
+//		// Creating an ArrayList
+//		ArrayList myList = new ArrayList();
+
+//		// Adding elements to ArrayList
+//		myList.Add("A");
+//		myList.Add("B");
+//		myList.Add("C");
+//		myList.Add("D");
+//		myList.Add("E");
+//		myList.Add("F");
+
+//		// -------- IsFixedSize Property --------
+
+//		// To check if the ArrayList has fixed size or not
+//		Console.WriteLine(myList.IsFixedSize);
+
+//		// -------- IsReadOnly Property --------
+
+//		// To check if the ArrayList is read-only or not
+//		Console.WriteLine(myList.IsReadOnly);
+//	}
+//}
+
+//// C# code to check if an element is
+//// contained in ArrayList or not
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+//class EnigmaCamp
+//{
+//	// Driver code
+//	public static void Main()
+//	{
+//		// Creating an ArrayList
+//		ArrayList myList = new ArrayList();
+
+//		// Adding elements to ArrayList
+//		myList.Add("A");
+//		myList.Add("B");
+//		myList.Add("C");
+//		myList.Add("D");
+//		myList.Add("E");
+//		myList.Add("F");
+//		myList.Add("G");
+//		myList.Add("H");
+
+//		// To check if the ArrayList Contains element "E"
+//		// If yes, then display it's index, else
+//		// display the message
+//		if (myList.Contains("E"))
+//			Console.WriteLine("Yes, exists at index " + myList.IndexOf("E"));
+//		else
+//			Console.WriteLine("No, doesn't exists");
+//	}
+//}
+
+//// C# code to remove a range of
+//// elements from the ArrayList
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+//class EnigmaCamp
+//{
+//	// Driver code
+//	public static void Main()
+//	{
+//		// Creating an ArrayList
+//		ArrayList myList = new ArrayList(10);
+
+//		// Adding elements to ArrayList
+//		myList.Add(2);
+//		myList.Add(4);
+//		myList.Add(6);
+//		myList.Add(8);
+//		myList.Add(10);
+//		myList.Add(12);
+//		myList.Add(14);
+//		myList.Add(16);
+//		myList.Add(18);
+//		myList.Add(20);
+
+//		// Displaying the elements in ArrayList
+//		Console.WriteLine("The initial ArrayList: ");
+
+//		foreach (int i in myList)
+//		{
+//			Console.WriteLine(i);
+//		}
+
+//		// removing 4 elements starting from index 0
+//		myList.RemoveRange(0, 4);
+
+//		// Displaying the modified ArrayList
+//		Console.WriteLine("The ArrayList after Removing elements: ");
+
+//		// Displaying the elements in ArrayList
+//		foreach (int i in myList)
+//		{
+//			Console.WriteLine(i);
+//		}
+//	}
+//}
