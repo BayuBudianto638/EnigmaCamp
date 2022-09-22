@@ -30,37 +30,60 @@
 
 //        // Compile Time Initialization of variable 'x'
 //        // Assigning value 32 to x
-//        int x = 32;
+//        int x = Convert.ToInt32(Console.ReadLine());
+//        int z = 10;
+
+//        int result = x + z;
 
 //        // printing the value
-//        Console.WriteLine("Value of x is " + x);
+//        Console.WriteLine("Value of x is " + result);
 
 //        // creating object to access
 //        // the variable y
-//        EnigmaCamp enigma = new EnigmaCamp();
+//        var enigma = new EnigmaCamp();
+//        enigma.y = Convert.ToInt32(Console.ReadLine());
 
 //        // printing the value
 //        Console.WriteLine("Value of y is " + enigma.y);
 //    }
 //}
 
-// C# program to demonstrate the 
-// Run Time Initialization
-using System;
-class EnigmaCamp
+//// C# program to demonstrate the 
+//// Run Time Initialization
+//using System;
+//class EnigmaCamp
+//{
+
+//    // Main Method
+//    public static void Main(String[] args)
+//    {
+
+//        // Value will be taken from user 
+//        // input and assigned to variable
+//        // num
+//        int num = Convert.ToInt32(Console.ReadLine());
+
+//        // printing the result
+//        Console.WriteLine("Value of num is " + num);
+
+//    }
+//}
+
+
+class superman
 {
-
-    // Main Method
-    public static void Main(String[] args)
+    static void Main()
     {
+        string nama = "Enigma";
+        int umur = 10;
+        bool isMale = false;
+        float a = 10;
 
-        // Value will be taken from user 
-        // input and assigned to variable
-        // num
-        int num = Convert.ToInt32(Console.ReadLine());
-
-        // printing the result
-        Console.WriteLine("Value of num is " + num);
-
+        Console.WriteLine("Nama Saya :" + nama);
+        Console.WriteLine(@"Nama Saya :
+                            " + nama +
+                            "Umur" + umur);
+        Console.WriteLine($"Nama Saya : {nama} {umur}");
     }
 }
+
