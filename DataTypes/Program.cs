@@ -96,22 +96,40 @@
 //    }
 //}
 
-// C# program to illustrate the
-// use of break statement
-using System;
-class EnigmaCamp
-{
-    // Main Method
-    static public void Main()
-    {
-        // EnigmaCamp is printed only 2 times
-        // because of break statement
-        for (int i = 1; i < 4; i++)
-        {
-            if (i == 3)
-                break;
+//// C# program to illustrate the
+//// use of break statement
+//using System;
+//class EnigmaCamp
+//{
+//    // Main Method
+//    static public void Main()
+//    {
+//        // EnigmaCamp is printed only 2 times
+//        // because of break statement
+//        for (int i = 1; i < 4; i++)
+//        {
+//            if (i == 3)
+//                break;
 
-            Console.WriteLine("EnigmaCamp");
+//            Console.WriteLine("EnigmaCamp");
+//        }
+//    }
+//}
+
+class program
+{
+    static void Main()
+    {
+        int[] arr = new int[] { 0, 1, 2, 3, 4 };
+
+        foreach (var item in arr)
+        {
+            Console.WriteLine(item);
         }
+        Console.WriteLine("----------------");
+        Parallel.ForEach(arr, number =>
+        {
+            Console.WriteLine(number);
+        }); 
     }
 }
