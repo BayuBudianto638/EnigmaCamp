@@ -35,9 +35,9 @@ namespace WebAppService.DefaultService
 
         public void Delete(int Id)
         {
-            string insertQuery = @"DELETE FROM [dbo].[Companies] WHERE Id=@Id; ";
+            string deleteQuery = @"DELETE FROM [dbo].[Companies] WHERE Id=@Id; ";
 
-            var result = _dbConnection.Execute(insertQuery, new
+            var result = _dbConnection.Execute(deleteQuery, new
             {
                Id
             });
