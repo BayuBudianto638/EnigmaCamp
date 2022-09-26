@@ -1,5 +1,6 @@
 ﻿using DataTypes.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,15 @@ namespace DataTypes
 {
     public class SchoolContext: DbContext
     {
+        public IConfiguration Configuration { get; }
+
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-QEO3NAA\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;");
+            string conStr = Configuration.GetConnectionString("ConnectionString");
+            optionsBuilder.UseSqlServer(conStr);
         }
     }
 }
