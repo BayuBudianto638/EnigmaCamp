@@ -2,6 +2,7 @@
 using EnigmaData.Database;
 using EnigmaService.DefaultService;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Security.Cryptography;
 
 class Program
@@ -34,13 +35,13 @@ class Program
         switch (Console.ReadLine())
         {
             case "1":
-                //CreateStudent();
+                CreateStudent();
                 return true;
             case "2":
-                //UpdateStudent();
+                UpdateStudent();
                 return true;
             case "3":
-                //GetAllStudent();
+                GetAllStudent();
                 return true;
             case "4":
                 return false;
@@ -49,77 +50,97 @@ class Program
         }
     }
 
-    //private static void CreateStudent()
-    //{
-    //    Console.Clear();
-    //    Console.WriteLine("Create Student");
-    //    Console.WriteLine("---------------");
-    //    Console.Write("Nama:");
-    //    string nama = Console.ReadLine();
+    private static void CreateStudent()
+    {
+        Console.Clear();
+        Console.WriteLine("Create Student");
+        Console.WriteLine("---------------");
+        Console.Write("Name:");
+        string nama = Console.ReadLine();
+        Console.Write("Address:");
+        string address = Console.ReadLine();
+        Console.Write("Country:");
+        string country = Console.ReadLine();
 
-    //    using (var context = new SchoolContext())
-    //    {
-    //        var student = new Student()
-    //        {
-    //            Name = nama
-    //        };
+        using (var context = new SchoolContext())
+        {
+            var student = new StudentModel()
+            {
+                Name = nama,
+                Address = address,
+                Country = country
+            };
 
-    //        context.Students.Add(student);
-    //        context.SaveChanges();
-    //    }
+            context.Students.Add(student);
+            context.SaveChanges();
+        }
 
-    //    Console.ReadKey();
-    //}
+        Console.ReadKey();
+    }
 
-    //private static void UpdateStudent()
-    //{
-    //    Console.Clear();
-    //    Console.WriteLine("Update Student");
-    //    Console.WriteLine("---------------");
-    //    Console.Write("Cari nama:");
-    //    string cariNama = Console.ReadLine();
+    private static void UpdateStudent()
+    {
+        Console.Clear();
+        Console.WriteLine("Update Student");
+        Console.WriteLine("---------------");
+        Console.Write("Cari nama:");
+        string cariNama = Console.ReadLine();
 
-    //    using (var context = new SchoolContext())
-    //    {
-    //        var student = context.Students.FirstOrDefault(w => w.Name == cariNama);
+        using (var context = new SchoolContext())
+        {
+            var student = context.Students.FirstOrDefault(w => w.Name == cariNama);
 
-    //        if (student != null)
-    //        {
-    //            Console.Write("Masukkan Nama:");
-    //            string nama = Console.ReadLine();
-    //            student = new Student()
-    //            {
-    //                Name = nama
-    //            };
+            if (student != null)
+            {
+                Console.Write("Nama:", student.Nama);
+                Console.Write("Adress:", student.Address);
+                Console.Write("Country:", student.Country);
+                Console.ReadKey();
 
-    //            context.Students.Add(student);
-    //            context.SaveChanges();
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("Nama tidak ditemukan");
-    //        }
-    //    }
+                Console.WriteLine("----------------------");
 
-    //    Console.ReadKey();
-    //}
+                Console.Write("Name:");
+                string nama = Console.ReadLine();
+                Console.Write("Address:");
+                string address = Console.ReadLine();
+                Console.Write("Country:");
+                string country = Console.ReadLine();
 
-    //private static void GetAllStudent()
-    //{
-    //    Console.Clear();
+                student = new StudentModel()
+                {
+                    Name = nama,
+                    Address = address,
+                    Country = country
+                };
 
-    //    var context = new SchoolContext();
+                context.Students.Update(student);
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("Nama tidak ditemukan");
+            }
+        }
 
-    //    var data = context.Students.ToList();
+        Console.ReadKey();
+    }
 
-    //    Console.WriteLine("Students");
-    //    Console.WriteLine("---------------------");
-    //    foreach(var item in data)
-    //    {
-    //        Console.WriteLine($"{item.StudentId} - {item.Name}");
-    //    }
+    private static void GetAllStudent()
+    {
+        Console.Clear();
 
-    //    Console.ReadKey();
-    //}
+        var context = new SchoolContext();
+
+        var data = context.Students.ToList();
+
+        Console.WriteLine("Students");
+        Console.WriteLine("---------------------");
+        foreach (var item in data)
+        {
+            Console.WriteLine($"{item.StudentId} - {item.Name} - {item.Address} - {item.Country}");
+        }
+
+        Console.ReadKey();
+    }
 }
 
