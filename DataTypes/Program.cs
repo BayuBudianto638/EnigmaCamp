@@ -1,24 +1,54 @@
-﻿// Contoh 1
-using DataTypes;
-using DataTypes.Model;
-class program
-{
-    static void Main()
-    {
-        using (var context = new SchoolContext())
-        {
-            var student = new Student()
-            {
-                Name = "Itachi Uchiha",
-                Address = "Konoha",
-                Country = "Negara Api"
-            };
+﻿//// Contoh 1
+//using DataTypes;
+//using DataTypes.Model;
+//class program
+//{
+//    static void Main()
+//    {
+//        using (var context = new SchoolContext())
+//        {
+//            var student = new Student()
+//            {
+//                Name = "Itachi Uchiha",
+//                Address = "Konoha",
+//                Country = "Negara Api"
+//            };
 
-            context.Students.Add(student);
-            context.SaveChanges();
-        }
-    }
-}
+//            context.Students.Add(student);
+//            context.SaveChanges();
+//        }
+//    }
+//}
+
+
+//// Contoh 1
+//using DataTypes;
+//using DataTypes.Model;
+//class program
+//{
+//    static void Main()
+//    {
+//        Console.Write("Nama : ");
+//        var Nama = Console.ReadLine();
+//        Console.Write("Alamat : ");
+//        var Address = Console.ReadLine();
+//        Console.Write("Country : ");
+//        var Country = Console.ReadLine();
+
+//        using (var context = new SchoolContext())
+//        {
+//            var student = new Student()
+//            {
+//                Name = Nama,
+//                Address = Address,
+//                Country = Country
+//            };
+
+//            context.Students.Add(student);
+//            context.SaveChanges();
+//        }
+//    }
+//}
 
 //// Contoh 2 menggunakan Interface, class service dan Dependency Injection
 ////using DataTypes.Interface;
