@@ -353,6 +353,7 @@ class Program
             Console.Write("Country:");
             string country = Console.ReadLine();
 
+            student.StudentId = student.StudentId;
             student.Name = nama;
             student.Address = address;
             student.Country = country;

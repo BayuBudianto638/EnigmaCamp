@@ -53,6 +53,7 @@ namespace DataTypes.Service
             {
                 var studentData = new Student();
 
+                studentData.StudentId = student.StudentId;
                 studentData.Name = student.Name;
                 studentData.Address = student.Address;
                 studentData.Country = student.Country;
