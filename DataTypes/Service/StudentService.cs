@@ -37,7 +37,9 @@ namespace DataTypes.Service
             {
                 var std = new Student()
                 {
-                    Name = student.Name
+                    Name = student.Name,
+                    Address = student.Address,
+                    Country = student.Country
                 };
 
                 context.Students.Add(std);
@@ -49,10 +51,11 @@ namespace DataTypes.Service
         {
             using (var context = new SchoolContext())
             {
-                var studentData = context.Students.FirstOrDefault(w => w.StudentId 
-                                        == student.StudentId);
+                var studentData = new Student();
 
                 studentData.Name = student.Name;
+                studentData.Address = student.Address;
+                studentData.Country = student.Country;
 
                 context.Students.Update(studentData);
                 context.SaveChanges();
