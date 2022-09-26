@@ -44,31 +44,6 @@
 //    }
 //}
 
-// Contoh 1
-using DataTypes;
-using DataTypes.Model;
-using DataTypes.ModelData;
-class program
-{
-    static void Main()
-    {
-        var context = new SchoolContext();
-
-        var data = context.Students.AsQueryable();
-
-        Console.WriteLine("Subject Result:");
-        foreach (var item in data)
-        {
-            Console.Write($"{item.StudentId} - {item.Name}");
-            Console.WriteLine();
-        }
-
-        Console.ReadKey();
-    }
-}
-
-
-
 //// Contoh 1
 //using DataTypes;
 //using DataTypes.Model;
@@ -79,27 +54,51 @@ class program
 //    {
 //        var context = new SchoolContext();
 
-//        // LINQ bisa ToList, AsQueryable, Where, First, FirstOrDefault, Single, Skip, Take and so on
-//        var data = (from a in context.Subjects
-//                    join b in context.Students on a.StudentId equals b.StudentId
-//                    join c in context.Courses on a.CourseId equals c.CourseId
-//                    select new SubjectList
-//                    {
-//                        SubjectId = a.SubjectId,
-//                        StudentName = b.Name,
-//                        CourseName = c.CourseName
-//                    }).ToList();
+//        var data = context.Students.AsQueryable();
 
 //        Console.WriteLine("Subject Result:");
 //        foreach (var item in data)
 //        {
-//            Console.Write($"{item.SubjectId} - {item.StudentName} - {item.CourseName}");
+//            Console.Write($"{item.StudentId} - {item.Name}");
 //            Console.WriteLine();
 //        }
 
 //        Console.ReadKey();
 //    }
 //}
+
+
+
+// Contoh 1
+using DataTypes;
+using DataTypes.Model;
+using DataTypes.ModelData;
+class program
+{
+    static void Main()
+    {
+        var context = new SchoolContext();
+
+        // LINQ bisa ToList, AsQueryable, Where, First, FirstOrDefault, Single, Skip, Take and so on
+        var data = (from a in context.Subjects
+                    join b in context.Students on a.StudentId equals b.StudentId
+                    join c in context.Courses on a.CourseId equals c.CourseId
+                    select new SubjectList
+                    {
+                        SubjectId = a.SubjectId,
+                        StudentName = b.Name,
+                        CourseName = c.CourseName
+                    }).ToList();
+
+        Console.WriteLine("Subject Result:");
+        foreach (var item in data)
+        {
+            Console.WriteLine($"{item.SubjectId} - {item.StudentName} - {item.CourseName}");
+        }
+
+        Console.ReadKey();
+    }
+}
 
 //// Contoh 2
 //// Using Where
