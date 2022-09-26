@@ -18,7 +18,7 @@ namespace DataTypes
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string conStr = Configuration.GetConnectionString("ConnectionString");
+            string conStr = Configuration.GetConnectionString("DBConnection");
             optionsBuilder.UseSqlServer(conStr);
         }
     }
