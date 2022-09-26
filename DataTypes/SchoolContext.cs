@@ -1,5 +1,6 @@
 ﻿using DataTypes.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,11 @@ namespace DataTypes
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false);
-            //var configuration = builder.Build();
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false);
+            var configuration = builder.Build();
 
-            ////contains "Server=xxxxxx"
-            //string str = configuration.GetConnectionString("DataBaseConnectionString");
-
-            //string conStr = _iConfiguration.GetConnectionString("DBConnection");
-            //optionsBuilder.UseSqlServer(conStr);
+            string conStr = configuration.GetConnectionString("DBConnection");
+            optionsBuilder.UseSqlServer(conStr);
         }
     }
 }
