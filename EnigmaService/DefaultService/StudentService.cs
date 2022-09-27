@@ -19,7 +19,13 @@ namespace EnigmaService.DefaultService
 
         public void DeleteStudent(int studentId)
         {
-            throw new NotImplementedException();
+            var data = _schoolContext.Students.FirstOrDefault(w => w.StudentId == studentId);
+
+            if (data != null)
+            {
+                _schoolContext.Students.Remove(data);
+                _schoolContext.SaveChanges();
+            }
         }
 
         public List<StudentModel> GetAllStudent()
@@ -34,6 +40,8 @@ namespace EnigmaService.DefaultService
 
                 student.StudentId = item.StudentId;
                 student.Name = item.Name;
+                student.Address = item.Address;
+                student.Country = item.Country;
 
                 studentModelList.Add(student);
             }
@@ -45,29 +53,27 @@ namespace EnigmaService.DefaultService
         {
             var student = new Student()
             {
-                Name = studentModel.Name
+                Name = studentModel.Name,
+                Address = studentModel.Address,
+                Country = studentModel.Country
             };
 
             _schoolContext.Students.Add(student);
             _schoolContext.SaveChanges();
-
         }
 
         public void UpdateStudent(StudentModel studentModel)
         {
-            var student = _schoolContext.Students.FirstOrDefault(
-                w => w.Name == studentModel.Name);
-
-            if (student != null)
+            var student = new Student()
             {
-                student = new Student()
-                {
-                    Name = studentModel.Name
-                };
-
-                _schoolContext.Students.Update(student);
-                _schoolContext.SaveChanges();
+                StudentId = studentModel.StudentId,
+                Name = studentModel.Name,
+                Address = studentModel.Address,
+                Country = studentModel.Country
             };
+
+            _schoolContext.Students.Update(student);
+            _schoolContext.SaveChanges();
         }
     }
 }

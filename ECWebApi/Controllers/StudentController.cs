@@ -2,6 +2,7 @@
 using EnigmaCore.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace ECWebApi.Controllers
 {
@@ -16,6 +17,7 @@ namespace ECWebApi.Controllers
             _studentService = studentService;
         }
 
+        [Route("api/[GetAllStudent]")]
         [HttpGet(Name = "GetAllStudent")]
         [Produces("application/json")]
         public List<StudentModel> GetAllStudent()
@@ -23,6 +25,24 @@ namespace ECWebApi.Controllers
             var studentList = _studentService.GetAllStudent();
 
             return studentList;
+        }
+
+        [HttpPost(Name = "SaveStudent")]
+        public void SaveStudent([FromBody] StudentModel model)
+        {
+            _studentService.SaveStudent(model);
+        }
+
+        [HttpPatch(Name = "UpdateStudent")]
+        public void UpdateStudent([FromBody] StudentModel model)
+        {
+            _studentService.UpdateStudent(model);
+        }
+
+        [HttpDelete(Name = "DeleteStudent")]
+        public void DeleteStudent(int studentId)
+        {
+            _studentService.DeleteStudent(studentId);
         }
     }
 }
