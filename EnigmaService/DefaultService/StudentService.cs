@@ -44,11 +44,7 @@ namespace EnigmaService.DefaultService
         {
             try
             {
-
-                var student = new Student()
-                {
-                    Name = studentModel.Name
-                };
+                var student = _mapper.Map<Student>(studentModel);
 
                 _schoolContext.Database.BeginTransaction();
 
@@ -63,29 +59,20 @@ namespace EnigmaService.DefaultService
                 _schoolContext.Database.RollbackTransaction();
                 return (false, "Error");
             }
-
         }
 
         public void UpdateStudent(StudentModel studentModel)
         {
             try
             {
-                var student = _schoolContext.Students.FirstOrDefault(w => w.Name == studentModel.Name);
+                var student = _mapper.Map<Student>(studentModel);
 
-                if (student != null)
-                {
-                    student = new Student()
-                    {
-                        Name = studentModel.Name
-                    };
+                _schoolContext.Database.BeginTransaction();
 
-                    _schoolContext.Database.BeginTransaction();
+                _schoolContext.Students.Update(student);
+                _schoolContext.SaveChanges();
 
-                    _schoolContext.Students.Update(student);
-                    _schoolContext.SaveChanges();
-
-                    _schoolContext.Database.CommitTransaction();
-                };
+                _schoolContext.Database.CommitTransaction();
             }
             catch (DbException ex)
             {
