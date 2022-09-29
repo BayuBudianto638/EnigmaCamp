@@ -22,9 +22,6 @@ namespace ECWebApi.Controllers
         }
 
         [HttpGet("GetAllStudent")]
-        [SwaggerOperation("GetAllStudent")]
-        [SwaggerResponse((int)HttpStatusCode.OK)]
-        [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [Produces("application/json")]
         [Authorize]
         public IActionResult GetAllStudent()
@@ -42,9 +39,6 @@ namespace ECWebApi.Controllers
         }
 
         [HttpPost("SaveStudent")]
-        [SwaggerOperation("SaveStudent")]
-        [SwaggerResponse((int)HttpStatusCode.OK)]
-        [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [Authorize]
         public IActionResult SaveStudent([FromBody] StudentModel studentModel)
         {
