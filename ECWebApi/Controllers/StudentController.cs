@@ -4,11 +4,13 @@ using EnigmaCore.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using System.Net;
 using System.Net.NetworkInformation;
 
 namespace ECWebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Student")]
     [ApiController]
     public class StudentController : ControllerBase
     {
@@ -19,7 +21,10 @@ namespace ECWebApi.Controllers
             _studentService = studentService;
         }
 
-        [HttpGet(Name = "GetAllStudent")]
+        [HttpGet("GetAllStudent")]
+        [SwaggerOperation("GetAllStudent")]
+        [SwaggerResponse((int)HttpStatusCode.OK)]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [Produces("application/json")]
         [Authorize]
         public IActionResult GetAllStudent()
@@ -36,7 +41,10 @@ namespace ECWebApi.Controllers
             }
         }
 
-        [HttpPost(Name = "SaveStudent")]
+        [HttpPost("SaveStudent")]
+        [SwaggerOperation("SaveStudent")]
+        [SwaggerResponse((int)HttpStatusCode.OK)]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [Authorize]
         public IActionResult SaveStudent([FromBody] StudentModel studentModel)
         {

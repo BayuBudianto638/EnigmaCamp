@@ -79,6 +79,15 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+//app.UseEndpoints(endpoints =>
+//{
+//    //endpoints.MapHub<AbpCommonHub>("/signalr");
+//    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+//    endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
+//});
+
+app.UseRouting();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
