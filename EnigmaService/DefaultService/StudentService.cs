@@ -66,6 +66,20 @@ namespace EnigmaService.DefaultService
                 _schoolContext.SaveChanges();
             };
         }
+
+        public List<StudentModel> GetByPage(int Page, int PageSize)
+        {
+            var listStudent = _schoolContext.Students
+                .Where(w=>w.StudentId > 0)
+                .OrderBy(o=>o)
+                .Skip(Page)
+                .Take(PageSize)
+                .ToList();
+
+            var studentModelList = _mapper.Map<List<StudentModel>>(listStudent);
+
+            return studentModelList;
+        }
     }
 }
 

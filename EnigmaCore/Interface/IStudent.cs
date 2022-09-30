@@ -13,5 +13,6 @@ namespace EnigmaCore.Interface
         void UpdateStudent(StudentModel student);
         void DeleteStudent(int studentId);
         List<StudentModel> GetAllStudent();
+        List<StudentModel> GetByPage(int Page, int PageSize);
     }
 }
