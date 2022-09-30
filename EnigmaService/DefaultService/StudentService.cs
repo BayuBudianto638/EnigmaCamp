@@ -42,10 +42,7 @@ namespace EnigmaService.DefaultService
 
         public void SaveStudent(StudentModel studentModel)
         {
-            var student = new Student()
-            {
-                Name = studentModel.Name
-            };
+            var student = _mapper.Map<Student>(studentModel);
 
             _schoolContext.Students.Add(student);
             _schoolContext.SaveChanges();
@@ -53,18 +50,10 @@ namespace EnigmaService.DefaultService
 
         public void UpdateStudent(StudentModel studentModel)
         {
-            var student = _schoolContext.Students.FirstOrDefault(w => w.Name == studentModel.Name);
+            var student = _mapper.Map<Student>(studentModel);
 
-            if (student != null)
-            {
-                student = new Student()
-                {
-                    Name = studentModel.Name
-                };
-
-                _schoolContext.Students.Update(student);
-                _schoolContext.SaveChanges();
-            };
+            _schoolContext.Students.Update(student);
+            _schoolContext.SaveChanges();
         }
 
         public List<StudentModel> GetByPage(int Page, int PageSize)
