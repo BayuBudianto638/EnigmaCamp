@@ -49,7 +49,14 @@ namespace WebAppService.DefaultService
             var Parameter = new { Id = Id };
 
             var companies = _dbConnection.Query<CompanyDto>(query, Parameter);
-            return companies.FirstOrDefault();
+
+            if (companies == null)
+            {
+                var company = new CompanyDto();
+                return company;
+            }
+
+            return companies.First();
         }
 
         public IEnumerable<CompanyDto> GetCompanies()
