@@ -799,16 +799,127 @@
 //    }
 //}
 
-// C# program to illustrated named member
+//// C# program to illustrated named member
+//using System;
+
+//public class EC
+//{
+
+//    static public void Main()
+//    {
+//        var author = (age: 23, Aname
+//                    : "Sonia", Lang
+//                    : "C#");
+//    }
+//}
+
+//// CONTOH DELEGATE
+//// C# program to illustrate the use of Delegates
+//using System;
+//namespace EnigmaCamp
+//{
+//    // declare class "Geeks"
+//    class EC
+//    {
+//        // Declaring the delegates
+//        // Here return type and parameter type should
+//        // be same as the return type and parameter type
+//        // of the two methods
+//        // "addnum" and "subnum" are two delegate names
+//        public delegate void addnum(int a, int b);
+//        public delegate void subnum(int a, int b);
+
+//        // method "sum"
+//        public void sum(int a, int b)
+//        {
+//            Console.WriteLine("(100 + 40) = {0}", a + b);
+//        }
+
+//        // method "subtract"
+//        public void subtract(int a, int b)
+//        {
+//            Console.WriteLine("(100 - 60) = {0}", a - b);
+//        }
+
+//        // Main Method
+//        public static void Main(String[] args)
+//        {
+
+//            // creating object "obj" of class "EC"
+//            EC obj = new EC();
+
+//            // creating object of delegate, name as "del_obj1"
+//            // for method "sum" and "del_obj2" for method "subtract" &
+//            // pass the parameter as the two methods by class object "obj"
+//            // instantiating the delegates
+//            addnum del_obj1 = new addnum(obj.sum);
+//            subnum del_obj2 = new subnum(obj.subtract);
+
+//            // pass the values to the methods by delegate object
+//            del_obj1(100, 40);
+//            del_obj2(100, 60);
+
+//            // These can be written as using
+//            // "Invoke" method
+//            // del_obj1.Invoke(100, 40);
+//            // del_obj2.Invoke(100, 60);
+//        }
+//    }
+//}
+
+// C# program to illustrate the
+// Multicasting of Delegates
 using System;
 
-public class EC
+class rectangle
 {
+    // declaring delegate
+    public delegate void rectDelegate(double height,
+                                    double width);
 
-    static public void Main()
+    // "area" method
+    public void area(double height, double width)
     {
-        var author = (age: 23, Aname
-                    : "Sonia", Lang
-                    : "C#");
+        Console.WriteLine("Area is: {0}", (width * height));
+    }
+
+    // "perimeter" method
+    public void perimeter(double height, double width)
+    {
+        Console.WriteLine("Perimeter is: {0} ", 2 * (width + height));
+    }
+
+    // Main Method
+    public static void Main(String[] args)
+    {
+        // creating object of class
+        // "rectangle", named as "rect"
+        rectangle rect = new rectangle();
+
+        // these two lines are normal calling
+        // of that two methods
+        // rect.area(6.3, 4.2);
+        // rect.perimeter(6.3, 4.2);
+
+        // creating delegate object, name as "rectdele"
+        // and pass the method as parameter by
+        // class object "rect"
+        rectDelegate rectdele = new rectDelegate(rect.area);
+
+        // also can be written as
+        // rectDelegate rectdele = rect.area;
+
+        // call 2nd method "perimeter"
+        // Multicasting
+        rectdele += rect.perimeter;
+
+        // pass the values in two method
+        // by using "Invoke" method
+        rectdele.Invoke(6.3, 4.2);
+        Console.WriteLine();
+
+        // call the methods with
+        // different values
+        rectdele.Invoke(16.3, 10.3);
     }
 }
