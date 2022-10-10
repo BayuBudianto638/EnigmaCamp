@@ -867,59 +867,139 @@
 //    }
 //}
 
-// C# program to illustrate the
-// Multicasting of Delegates
+//// C# program to illustrate the
+//// Multicasting of Delegates
+//using System;
+
+//class rectangle
+//{
+//    // declaring delegate
+//    public delegate void rectDelegate(double height,
+//                                    double width);
+
+//    // "area" method
+//    public void area(double height, double width)
+//    {
+//        Console.WriteLine("Area is: {0}", (width * height));
+//    }
+
+//    // "perimeter" method
+//    public void perimeter(double height, double width)
+//    {
+//        Console.WriteLine("Perimeter is: {0} ", 2 * (width + height));
+//    }
+
+//    // Main Method
+//    public static void Main(String[] args)
+//    {
+//        // creating object of class
+//        // "rectangle", named as "rect"
+//        rectangle rect = new rectangle();
+
+//        // these two lines are normal calling
+//        // of that two methods
+//        // rect.area(6.3, 4.2);
+//        // rect.perimeter(6.3, 4.2);
+
+//        // creating delegate object, name as "rectdele"
+//        // and pass the method as parameter by
+//        // class object "rect"
+//        rectDelegate rectdele = new rectDelegate(rect.area);
+
+//        // also can be written as
+//        // rectDelegate rectdele = rect.area;
+
+//        // call 2nd method "perimeter"
+//        // Multicasting
+//        rectdele += rect.perimeter;
+
+//        // pass the values in two method
+//        // by using "Invoke" method
+//        rectdele.Invoke(6.3, 4.2);
+//        Console.WriteLine();
+
+//        // call the methods with
+//        // different values
+//        rectdele.Invoke(16.3, 10.3);
+//    }
+//}
+
+
+////PREIDACTE DELEGATE
+//// C# program to illustrate delegates
+//using System;
+
+//class EC
+//{
+//    // Declaring the delegate
+//    public delegate bool my_delegate(string mystring);
+
+//    // Method
+//    public static bool myfun(string mystring)
+//    {
+//        if (mystring.Length < 7)
+//        {
+//            return true;
+//        }
+
+//        else
+//        {
+//            return false;
+//        }
+//    }
+
+//    // Main method
+//    static public void Main()
+//    {
+//        // Creating object of my_delegate
+//        my_delegate obj = myfun;
+//        Console.WriteLine(obj("Hello"));
+//    }
+//}
+
+//// C# program to illustrate Action delegates
+//using System;
+
+//class EC
+//{
+//    // Method
+//    public static void myfun(int p, int q)
+//    {
+//        Console.WriteLine(p - q);
+//    }
+
+//    // Main method
+//    static public void Main()
+//    {
+
+//        // Using Action delegate
+//        // Here, Action delegate
+//        // contains two input parameters
+//        Action<int, int> val = myfun;
+//        val(20, 5);
+//    }
+//}
+
+// C# program to illustrate Func delegate
 using System;
 
-class rectangle
+class EC
 {
-    // declaring delegate
-    public delegate void rectDelegate(double height,
-                                    double width);
-
-    // "area" method
-    public void area(double height, double width)
+    // Method
+    public static int mymethod(int s, int d, int f, int g)
     {
-        Console.WriteLine("Area is: {0}", (width * height));
+        return s * d * f * g;
     }
 
-    // "perimeter" method
-    public void perimeter(double height, double width)
+    // Main method
+    static public void Main()
     {
-        Console.WriteLine("Perimeter is: {0} ", 2 * (width + height));
-    }
 
-    // Main Method
-    public static void Main(String[] args)
-    {
-        // creating object of class
-        // "rectangle", named as "rect"
-        rectangle rect = new rectangle();
-
-        // these two lines are normal calling
-        // of that two methods
-        // rect.area(6.3, 4.2);
-        // rect.perimeter(6.3, 4.2);
-
-        // creating delegate object, name as "rectdele"
-        // and pass the method as parameter by
-        // class object "rect"
-        rectDelegate rectdele = new rectDelegate(rect.area);
-
-        // also can be written as
-        // rectDelegate rectdele = rect.area;
-
-        // call 2nd method "perimeter"
-        // Multicasting
-        rectdele += rect.perimeter;
-
-        // pass the values in two method
-        // by using "Invoke" method
-        rectdele.Invoke(6.3, 4.2);
-        Console.WriteLine();
-
-        // call the methods with
-        // different values
-        rectdele.Invoke(16.3, 10.3);
+        // Using Func delegate
+        // Here, Func delegate contains
+        // the four parameters of int type
+        // one result parameter of int type
+        Func<int, int, int, int, int> val = mymethod;
+        Console.WriteLine(val(10, 100, 1000, 1));
     }
 }
