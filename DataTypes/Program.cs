@@ -2,6 +2,8 @@
 using DataTypes;
 using DataTypes.Model;
 using DataTypes.ModelData;
+using Microsoft.EntityFrameworkCore;
+
 class program
 {
     static void Main()
