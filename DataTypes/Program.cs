@@ -413,48 +413,48 @@
 //    }
 //}
 
-// CONTOH11
-// DATATABLE
-using System;
-using System.Data;
-using System.Data.SqlClient;
-namespace AdoNetConsoleApplication
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            try
-            {
-                string ConString = "data source=.; database=StudentDB; integrated security=SSPI";
-                using (SqlConnection connection = new SqlConnection(ConString))
-                {
-                    SqlDataAdapter da = new SqlDataAdapter("select * from students", connection);
+//// CONTOH11
+//// DATATABLE
+//using System;
+//using System.Data;
+//using System.Data.SqlClient;
+//namespace AdoNetConsoleApplication
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            try
+//            {
+//                string ConString = "data source=.; database=StudentDB; integrated security=SSPI";
+//                using (SqlConnection connection = new SqlConnection(ConString))
+//                {
+//                    SqlDataAdapter da = new SqlDataAdapter("select * from students", connection);
 
-                    //Using Data Table
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    Console.WriteLine("Using Data Table");
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        Console.WriteLine(row["StudentId"] + ",  " + row["Name"] + ",  " + row["Address"] + ",  " + row["Country"]);
-                    }
-                    Console.WriteLine("---------------");
-                    //Using DataSet
-                    DataSet ds = new DataSet();
-                    da.Fill(ds, "student");
-                    Console.WriteLine("Using Data Set");
-                    foreach (DataRow row in ds.Tables["students"].Rows)
-                    {
-                        Console.WriteLine(row["StudentId"] + ",  " + row["Name"] + ",  " + row["Address"] + ",  " + row["Country"]);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("OOPs, something went wrong.\n" + e);
-            }
-            Console.ReadKey();
-        }
-    }
-}
+//                    //Using Data Table
+//                    DataTable dt = new DataTable();
+//                    da.Fill(dt);
+//                    Console.WriteLine("Using Data Table");
+//                    foreach (DataRow row in dt.Rows)
+//                    {
+//                        Console.WriteLine(row["StudentId"] + ",  " + row["Name"] + ",  " + row["Address"] + ",  " + row["Country"]);
+//                    }
+//                    Console.WriteLine("---------------");
+//                    //Using DataSet
+//                    DataSet ds = new DataSet();
+//                    da.Fill(ds, "student");
+//                    Console.WriteLine("Using Data Set");
+//                    foreach (DataRow row in ds.Tables["students"].Rows)
+//                    {
+//                        Console.WriteLine(row["StudentId"] + ",  " + row["Name"] + ",  " + row["Address"] + ",  " + row["Country"]);
+//                    }
+//                }
+//            }
+//            catch (Exception e)
+//            {
+//                Console.WriteLine("OOPs, something went wrong.\n" + e);
+//            }
+//            Console.ReadKey();
+//        }
+//    }
+//}
