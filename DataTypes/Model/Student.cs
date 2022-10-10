@@ -10,5 +10,11 @@ namespace DataTypes.Model
     {
         public int StudentId { get; set; }
         public string Name { get; set; }
+        public List<Subject> subjects { get; set; }
+    }
+
+    public class StudentAdress
+    {
+        public string address { get; set; }
     }
 }
