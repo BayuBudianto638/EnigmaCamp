@@ -112,30 +112,95 @@ Throws an exception
 There might be certain situations the user want to execute a method but sometimes that method requires some value inputs in order to execute and complete its tasks. 
 These input values are known as Parameters in a computer language terms. Now, these parameters can be either int, long or float or double or char.
 However, it depends upon the user requirements. The methods in C# can be classified into different categories based on return type as well as input parameters. 
- */
+// */
 
-// C# program to illustrate method Without
-// Parameters & Without Return Type
+//// C# program to illustrate method Without
+//// Parameters & Without Return Type
+//using System;
+//namespace ConsoleApplication2
+//{
+//    class EC
+//    {
+//        // Here the method 'PrintSentence()'
+//        // neither takes any parameter nor
+//        // returns any value. It simply performs
+//        // the required operations and prints
+//        // the result within it.
+//        static void PrintSentence()
+//        {
+//            Console.WriteLine("No parameters and return type void");
+//        }
+
+//        // Main Method
+//        static void Main(string[] args)
+//        {
+//            // Method Invoking or Method calling
+//            PrintSentence();
+//        }
+//    }
+//}
+
+
+
+//// C# program to illustrate the method Without
+//// Parameters & With Return Value Type
+//using System;
+//namespace ConsoleApplication3
+//{
+//    class EC
+//    {
+
+//        // This method takes no parameter,
+//        // however returns the result obtained
+//        static int sum()
+//        {
+//            int a = 78, b = 70, add;
+//            add = a + b;
+//            return add;
+//        }
+
+//        // Main Method
+//        static void Main(string[] args)
+//        {
+
+//            // Here the calling variable
+//            // is 'getresult'
+//            int getresult = sum();
+
+//            // Printing the value of
+//            // 'getresult' variable
+//            Console.WriteLine(getresult);
+//        }
+//    }
+//}
+
+// C# program to illustrate Method With
+// Parameters & Without Return Value Type
 using System;
-namespace ConsoleApplication2
+namespace ConsoleApplication3
 {
     class EC
     {
-        // Here the method 'PrintSentence()'
-        // neither takes any parameter nor
-        // returns any value. It simply performs
-        // the required operations and prints
-        // the result within it.
-        static void PrintSentence()
+        // This method take the side of
+        // the square as a parameter and
+        // after obtaining the result,
+        // it simply print it without
+        // returning anything..
+        static void perimeter(int p)
         {
-            Console.WriteLine("No parameters and return type void");
+            // Displaying the perimeter
+            // of the square
+            Console.WriteLine("Perimeter of the Square is " + 4 * p);
         }
 
         // Main Method
         static void Main(string[] args)
         {
-            // Method Invoking or Method calling
-            PrintSentence();
+            // side of square
+            int p = 5;
+
+            // Method invoking
+            perimeter(p);
         }
     }
 }
