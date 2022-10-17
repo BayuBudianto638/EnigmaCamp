@@ -1,4 +1,22 @@
-﻿//char var = 'h'; // Declaring and Initializing character variable
+﻿/*
+ Program tipikal menggunakan berbagai nilai yang dapat berubah selama eksekusinya. Misalnya, sebuah program yang melakukan beberapa operasi pada nilai yang dimasukkan oleh pengguna.
+ Nilai yang dimasukkan oleh satu pengguna mungkin berbeda dari yang dimasukkan oleh pengguna lain. Oleh karena itu, perlu menggunakan variabel karena pengguna lain mungkin tidak  
+ menggunakan nilai yang sama. Ketika seorang pengguna memasukkan nilai baru yang akan digunakan dalam proses operasi, dapat menyimpan sementara di Memori Akses Acak komputer 
+ dan nilai-nilai ini di bagian memori ini bervariasi sepanjang eksekusi dan karenanya istilah lain untuk ini datang yang dikenal sebagai Variabel. Jadi pada dasarnya, 
+ Variabel adalah tempat penampung informasi yang dapat diubah saat runtime. Dan variabel memungkinkan untuk Mengambil dan Memanipulasi informasi yang disimpan.
+
+ Sintaksis:
+
+ ketik nama_variabel = nilai;
+ atau
+ ketik nama_variabel;
+ Contoh:
+
+ char var = 'h'; // Mendeklarasikan dan Menginisialisasi variabel karakter
+ int a, b, c; // Mendeklarasikan variabel a, b dan c bertipe int
+ */
+
+//char var = 'h'; // Declaring and Initializing character variable
 //int a, b, c; // Declaring variables a, b and c of int type
 
 //int age;
