@@ -1,30 +1,160 @@
-﻿/*
-    .NET adalah platform yang mencakup bahasa, runtime, dan pustaka kerangka kerja, memungkinkan
-    pengembang untuk membuat banyak jenis aplikasi. C# adalah salah satu bahasa .NET, yang juga
-    termasuk Visual Basic, F#, C++, dan banyak lagi.
-    Runtime lebih formal bernama Common Language Runtime (CLR). Pemrograman
-    bahasa yang menargetkan kompilasi CLR ke Bahasa Menengah (IL). CLR itu sendiri adalah
-    mesin virtual yang menjalankan IL, JIT (Just In Time) dan menyediakan banyak layanan seperti manajemen memori,
-    pengumpulan sampah (GC, garbage collection), manajemen exception, keamanan/security, dan banyak lagi.
-    Framework Class Library (FCL) adalah seperangkat kode yang dapat digunakan kembali yang menyediakan
-    layanan dan platform khusus teknologi. Layanan umum termasuk jenis penting seperti:
-    seperti koleksi, kriptografi, jaringan, dan lainnya. Selain kelas umum, FCL
-    termasuk platform khusus teknologi seperti ASP.NET, WPF, layanan web, dan banyak lagi. Nilai
-    penawaran FCL adalah memiliki komponen umum yang tersedia untuk digunakan kembali, menghemat waktu dan uang
-    tanpa perlu menulis kode itu sendiri.
+﻿using System;
+using System.IO;  // include the System.IO namespace
 
-    Framework Class Library atau FCL menyediakan fungsionalitas sistem dalam .NET Framework karena memiliki berbagai kelas, tipe data, 
-    antarmuka, dll. untuk melakukan banyak fungsi dan membangun berbagai jenis aplikasi seperti aplikasi desktop, aplikasi web, aplikasi seluler, dll.  
-    Pustaka Kelas Kerangka terintegrasi dengan Common Language Runtime (CLR) kerangka .NET dan digunakan oleh semua bahasa .NET seperti C#, F#, Visual Basic .NET, dll.
+namespace MyApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string writeText = "Hello World!";  // Create a text string
+            File.WriteAllText(@"c:\Dokumen\filename.txt", writeText);  // Create a file and write the contents of writeText to it
 
-    Untuk memulai, klik Visual Studio 2022 dan pilih New Projects. Tulis saja EnigmaCamp_Chapter1. Akan tampil file Program.cs.
-    Untuk eksekusi tekan tombol F9 atau ke menu Debug dan pilih Start Debugging.
+            string readText = File.ReadAllText(@"c:\Dokumen\filename.txt"); // Read the contents of the file
 
-    Maka akan tampil pesan Hello World!.
+            string[] readRecord = readText.Split(",");
+            string cari = "Anton";
+            var caristr = readRecord.FirstOrDefault(cari);
+            string[] listdata = caristr.Split(";");
+            foreach (var item in listdata)
+            {
+                Console.WriteLine(item); // Output the content
+            }
 
-    Kemudian ganti pada Line Console.Writeline("EnigmaCamp"); Kemudian run kembali.
-    Jika sudah maka coba ketikkan data nama sendiri, menjadi Nama, Alamat, Kota, Provinsi dan Negara.
- */
+            //Console.WriteLine(caristr);
+            //foreach (var item in readRecord)
+            //{
+            //    Console.WriteLine(item); // Output the content
+            //}
+        }
+    }
+}
 
-Console.WriteLine("Hello World!");
-Console.ReadKey();
+//using System;
+//using System.IO;  // include the System.IO namespace
+
+//namespace MyApplication
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            //string writeText = "Hello World!";  // Create a text string
+//            //File.WriteAllText(@"c:\Dokumen\filename.txt", writeText);  // Create a file and write the contents of writeText to it
+
+//            string readText = File.ReadAllText(@"c:\Dokumen\filename.txt"); // Read the contents of the file
+
+//            string[] readRecord = readText.Split(",");
+//            string cari = "Anton";
+//            var caristr = readRecord.FirstOrDefault(cari);
+//            string[] listdata = caristr.Split(";");
+//            foreach (var item in listdata)
+//            {
+//                Console.WriteLine(item); // Output the content
+//            }
+
+//            //Console.WriteLine(caristr);
+//            //foreach (var item in readRecord)
+//            //{
+//            //    Console.WriteLine(item); // Output the content
+//            //}
+//        }
+//    }
+//}
+
+
+////Contoh 2
+//using System;
+//using System.IO;  // include the System.IO namespace
+//using System.Runtime.Serialization.Formatters.Binary;
+//using System.Runtime.Serialization;
+//using System.Text;
+
+//namespace MyApplication
+//{
+//    [Serializable]
+//    public enum DogColor
+//    {
+//        Brown,
+//        Black,
+//        Mottled
+//    }
+
+//    [Serializable]
+//    public class Dog
+//    {
+//        public String Name
+//        {
+//            get; set;
+//        }
+
+//        public DogColor Color
+//        {
+//            get; set;
+//        }
+
+//        public override String ToString()
+//        {
+//            return String.Format("Dog: {0}/{1}", Name, Color);
+//        }
+//    }
+
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            Dog myDog1 = new Dog();
+//            myDog1.Name = "Foo";
+//            myDog1.Color = DogColor.Brown;
+
+//            Dog myDog2 = new Dog();
+//            myDog2.Name = "Faa";
+//            myDog2.Color = DogColor.Black;
+
+//            List<Dog> listDog = new List<Dog>();
+//            listDog.Add(myDog1);
+//            listDog.Add(myDog2);
+
+//            MemoryStream stream = SerializeToStream(listDog);
+//            using (FileStream file = new FileStream(@"c:\Dokumen\db.dat", FileMode.Create, System.IO.FileAccess.Write))
+//            {
+//                stream.Seek(0, SeekOrigin.Begin);
+//                stream.CopyTo(file);
+//                file.Flush();
+//            }
+
+//            MemoryStream ms = new MemoryStream();
+//            using (FileStream file = new FileStream(@"c:\Dokumen\db.dat", FileMode.Open, FileAccess.Read))
+//                file.CopyTo(ms);
+
+//            List<Dog> newDog = (List<Dog>)DeserializeFromStream(ms);
+
+//            System.Console.WriteLine("{0}", newDog.ToString());
+//        }
+
+//        public static MemoryStream SerializeToStream(object o)
+//        {
+//            MemoryStream ms = new MemoryStream();
+//            var formatter = new BinaryFormatter();
+//            formatter.Serialize(ms, o);
+//            return ms;
+//        }
+
+//        public static object DeserializeFromStream(MemoryStream stream)
+//        {
+//            IFormatter formatter = new BinaryFormatter();
+//            stream.Seek(0, SeekOrigin.Begin);
+//            object o = formatter.Deserialize(stream);
+//            return o;
+//        }
+
+//        public static byte[] ReadBytes(MemoryStream input)
+//        {
+//            using (MemoryStream ms = new MemoryStream())
+//            {
+//                input.CopyTo(ms);
+//                return ms.ToArray();
+//            }
+//        }
+//    }
+//}
