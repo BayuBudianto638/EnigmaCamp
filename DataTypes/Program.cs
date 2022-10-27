@@ -246,14 +246,14 @@
 //            var listPerpustakaan = (Perpustakaan)DeserializeFromStream(ms);
 //            listPerpustakaan.listBuku.Add(buku);
 
-//            // Save to stream
-//            MemoryStream stream1 = SerializeToStream(listPerpustakaan);
-//            using (FileStream file = new FileStream(namaFile, FileMode.Open, System.IO.FileAccess.Write))
-//            {
-//                stream1.Seek(0, SeekOrigin.Begin);
-//                stream1.CopyTo(file);
-//                file.Flush();
-//            }
+//            //// Save to stream
+//            //MemoryStream stream1 = SerializeToStream(listPerpustakaan);
+//            //using (FileStream file = new FileStream(namaFile, FileMode.Open, System.IO.FileAccess.Write))
+//            //{
+//            //    stream1.Seek(0, SeekOrigin.Begin);
+//            //    stream1.CopyTo(file);
+//            //    file.Flush();
+//            //}
 
 //            MemoryStream ms2 = new MemoryStream();
 //            using (FileStream file = new FileStream(namaFile, FileMode.Open, FileAccess.Read))
@@ -299,7 +299,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
 
-namespace MenuConsole
+namespace MyApplication
 {
     [Serializable]
     public class Perpustakaan
@@ -363,9 +363,10 @@ namespace MenuConsole
                     CreateBuku();
                     return true;
                 case "5":
+                    GetAllPenerbit();
                     return false;
                 case "6":
-                    GetAllPenerbit();
+                    GetAllBuku();
                     return true;
                 case "7":
                     GetAllBuku();
@@ -409,18 +410,33 @@ namespace MenuConsole
             }
         }
 
+        private static void SaveFile(Perpustakaan perpustakaan)
+        {
+            string namaFile = @"c:\Dokumen\perpustakaan.dat";
+
+            if (!File.Exists(namaFile))
+            {
+                MemoryStream stream = SerializeToStream(perpustakaan);
+                using (FileStream file = new FileStream(namaFile, FileMode.Open, System.IO.FileAccess.Write))
+                {
+                    stream.Seek(0, SeekOrigin.Begin);
+                    stream.CopyTo(file);
+                    file.Flush();
+                }
+            }
+        }
+
         private static Perpustakaan OpenFile()
         {
             string namaFile = @"c:\Dokumen\perpustakaan.dat";
 
-            // Open File
             MemoryStream ms = new MemoryStream();
             using (FileStream file = new FileStream(namaFile, FileMode.Open, FileAccess.Read))
                 file.CopyTo(ms);
 
-            // Assign to Object
-            var perpustakaan = (Perpustakaan)DeserializeFromStream(ms);
-            return perpustakaan;
+            var listPerpustakaan = (Perpustakaan)DeserializeFromStream(ms);
+
+            return listPerpustakaan;
         }
 
         private static void CreatePenerbit()
@@ -445,16 +461,18 @@ namespace MenuConsole
 
             perpustakaan.listPenerbit.Add(penerbit);
 
-            if (!File.Exists(namaFile))
-            {
-                MemoryStream stream = SerializeToStream(perpustakaan);
-                using (FileStream file = new FileStream(namaFile, FileMode.Open, System.IO.FileAccess.Write))
-                {
-                    stream.Seek(0, SeekOrigin.Begin);
-                    stream.CopyTo(file);
-                    file.Flush();
-                }
-            }
+            SaveFile(perpustakaan);
+
+            //if (!File.Exists(namaFile))
+            //{
+            //    MemoryStream stream = SerializeToStream(perpustakaan);
+            //    using (FileStream file = new FileStream(namaFile, FileMode.Open, System.IO.FileAccess.Write))
+            //    {
+            //        stream.Seek(0, SeekOrigin.Begin);
+            //        stream.CopyTo(file);
+            //        file.Flush();
+            //    }
+            //}
 
             Console.ReadKey();
         }
@@ -478,10 +496,28 @@ namespace MenuConsole
 
         private static void CreateBuku()
         {
-            Console.Clear();
-            Console.WriteLine("Update Student");
-            Console.WriteLine("---------------");
+            var perpustakaan = OpenFile();
 
+            Console.Clear();
+            Console.WriteLine("Create Buku");
+            Console.WriteLine("---------------");
+            Buku buku = new Buku();
+
+            string namaPenerbit = "";
+            var penerbit = GetPenerbitByNama(namaPenerbit);
+
+            Console.Write("Kode Buku : ");
+            var code = Console.ReadLine();
+
+            Console.Write("Nama Buku : ");
+            var nama = Console.ReadLine();
+
+            buku.Code = code;
+            buku.Name = nama;
+
+            perpustakaan.listBuku.Add(buku);
+
+            SaveFile(perpustakaan);
 
             Console.ReadKey();
         }
@@ -489,10 +525,14 @@ namespace MenuConsole
         private static void GetAllPenerbit()
         {
             Console.Clear();
-            Console.WriteLine("Get Student By Id");
+            Console.WriteLine("Get All Penerbit");
             Console.WriteLine("---------------");
-            Console.Write("Id:");
-            int id = Convert.ToInt32(Console.ReadLine());
+            var perpustakaan = OpenFile();
+
+            foreach (var itemPenerbit in perpustakaan.listPenerbit)
+            {
+                Console.WriteLine($"{itemPenerbit.Code} - {itemPenerbit.Name}");
+            }
 
             Console.ReadKey();
         }
@@ -500,8 +540,15 @@ namespace MenuConsole
         private static void GetAllBuku()
         {
             Console.Clear();
-            Console.WriteLine("Get All Student");
+            Console.WriteLine("Get All Buku");
             Console.WriteLine("---------------");
+
+            var perpustakaan = OpenFile();
+
+            foreach (var itemBuku in perpustakaan.listBuku)
+            {
+                Console.WriteLine($"{itemBuku.Code} - {itemBuku.Name} - {itemBuku.penerbit.Name}");
+            }
 
             Console.ReadKey();
         }
