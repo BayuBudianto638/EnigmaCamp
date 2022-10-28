@@ -1,31 +1,57 @@
-﻿//CONTOH 1 ENUM
-class Program
-{
-    enum Season
-    {
-        Spring,
-        Summer,
-        Autumn,
-        Winter
-    }
+﻿//class Program
+//{
+//    static void Main()
+//    {
+//        string poli = "andil";
+//        bool isPoli = false;
 
-    static void Main()
-    {
-        var enumList = from EnumSeason in Enum.GetNames(typeof(Season))
-                       select
-                       new
-                       {
-                           Value = EnumSeason
-                       };
+//        char[] charArray = poli.ToUpper().ToCharArray();
+//        Array.Reverse(charArray);
 
-        foreach (var item in enumList)
-        {
-            Console.WriteLine(item);
-        }
+//        if (new String(charArray).Equals(poli.ToUpper()))
+//            Console.WriteLine("True");
+//        else
+//            Console.WriteLine("False");
 
-        Console.ReadKey();
-    }
-}
+//        Console.ReadKey();
+//    }
+//}
+
+
+//foreach (string name in Enum.GetNames(typeof(Fruits)))
+//{
+//    Console.WriteLine(name);
+//}
+
+
+////CONTOH 1 ENUM
+//class Program
+//{
+//    enum Season
+//    {
+//        Spring,
+//        Summer,
+//        Autumn,
+//        Winter
+//    }
+
+//    static void Main()
+//    {
+//        var enumList = from EnumSeason in Enum.GetNames(typeof(Season))
+//                       select
+//                       new
+//                       {
+//                           Value = EnumSeason
+//                       };
+
+//        foreach (var item in enumList)
+//        {
+//            Console.WriteLine(item);
+//        }
+
+//        Console.ReadKey();
+//    }
+//}
 
 //////CONTOH 2 ENUM
 ////class Program
