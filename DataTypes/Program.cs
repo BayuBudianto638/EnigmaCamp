@@ -37,44 +37,44 @@
 ////    }
 ////}
 
-////// Contoh 2
-////class Animal  // Base class (parent) 
-////{
-////    public void animalSound()
-////    {
-////        Console.WriteLine("The animal makes a sound");
-////    }
-////}
+// Contoh 2
+class Animal  // Base class (parent) 
+{
+    public void animalSound()
+    {
+        Console.WriteLine("The animal makes a sound");
+    }
+}
 
-////class Pig : Animal  // Derived class (child) 
-////{
-////    public void animalSound()
-////    {
-////        Console.WriteLine("The pig says: wee wee");
-////    }
-////}
+class Pig : Animal  // Derived class (child) 
+{
+    public void animalSound()
+    {
+        Console.WriteLine("The pig says: wee wee");
+    }
+}
 
-////class Dog : Animal  // Derived class (child) 
-////{
-////    public void animalSound()
-////    {
-////        Console.WriteLine("The dog says: woof woof");
-////    }
-////}
+class Dog : Animal  // Derived class (child) 
+{
+    public void animalSound()
+    {
+        Console.WriteLine("The dog says: woof woof");
+    }
+}
 
-////class MainClass
-////{
-////    static void Main()
-////    {
-////        Pig pig = new Pig();
-////        pig.animalSound();
+class MainClass
+{
+    static void Main()
+    {
+        Pig pig = new Pig();
+        pig.animalSound();
 
-////        Dog dog = new Dog();
-////        dog.animalSound();
+        Dog dog = new Dog();
+        dog.animalSound();
 
-////        Console.ReadKey();
-////    }
-////}
+        Console.ReadKey();
+    }
+}
 
 
 ////// Contoh 3
