@@ -455,6 +455,8 @@ namespace MyApplication
             Console.Write("Name:");
             string name = Console.ReadLine();
 
+            var updatePenerbit = GetPenerbitByNama(name);
+
             Penerbit penerbit = new Penerbit();
             penerbit.Code = code;
             penerbit.Name = name;
