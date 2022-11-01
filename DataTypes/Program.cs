@@ -1,77 +1,77 @@
-﻿// CONTOH 1
-// Abstract class
-abstract class Animal
-{
-    // Abstract method (does not have a body)
-    public abstract void animalSound();
-    // Regular method
-    public void sleep()
-    {
-        Console.WriteLine("Zzz");
-    }
-}
-
-// Derived class (inherit from Animal)
-class Pig : Animal
-{
-    public override void animalSound()
-    {
-        // The body of animalSound() is provided here
-        Console.WriteLine("The pig says: wee wee");
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Pig myPig = new Pig(); // Create a Pig object
-        myPig.animalSound();  // Call the abstract method
-        myPig.sleep();  // Call the regular method
-    }
-}
-
-//// CONTOH 2
-//public abstract class Monster
+﻿//// CONTOH 1
+//// Abstract class
+//abstract class Animal
 //{
-//    public abstract void Tidur();
-//}
-
-//public class Kaiju : Monster
-//{
-//    public override void Tidur()
+//    // Abstract method (does not have a body)
+//    public abstract void animalSound();
+//    // Regular method
+//    public void sleep()
 //    {
-//        Console.WriteLine("Kaiju Tidur");
+//        Console.WriteLine("Zzz");
 //    }
 //}
 
-//public class Godzilla : Monster
+//// Derived class (inherit from Animal)
+//class Pig : Animal
 //{
-//    public override void Tidur()
+//    public override void animalSound()
 //    {
-//        Console.WriteLine("Godzilla Tidur");
-//    }
-
-//    public void AtomicBreath()
-//    {
-//        Console.WriteLine("Godzilla Atomic Breath");
+//        // The body of animalSound() is provided here
+//        Console.WriteLine("The pig says: wee wee");
 //    }
 //}
 
-//class program
+//class Program
 //{
 //    static void Main(string[] args)
 //    {
-//        Kaiju kaiju = new Kaiju();
-//        kaiju.Tidur();
-
-//        Godzilla godzilla = new Godzilla();
-//        godzilla.Tidur();
-//        godzilla.AtomicBreath();
-
-//        Console.ReadKey();
+//        Pig myPig = new Pig(); // Create a Pig object
+//        myPig.animalSound();  // Call the abstract method
+//        myPig.sleep();  // Call the regular method
 //    }
 //}
+
+// CONTOH 2
+public abstract class Monster
+{
+    public abstract void Tidur();
+}
+
+public class Kaiju : Monster
+{
+    public override void Tidur()
+    {
+        Console.WriteLine("Kaiju Tidur");
+    }
+}
+
+public class Godzilla : Monster
+{
+    public override void Tidur()
+    {
+        Console.WriteLine("Godzilla Tidur");
+    }
+
+    public void AtomicBreath()
+    {
+        Console.WriteLine("Godzilla Atomic Breath");
+    }
+}
+
+class program
+{
+    static void Main(string[] args)
+    {
+        Kaiju kaiju = new Kaiju();
+        kaiju.Tidur();
+
+        Godzilla godzilla = new Godzilla();
+        godzilla.Tidur();
+        godzilla.AtomicBreath();
+
+        Console.ReadKey();
+    }
+}
 
 // CONTOH 3
 //using DataTypes;
