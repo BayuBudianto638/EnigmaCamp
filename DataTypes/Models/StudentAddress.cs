@@ -21,6 +21,10 @@ namespace DataTypes.Models
         [Column(TypeName = "NVarchar(MAX)")]
         [Display(Name = "Address Description")]
         public string AddressDescription { get; set; }
-        public Student Student { get; set; }
+
+        [ForeignKey("Student")]
+        [Required]
+        public int StudentId { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

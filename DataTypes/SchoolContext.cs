@@ -20,6 +20,7 @@ namespace DataTypes
             var configuration = builder.Build();
 
             string conStr = configuration.GetConnectionString("DBConnection");
+            optionsBuilder.UseLazyLoadingProxies(); // Lazy Loading, use Microsoft.EntityFrameworkCore.Proxies
             optionsBuilder.UseSqlServer(conStr);
         }
     }

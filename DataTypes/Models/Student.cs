@@ -29,8 +29,8 @@ namespace DataTypes.Model
         public string Name { get; set; }
         public string Address { get; set; }
         public string Country { get; set; }
-        public StudentCourse StudentCourse { get; set; }
-        public StudentAddress StudentAddress { get; set; }
-        public ICollection<StudentClass> StudentClasses { get; set; }
+        public virtual StudentCourse StudentCourse { get; set; }
+        public virtual StudentAddress StudentAddress { get; set; }
+        public virtual ICollection<StudentClass> StudentClasses { get; set; }
     }
 }

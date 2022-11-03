@@ -21,7 +21,7 @@ namespace DataTypes.Models
         [Column(TypeName = "NVarchar(MAX)")]
         [Display(Name = "Student Class Description")]
         public string StudentClassDescription { get; set; }
-        public ICollection<Student> Students { get; set; }
-        public ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
     }
 }
