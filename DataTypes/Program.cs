@@ -251,8 +251,10 @@ using DataTypes.Model;
 using DataTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using DataTypes.Interface;
+using DataTypes.Interfaces;
 using DataTypes.Service;
+using DataTypes.Views;
+using DataTypes.Views.Students;
 
 class Program
 {
@@ -260,7 +262,7 @@ class Program
     {
         var serviceProvider = new ServiceCollection()
             .AddLogging()
-            .AddSingleton<IStudent, StudentService>()
+            .AddSingleton<IStudentService, StudentService>()
             .BuildServiceProvider();
 
         bool showMenu = true;
@@ -276,96 +278,37 @@ class Program
         Console.WriteLine("Choose an option:");
         Console.WriteLine("1) Create Student");
         Console.WriteLine("2) Update Student");
-        Console.WriteLine("3) Get Student By Id");
-        Console.WriteLine("4) Get All Student");
-        Console.WriteLine("5) Exit");
+        Console.WriteLine("3) Delete Student");
+        Console.WriteLine("4) Get Student By Id");
+        Console.WriteLine("5) Get All Student");
+        Console.WriteLine("6) Exit");
         Console.Write("\r\nSelect an option: ");
 
         switch (Console.ReadLine())
         {
             case "1":
-                CreateStudent();
+                var createStudentView = new CreateStudentView();
+                createStudentView.DisplayView();
                 return true;
             case "2":
-                UpdateStudent();
+                var editStudentView = new EditStudentView();
+                editStudentView.DisplayEditStudent();
                 return true;
             case "3":
-                GetStudentById();
+                var deleteStudentView = new DeleteStudentView();
+                deleteStudentView.DisplayDeleteStudent();
                 return true;
             case "4":
                 GetAllStudent();
                 return true;
             case "5":
+                GetAllStudent();
+                return true;
+            case "6":
                 return false;
             default:
                 return true;
         }
-    }
-
-    private static void CreateStudent()
-    {
-        Console.Clear();
-        Console.WriteLine("Create Student");
-        Console.WriteLine("---------------");
-
-        Console.Write("Name:");
-        string nama = Console.ReadLine();
-        Console.Write("Address:");
-        string address = Console.ReadLine();
-        Console.Write("Country:");
-        string country = Console.ReadLine();
-
-        var student = new Student();
-        student.Name = nama;
-        student.Address = address;
-        student.Country = country;
-
-        var studentService = new StudentService();
-        studentService.SimpanStudent(student);
-
-        Console.ReadKey();
-    }
-
-    private static void UpdateStudent()
-    {
-        Console.Clear();
-        Console.WriteLine("Update Student");
-        Console.WriteLine("---------------");
-        Console.Write("Cari Id:");
-        int id = Convert.ToInt32(Console.ReadLine());
-
-        var studentService = new StudentService();
-        var student = studentService.GetById(id);
-
-        if (student != null)
-        {
-            Console.WriteLine($"Nama : {student.Name}");
-            Console.WriteLine($"Address : {student.Address}");
-            Console.WriteLine($"Country : {student.Country}");
-
-            Console.WriteLine("---------------");
-            Console.ReadKey();
-
-            Console.Write("Name:");
-            string nama = Console.ReadLine();
-            Console.Write("Address:");
-            string address = Console.ReadLine();
-            Console.Write("Country:");
-            string country = Console.ReadLine();
-
-            student.StudentId = student.StudentId;
-            student.Name = nama;
-            student.Address = address;
-            student.Country = country;
-
-            studentService.UpdateStudent(student);
-        }
-        else
-        {
-            Console.WriteLine("Id tidak ditemukan");
-        }
-
-        Console.ReadKey();
     }
 
     private static void GetStudentById()
@@ -376,7 +319,7 @@ class Program
         Console.Write("Id:");
         int id = Convert.ToInt32(Console.ReadLine());
 
-        var studentService = new StudentService();
+        IStudentService studentService = new StudentService();
         var student = studentService.GetById(id);
 
         Console.WriteLine($"Nama : {student.Name}");
@@ -392,7 +335,7 @@ class Program
         Console.WriteLine("Get All Student");
         Console.WriteLine("---------------");
 
-        var studentService = new StudentService();
+        IStudentService studentService = new StudentService();
         var studentList = studentService.GetAllStudents();
 
         foreach (var item in studentList)
@@ -401,5 +344,13 @@ class Program
         }
 
         Console.ReadKey();
+    }
+
+    private static Student GetStudentName(string name)
+    {
+        IStudentService studentService = new StudentService();
+        var student = studentService.GetByName(name);
+
+        return student;
     }
 }

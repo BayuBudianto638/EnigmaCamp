@@ -1,4 +1,4 @@
-﻿using DataTypes.Interface;
+﻿using DataTypes.Interfaces;
 using DataTypes.Model;
 using System;
 using System.Collections.Generic;
@@ -8,11 +8,22 @@ using System.Threading.Tasks;
 
 namespace DataTypes.Service
 {
-    public class StudentService : IStudent
+    public class StudentService : IStudentService
     {
         public StudentService()
         {
 
+        }
+
+        public void DeleteStudent(int id)
+        {
+            using (var context = new SchoolContext())
+            {
+                var student = context.Students.FirstOrDefault(w => w.StudentId == id);
+
+                context.Students.Remove(student);
+                context.SaveChanges();
+            }
         }
 
         public List<Student> GetAllStudents()
@@ -31,12 +42,20 @@ namespace DataTypes.Service
             return student;
         }
 
+        public Student GetByName(string name)
+        {
+            var context = new SchoolContext();
+            var student = context.Students.FirstOrDefault(w => w.Name.Contains(name));
+            return student;
+        }
+
         public void SimpanStudent(Student student)
         {
             using (var context = new SchoolContext())
             {
                 var std = new Student()
                 {
+                    Code = student.Code,
                     Name = student.Name,
                     Address = student.Address,
                     Country = student.Country
