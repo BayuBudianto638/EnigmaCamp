@@ -60,13 +60,13 @@ namespace DataTypes.Services
             return query.ToList();
         }
 
-        public T GetById<T>(long id) where T : BaseEntity
-        {
-            var query = context.Set<T>() as IQueryable<T>;
-            query = query.Where(e => e.Id == id);
+        //public T GetById<T>(long id) where T : BaseEntity
+        //{
+        //    var query = context.Set<T>() as IQueryable<T>;
+        //    query = query.Where(e => e.Id == id);
 
-            return query.FirstOrDefault();
-        }
+        //    return query.FirstOrDefault();
+        //}
 
         public void RollBack()
         {

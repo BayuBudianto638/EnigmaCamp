@@ -268,13 +268,14 @@ class Program
     {
         var serviceProvider = new ServiceCollection()
             .AddLogging()
+            .AddSingleton<ICourseService, CourseService>()
             .AddSingleton<IRepository<Course>, RepositoryBase<Course>>()
             .AddSingleton<IRepository<Student>, RepositoryBase<Student>>()            
             // Dependency Injection for Course
             .AddSingleton<CourseView>(x => new CourseView(x.GetService<IRepository<Course>>(), x.GetService<CreateCourseView>(), 
                                             x.GetService<DeleteCourseView>(), x.GetService<EditCourseView>(), 
                                             x.GetService<GetAllCourseView>()))
-            .AddSingleton<CreateCourseView>(x => new CreateCourseView(x.GetService<IRepository<Course>>()))
+            .AddSingleton<CreateCourseView>(x => new CreateCourseView(x.GetService<ICourseService>(),x.GetService<IRepository<Course>>()))
             .AddSingleton<DeleteCourseView>(x => new DeleteCourseView(x.GetService<IRepository<Course>>()))
             .AddSingleton<EditCourseView>(x => new EditCourseView(x.GetService<IRepository<Course>>()))
             .AddSingleton<GetAllCourseView>(x => new GetAllCourseView(x.GetService<IRepository<Course>>()))

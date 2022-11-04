@@ -16,6 +16,6 @@ namespace DataTypes.Interfaces
         void Update(object T);
         void Delete(object T);
         List<T> GetAll();
-        T GetById<T>(long id) where T: BaseEntity;
+        //T GetById<T>(long id) /*where T: BaseEntity*/;
     }
 }

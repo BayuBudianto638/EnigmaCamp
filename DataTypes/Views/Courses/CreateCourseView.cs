@@ -11,9 +11,17 @@ namespace DataTypes.Views.Courses
 {
     public class CreateCourseView
     {
+        //private readonly IRepository<Course> _courseRepo;
+        //public CreateCourseView(IRepository<Course> courseRepo)
+        //{
+        //    _courseRepo = courseRepo;
+        //}
+
         private readonly IRepository<Course> _courseRepo;
-        public CreateCourseView(IRepository<Course> courseRepo)
+        private readonly ICourseService _courseService;
+        public CreateCourseView(ICourseService courseService, IRepository<Course> courseRepo)
         {
+            _courseService = courseService;
             _courseRepo = courseRepo;
         }
 
@@ -32,7 +40,7 @@ namespace DataTypes.Views.Courses
             try
             {
                 _courseRepo.Begin();
-                _courseRepo.Save(course);
+                _courseService.Save(course);
                 var(isSave, strMessage) = _courseRepo.Commit();
                 if (isSave == true)
                 {
@@ -46,6 +54,7 @@ namespace DataTypes.Views.Courses
                 _courseRepo.RollBack();
                 Console.WriteLine("Record not saved!");
                 Console.ReadKey();
+            
             }
 
             

@@ -11,7 +11,7 @@ using System.Xml.Linq;
 namespace DataTypes.Model
 {
     [Table("Courses", Schema = "dbo")]
-    public class Course
+    public class Course //: BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
