@@ -1,5 +1,4 @@
-﻿using DataTypes.Interfaces;
-using DataTypes.Service;
+﻿using DataTypes.Services.Students;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +9,12 @@ namespace DataTypes.Views.Students
 {
     public class DeleteStudentView
     {
+        private IStudentService _service;
+        public DeleteStudentView(IStudentService service)
+        {
+            _service = service;
+        }
+
         public void DisplayDeleteStudent()
         {
             Console.Clear();
@@ -18,8 +23,7 @@ namespace DataTypes.Views.Students
             Console.Write("Cari Id:");
             int id = Convert.ToInt32(Console.ReadLine());
 
-            IStudentService studentService = new StudentService();
-            var student = studentService.GetById(id);
+            var student = _service.GetById(id);
 
             if (student != null)
             {
@@ -33,7 +37,7 @@ namespace DataTypes.Views.Students
                 var choice = Console.ReadLine();
                 if (choice.ToUpper().Equals('Y'))
                 {
-                    studentService.DeleteStudent(id);
+                    _service.DeleteStudent(id);
 
                     Console.WriteLine("Record updated!");
                 }

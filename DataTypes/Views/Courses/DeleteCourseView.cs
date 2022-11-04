@@ -1,5 +1,6 @@
 ﻿using DataTypes.Interfaces;
-using DataTypes.Service;
+using DataTypes.Model;
+using DataTypes.Services.Courses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,15 @@ using System.Threading.Tasks;
 
 namespace DataTypes.Views.Courses
 {
-    public class DeleteCoursesView
+    public class DeleteCourseView
     {
-        public void DisplayDeleteStudent()
+        private readonly IRepository<Course> _courseRepo;
+        public DeleteCourseView(IRepository<Course> courseRepo)
+        {
+            _courseRepo = courseRepo;
+        }
+
+        public void DisplayView()
         {
             Console.Clear();
             Console.WriteLine("Delete Student");
@@ -18,30 +25,30 @@ namespace DataTypes.Views.Courses
             Console.Write("Cari Id:");
             int id = Convert.ToInt32(Console.ReadLine());
 
-            IStudentService studentService = new StudentService();
-            var student = studentService.GetById(id);
+            //IStudentService studentService = new StudentService();
+            //var student = studentService.GetById(id);
 
-            if (student != null)
-            {
-                Console.WriteLine($"Code : {student.Code}");
-                Console.WriteLine($"Nama : {student.Name}");
-                Console.WriteLine($"Address : {student.Address}");
-                Console.WriteLine($"Country : {student.Country}");
+            //if (student != null)
+            //{
+            //    Console.WriteLine($"Code : {student.Code}");
+            //    Console.WriteLine($"Nama : {student.Name}");
+            //    Console.WriteLine($"Address : {student.Address}");
+            //    Console.WriteLine($"Country : {student.Country}");
 
-                Console.WriteLine("---------------");
-                Console.WriteLine("Are you sure want to delete this record? (Y/N)");
-                var choice = Console.ReadLine();
-                if (choice.ToUpper().Equals('Y'))
-                {
-                    studentService.DeleteStudent(id);
+            //    Console.WriteLine("---------------");
+            //    Console.WriteLine("Are you sure want to delete this record? (Y/N)");
+            //    var choice = Console.ReadLine();
+            //    if (choice.ToUpper().Equals('Y'))
+            //    {
+            //        studentService.DeleteStudent(id);
 
-                    Console.WriteLine("Record updated!");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Id tidak ditemukan");
-            }
+            //        Console.WriteLine("Record updated!");
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Id tidak ditemukan");
+            //}
 
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();

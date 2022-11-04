@@ -1,6 +1,6 @@
 ﻿using DataTypes.Interfaces;
 using DataTypes.Model;
-using DataTypes.Service;
+using DataTypes.Services.Courses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,34 +9,46 @@ using System.Threading.Tasks;
 
 namespace DataTypes.Views.Courses
 {
-    public class CreateCoursesView
+    public class CreateCourseView
     {
-        public void DisplayCreateStudent()
+        private readonly IRepository<Course> _courseRepo;
+        public CreateCourseView(IRepository<Course> courseRepo)
+        {
+            _courseRepo = courseRepo;
+        }
+
+        public void DisplayView()
         {
             Console.Clear();
-            Console.WriteLine("Create Student");
+            Console.WriteLine("Create Course");
             Console.WriteLine("---------------");
 
-            Console.Write("Code : ");
-            string code = Console.ReadLine();
-            Console.Write("Name : ");
-            string nama = Console.ReadLine();
-            Console.Write("Address : ");
-            string address = Console.ReadLine();
-            Console.Write("Country : ");
-            string country = Console.ReadLine();
+            Console.Write("Course Name : ");
+            string courseName = Console.ReadLine();
 
-            var student = new Student();
-            student.Code = code;
-            student.Name = nama;
-            student.Address = address;
-            student.Country = country;
+            var course = new Course();
+            course.CourseName = courseName;
 
-            IStudentService studentService = new StudentService();
-            studentService.SimpanStudent(student);
+            try
+            {
+                _courseRepo.Begin();
+                _courseRepo.Save(course);
+                var(isSave, strMessage) = _courseRepo.Commit();
+                if (isSave == true)
+                {
+                    Console.WriteLine("Record saved!");
+                }
 
-            Console.WriteLine("Record saved!");
-            Console.ReadKey();
+                Console.ReadKey();
+            }
+            catch
+            {
+                _courseRepo.RollBack();
+                Console.WriteLine("Record not saved!");
+                Console.ReadKey();
+            }
+
+            
         }
     }
 }

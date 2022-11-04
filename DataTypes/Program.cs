@@ -251,10 +251,16 @@ using DataTypes.Model;
 using DataTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using DataTypes.Interfaces;
-using DataTypes.Service;
 using DataTypes.Views;
 using DataTypes.Views.Students;
+using DataTypes.Views.StudentCourses;
+using Microsoft.IdentityModel.Tokens;
+using DataTypes.Services.Students;
+using DataTypes.Services.StudentCourses;
+using DataTypes.Views.Courses;
+using DataTypes.Interfaces;
+using DataTypes.Services;
+using DataTypes.Services.Courses;
 
 class Program
 {
@@ -262,95 +268,65 @@ class Program
     {
         var serviceProvider = new ServiceCollection()
             .AddLogging()
-            .AddSingleton<IStudentService, StudentService>()
+            .AddSingleton<IRepository<Course>, RepositoryBase<Course>>()
+            .AddSingleton<IRepository<Student>, RepositoryBase<Student>>()            
+            // Dependency Injection for Course
+            .AddSingleton<CourseView>(x => new CourseView(x.GetService<IRepository<Course>>(), x.GetService<CreateCourseView>(), 
+                                            x.GetService<DeleteCourseView>(), x.GetService<EditCourseView>(), 
+                                            x.GetService<GetAllCourseView>()))
+            .AddSingleton<CreateCourseView>(x => new CreateCourseView(x.GetService<IRepository<Course>>()))
+            .AddSingleton<DeleteCourseView>(x => new DeleteCourseView(x.GetService<IRepository<Course>>()))
+            .AddSingleton<EditCourseView>(x => new EditCourseView(x.GetService<IRepository<Course>>()))
+            .AddSingleton<GetAllCourseView>(x => new GetAllCourseView(x.GetService<IRepository<Course>>()))
             .BuildServiceProvider();
+
+        var studentService = serviceProvider.GetService<IStudentService>();
+        var studentCourseService = serviceProvider.GetService<IStudentCourseService>();
+        var courseRepoService = serviceProvider.GetService<IRepository<Course>>();
+        var studentRepoService = serviceProvider.GetService<IRepository<Student>>();
+        var courseView = serviceProvider.GetService<CourseView>();
 
         bool showMenu = true;
         while (showMenu)
         {
-            showMenu = MainMenu();
+            Console.Clear();
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1) Student");
+            Console.WriteLine("2) Course");
+            Console.WriteLine("3) Student Course");
+            Console.WriteLine("4) Student Class");
+            Console.WriteLine("5) Exit");
+            Console.Write("\r\nSelect an option: ");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    var StudentView = new StudentView(studentService);
+                    StudentView.DisplayView();
+                    showMenu = true;
+                    break;
+                case "2":                   
+                    courseView.DisplayView();
+                    showMenu = true;
+                    break;
+                case "3":
+                    var studentCourse = new StudentCourseView(studentCourseService);
+                    studentCourse.DisplayView();
+                    showMenu = true;
+                    break;
+                case "4":
+                    // View
+                    showMenu = true;
+                    break;
+                case "5":
+                    showMenu = false;
+                    break;
+                default:
+                    showMenu = true;
+                    break;
+            }
         }
     }
 
-    private static bool MainMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("Choose an option:");
-        Console.WriteLine("1) Create Student");
-        Console.WriteLine("2) Update Student");
-        Console.WriteLine("3) Delete Student");
-        Console.WriteLine("4) Get Student By Id");
-        Console.WriteLine("5) Get All Student");
-        Console.WriteLine("6) Exit");
-        Console.Write("\r\nSelect an option: ");
 
-        switch (Console.ReadLine())
-        {
-            case "1":
-                var createStudentView = new CreateStudentView();
-                createStudentView.DisplayView();
-                return true;
-            case "2":
-                var editStudentView = new EditStudentView();
-                editStudentView.DisplayEditStudent();
-                return true;
-            case "3":
-                var deleteStudentView = new DeleteStudentView();
-                deleteStudentView.DisplayDeleteStudent();
-                return true;
-            case "4":
-                GetAllStudent();
-                return true;
-            case "5":
-                GetAllStudent();
-                return true;
-            case "6":
-                return false;
-            default:
-                return true;
-        }
-    }
-
-    private static void GetStudentById()
-    {
-        Console.Clear();
-        Console.WriteLine("Get Student By Id");
-        Console.WriteLine("---------------");
-        Console.Write("Id:");
-        int id = Convert.ToInt32(Console.ReadLine());
-
-        IStudentService studentService = new StudentService();
-        var student = studentService.GetById(id);
-
-        Console.WriteLine($"Nama : {student.Name}");
-        Console.WriteLine($"Address : {student.Address}");
-        Console.WriteLine($"Country : {student.Country}");
-
-        Console.ReadKey();
-    }
-
-    private static void GetAllStudent()
-    {
-        Console.Clear();
-        Console.WriteLine("Get All Student");
-        Console.WriteLine("---------------");
-
-        IStudentService studentService = new StudentService();
-        var studentList = studentService.GetAllStudents();
-
-        foreach (var item in studentList)
-        {
-            Console.WriteLine($"{item.StudentId} - {item.Name} - {item.Address} - {item.Country}");
-        }
-
-        Console.ReadKey();
-    }
-
-    private static Student GetStudentName(string name)
-    {
-        IStudentService studentService = new StudentService();
-        var student = studentService.GetByName(name);
-
-        return student;
-    }
 }

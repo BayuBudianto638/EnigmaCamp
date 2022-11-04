@@ -1,5 +1,5 @@
-﻿using DataTypes.Interfaces;
-using DataTypes.Service;
+﻿using DataTypes.Services.Students;
+using DataTypes.Services.StudentCourses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace DataTypes.Views.StudentCourses
 {
-    public class DeleteStudentCoursesView
+    public class DeleteStudentCourseView
     {
-        public void DisplayDeleteStudent()
+        private IStudentCourseService _service;
+        public DeleteStudentCourseView(IStudentCourseService service)
+        {
+            _service = service;
+        }
+
+        public void DisplayView()
         {
             Console.Clear();
             Console.WriteLine("Delete Student");

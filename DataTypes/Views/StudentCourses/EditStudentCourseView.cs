@@ -1,5 +1,5 @@
-﻿using DataTypes.Interfaces;
-using DataTypes.Service;
+﻿using DataTypes.Services.Students;
+using DataTypes.Services.StudentCourses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,13 @@ namespace DataTypes.Views.StudentCourses
 {
     public class EditStudentCourseView
     {
-        public void DisplayEditStudent()
+        private IStudentCourseService _service;
+        public EditStudentCourseView(IStudentCourseService service)
+        {
+            _service = service;
+        }
+
+        public void DisplayView()
         {
             Console.Clear();
             Console.WriteLine("Update Student");

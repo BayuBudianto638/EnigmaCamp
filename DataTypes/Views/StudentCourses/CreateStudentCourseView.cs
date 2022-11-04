@@ -1,6 +1,5 @@
-﻿using DataTypes.Interfaces;
-using DataTypes.Model;
-using DataTypes.Service;
+﻿using DataTypes.Model;
+using DataTypes.Services.StudentCourses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace DataTypes.Views.StudentCourses
 {
-    public class CreateStudentCoursesView
+    public class CreateStudentCourseView
     {
-        public void DisplayCreateStudent()
+        private IStudentCourseService _service;
+        public CreateStudentCourseView(IStudentCourseService service)
+        {
+            _service = service;
+        }
+
+        public void DisplayView()
         {
             Console.Clear();
             Console.WriteLine("Create Student");
@@ -32,8 +37,7 @@ namespace DataTypes.Views.StudentCourses
             student.Address = address;
             student.Country = country;
 
-            IStudentService studentService = new StudentService();
-            studentService.SimpanStudent(student);
+            //_service.SimpanStudent(student);
 
             Console.WriteLine("Record saved!");
             Console.ReadKey();

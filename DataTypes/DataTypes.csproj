@@ -23,4 +23,9 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\StudentCourses\Dto\" />
+    <Folder Include="Services\Students\Dto\" />
+  </ItemGroup>
+
 </Project>

@@ -21,7 +21,8 @@ namespace DataTypes.Model
         [Column(TypeName = "Nvarchar(100)")]
         [Display(Name = "Course Name")]
         public string CourseName { get; set; }
-        public StudentCourse StudentCourse { get; set; }
-        public ICollection<StudentClass> StudentClasses { get; set; }
+        public Nullable<int> StudentCourseId { get; set; }
+        public virtual StudentCourse StudentCourse { get; set; }
+        public virtual ICollection<StudentClass> StudentClasses { get; set; }
     }
 }

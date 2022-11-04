@@ -1,6 +1,5 @@
-﻿using DataTypes.Interfaces;
-using DataTypes.Model;
-using DataTypes.Service;
+﻿using DataTypes.Model;
+using DataTypes.Services.Students;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +10,12 @@ namespace DataTypes.Views.Students
 {
     public class CreateStudentView
     {
+        private IStudentService _service;
+        public CreateStudentView(IStudentService service)
+        {
+            _service = service;
+        }
+
         public void DisplayView()
         {
             Console.Clear();
@@ -26,14 +31,15 @@ namespace DataTypes.Views.Students
             Console.Write("Country : ");
             string country = Console.ReadLine();
 
-            var student = new Student();
-            student.Code = code;
-            student.Name = nama;
-            student.Address = address;
-            student.Country = country;
+            var student = new Student()
+            {
+                Code = code,
+                Name = nama,
+                Address = address,
+                Country = country
+            };
 
-            IStudentService studentService = new StudentService();
-            studentService.SimpanStudent(student);
+            _service.SimpanStudent(student);
 
             Console.WriteLine("Record saved!");
             Console.ReadKey();
