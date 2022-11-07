@@ -279,13 +279,19 @@ class Program
             .AddSingleton<DeleteCourseView>(x => new DeleteCourseView(x.GetService<IRepository<Course>>()))
             .AddSingleton<EditCourseView>(x => new EditCourseView(x.GetService<IRepository<Course>>()))
             .AddSingleton<GetAllCourseView>(x => new GetAllCourseView(x.GetService<IRepository<Course>>()))
+
+            // Dependency Injection for Student
+
             .BuildServiceProvider();
 
         var studentService = serviceProvider.GetService<IStudentService>();
         var studentCourseService = serviceProvider.GetService<IStudentCourseService>();
         var courseRepoService = serviceProvider.GetService<IRepository<Course>>();
         var studentRepoService = serviceProvider.GetService<IRepository<Student>>();
+
+        //
         var courseView = serviceProvider.GetService<CourseView>();
+        var studentView = serviceProvider.GetService<StudentView>();
 
         bool showMenu = true;
         while (showMenu)
@@ -302,8 +308,8 @@ class Program
             switch (Console.ReadLine())
             {
                 case "1":
-                    var StudentView = new StudentView(studentService);
-                    StudentView.DisplayView();
+                    //var StudentView = new StudentView(studentService);
+                    studentView.DisplayView();
                     showMenu = true;
                     break;
                 case "2":                   
