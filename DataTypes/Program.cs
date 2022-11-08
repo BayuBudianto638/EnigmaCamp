@@ -807,6 +807,7 @@
 
 using DataTypes.Applications.Employees;
 using DataTypes.SqlServices;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Net.Http.Headers;
 
@@ -814,7 +815,11 @@ class Program
 {
     static void Main()
     {
-        SqlConnection _sqlConnection = new SqlConnection();
+        //var connectionString = "Server=FAIRUZ-PC\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;";
+
+        var connStr = ConfigurationManager.ConnectionStrings["ShippingDB"].ConnectionString;
+
+        SqlConnection _sqlConnection = new SqlConnection(connStr);
 
         var empAppService = new EmployeeAppService(_sqlConnection);
         empAppService.GetAllEmployee();

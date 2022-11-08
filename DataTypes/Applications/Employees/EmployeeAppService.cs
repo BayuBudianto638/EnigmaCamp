@@ -1,25 +1,23 @@
 ﻿using DataTypes.Applications.Employees.Dto;
 using DataTypes.SqlServices;
 using System.Configuration;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace DataTypes.Applications.Employees
 {
     public class EmployeeAppService : IEmployeeAppService
-    {
-        string strConn = ConfigurationManager.AppSettings["countoffiles"];
-        private Connection _connection;
+    {        
         private SqlConnection _sqlConnection;
         private SqlCommands _sqlCommands;
         private SqlTransaction _sqlTransaction;
         public EmployeeAppService(
             SqlConnection sqlConnection
             )
-        {
-            _connection = new Connection(strConn);
+        {           
             _sqlConnection = sqlConnection;
-            _sqlConnection.ConnectionString = _connection.ConnectionString;
         }
 
         public void DeleteEmp(string id)
@@ -47,13 +45,18 @@ namespace DataTypes.Applications.Employees
             _sqlTransaction = _sqlConnection.BeginTransaction();
             _sqlCommands = new SqlCommands(_sqlConnection, _sqlTransaction, 10000);
 
-            var data = _sqlCommands.ExecuteReader("SELECT * FROM Employee");
+            SqlDataAdapter sde = new SqlDataAdapter("SELECT * FROM Employee", _sqlConnection);
+            _sqlTransaction.Commit();
 
-            SqlDataReader dataReader = data;
-            foreach (var item in dataReader)
+            DataSet ds = new DataSet();
+            sde.Fill(ds);
+
+            foreach (DataRow row in ds.Tables["Table"].Rows)
             {
                 var employee = new EmployeeDto();
-                // VALUE HERE
+                employee.EmployeeId = row["EmployeeId"].ToString();
+                employee.EmployeeName = row["EmployeeName"].ToString();
+                employee.Salary = Convert.ToInt32(row["Salary"]);
                 listEmployee.Add(employee);
             }
 
