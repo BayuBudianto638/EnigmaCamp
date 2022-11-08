@@ -807,6 +807,7 @@
 
 using DataTypes.Applications.Employees;
 using DataTypes.SqlServices;
+using DataTypes.Views;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Net.Http.Headers;
@@ -818,10 +819,59 @@ class Program
         //var connectionString = "Server=FAIRUZ-PC\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;";
 
         var connStr = ConfigurationManager.ConnectionStrings["ShippingDB"].ConnectionString;
-
         SqlConnection _sqlConnection = new SqlConnection(connStr);
 
-        var empAppService = new EmployeeAppService(_sqlConnection);
-        empAppService.GetAllEmployee();
+        var empAppService = new EmployeeAppService(_sqlConnection);       
+
+        bool showMenu = true;
+        while (showMenu)
+        {
+            Console.Clear();
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1) Create Employee");
+            Console.WriteLine("2) Update Employee");
+            Console.WriteLine("3) Get Employee By Id");
+            Console.WriteLine("4) Get All Employee");
+            Console.WriteLine("5) Delete Employee");
+            Console.WriteLine("6) Exit");
+            Console.Write("\r\nSelect an option: ");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Console.Clear();
+                    var createView = new CreateEmployeeView(empAppService);
+                    createView.DisplayView();
+                    showMenu = true;
+                    break;
+                case "2":
+                    Console.Clear();
+                    var updateView = new UpdateEmployeeView(empAppService);
+                    showMenu = true;
+                    break;
+                case "3":
+                    Console.Clear();
+                    var getAllView = new GetAllEmployeeView(empAppService);
+                    getAllView.DisplayView();
+                    showMenu = true;
+                    break;
+                case "4":
+                    Console.Clear();
+                    empAppService.GetAllEmployee();
+                    showMenu = true;
+                    break;
+                case "5":
+                    Console.Clear();
+                    empAppService.GetAllEmployee();
+                    showMenu = true;
+                    break;
+                case "6":
+                    showMenu = false;
+                    break;
+                default:
+                    showMenu = true;
+                    break;
+            }
+        }
     }
 }

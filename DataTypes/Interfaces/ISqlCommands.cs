@@ -18,7 +18,7 @@ namespace DataTypes.Interfaces
         /// </summary>
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">DbParameter colleciton to use in executing</param>
-        int ExecuteNonQuery(string commandText, params DbParameter[] parameters);
+        int ExecuteNonQuery(string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command that does not return a query
@@ -27,7 +27,7 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">DbParameter colleciton to use in executing</param>
         /// <returns>DbCommand containing the command executed</returns>
-        int ExecuteNonQuery(out SqlCommand cmd, string commandText, params DbParameter[] parameters);
+        int ExecuteNonQuery(out SqlCommand cmd, string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command that returns a single value
@@ -42,7 +42,7 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">DbParameter colleciton to use in executing</param>
         /// <returns>Object holding result of execution of database</returns>
-        object ExecuteScalar(string commandText, params DbParameter[] parameters);
+        object ExecuteScalar(string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command that returns a single value
@@ -51,7 +51,7 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">DbParameter colleciton to use in executing</param>
         /// <returns>Object holding result of execution of database</returns>
-        object ExecuteScalar(out SqlCommand cmd, string commandText, params DbParameter[] parameters);
+        object ExecuteScalar(out SqlCommand cmd, string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command and returns a data reader
@@ -66,7 +66,7 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">DbParameter colleciton to use in executing</param>
         /// <returns>SqlDataReader allowing access to results from command</returns>
-        SqlDataReader ExecuteReader(string commandText, params DbParameter[] parameters);
+        SqlDataReader ExecuteReader(string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command and returns a DataTable
@@ -81,7 +81,7 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">DbParameter colleciton to use in executing</param>
         /// <returns>DataTable populated with data from executing stored procedure</returns>
-        DataTable ExecuteDataTable(string commandText, params DbParameter[] parameters);
+        DataTable ExecuteDataTable(string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command and returns a DataTable
@@ -90,7 +90,7 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">SqlParameter colleciton to use in executing</param>
         /// <returns>DataTable populated with data from executing stored procedure</returns>
-        DataTable ExecuteDataTable(out SqlCommand cmd, string commandText, params DbParameter[] parameters);
+        DataTable ExecuteDataTable(out SqlCommand cmd, string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command and returns a DataTable
@@ -105,7 +105,7 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">SqlParameter colleciton to use in executing</param>
         /// <returns>DataTable populated with data from executing stored procedure</returns>
-        DataSet ExecuteDataSet(string commandText, params DbParameter[] parameters);
+        DataSet ExecuteDataSet(string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command and returns a DataTable
@@ -114,7 +114,7 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">SqlParameter colleciton to use in executing</param>
         /// <returns>DataTable populated with data from executing stored procedure</returns>
-        DataSet ExecuteDataSet(out SqlCommand cmd, string commandText, params DbParameter[] parameters);
+        DataSet ExecuteDataSet(out SqlCommand cmd, string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command and returns an XML reader.
@@ -129,7 +129,7 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">SqlParameter colleciton to use in executing</param>
         /// <returns>An instance of XmlReader pointing to the stream of xml returned</returns>
-        XmlReader ExecuteXmlReader(string commandText, params DbParameter[] parameters);
+        XmlReader ExecuteXmlReader(string commandText, params SqlParameter[] parameters);
 
         /// <summary>
         /// Executes a command and returns an XML reader.
@@ -138,6 +138,6 @@ namespace DataTypes.Interfaces
         /// <param name="commandText">Name of stored procedure to execute</param>
         /// <param name="parameters">DbParameter colleciton to use in executing</param>
         /// <returns>An instance of XmlReader pointing to the stream of xml returned</returns>
-        XmlReader ExecuteXmlReader(out DbCommand cmd, string commandText, params DbParameter[] parameters);
+        XmlReader ExecuteXmlReader(out DbCommand cmd, string commandText, params SqlParameter[] parameters);
     }
 }
