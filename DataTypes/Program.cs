@@ -61,6 +61,7 @@
 // The example creates a file named "Test.data" and writes the integers 0 through 10 to it in binary format.
 // It then writes the contents of Test.data to the console with each integer on a separate line.
 
+using System.Data;
 using System.Data.SqlClient;
 
 //CONTOH 1
@@ -884,95 +885,104 @@ using System.Data.SqlClient;
 //    }
 //}
 
-//using DataTypes.Applications.Employees;
-//using DataTypes.SqlServices;
-//using DataTypes.Views;
-//using System.Configuration;
-//using System.Data.SqlClient;
-//using System.Net.Http.Headers;
 
+// READ XML
 //class Program
 //{
 //    static void Main()
 //    {
-//        //var connectionString = "Server=FAIRUZ-PC\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;";
+//        DataSet dataSet = new DataSet();
+//        DataTable dataTable = new DataTable("table1");
+//        dataTable.Columns.Add("col1", typeof(string));
+//        dataSet.Tables.Add(dataTable);
 
-//        var connStr = ConfigurationManager.ConnectionStrings["ShippingDB"].ConnectionString;
-//        SqlConnection _sqlConnection = new SqlConnection(connStr);
+//        string xmlData = "<XmlDS>" +
+//                            "<table1>" +
+//                                "<col1>Value1</col1>" +
+//                            "</table1>" +
+//                            "<table1>" +
+//                            "   <col1>Value2</col1>" +
+//                            "</table1>" +
+//                         "</XmlDS>";
 
-//        var empAppService = new EmployeeAppService(_sqlConnection);       
+//        System.IO.StringReader xmlSR = new System.IO.StringReader(xmlData);
 
-//        bool showMenu = true;
-//        while (showMenu)
+//        dataSet.ReadXml(xmlSR, XmlReadMode.IgnoreSchema);
+
+//        foreach (DataRow row in dataSet.Tables[0].Rows)
 //        {
-//            Console.Clear();
-//            Console.WriteLine("Choose an option:");
-//            Console.WriteLine("1) Create Employee");
-//            Console.WriteLine("2) Update Employee");
-//            Console.WriteLine("3) Get Employee By Id");
-//            Console.WriteLine("4) Get All Employee");
-//            Console.WriteLine("5) Delete Employee");
-//            Console.WriteLine("6) Exit");
-//            Console.Write("\r\nSelect an option: ");
-
-//            switch (Console.ReadLine())
-//            {
-//                case "1":
-//                    Console.Clear();
-//                    var createView = new CreateEmployeeView(empAppService);
-//                    createView.DisplayView();
-//                    showMenu = true;
-//                    break;
-//                case "2":
-//                    Console.Clear();
-//                    var updateView = new UpdateEmployeeView(empAppService);
-//                    showMenu = true;
-//                    break;
-//                case "3":
-//                    Console.Clear();
-//                    var getAllView = new GetAllEmployeeView(empAppService);
-//                    getAllView.DisplayView();
-//                    showMenu = true;
-//                    break;
-//                case "4":
-//                    Console.Clear();
-//                    empAppService.GetAllEmployee();
-//                    showMenu = true;
-//                    break;
-//                case "5":
-//                    Console.Clear();
-//                    empAppService.GetAllEmployee();
-//                    showMenu = true;
-//                    break;
-//                case "6":
-//                    showMenu = false;
-//                    break;
-//                default:
-//                    showMenu = true;
-//                    break;
-//            }
+//            Console.WriteLine(row[0]);
 //        }
 //    }
 //}
+
+using DataTypes.Applications.Employees;
+using DataTypes.SqlServices;
+using DataTypes.Views;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Net.Http.Headers;
 
 class Program
 {
     static void Main()
     {
-        DataSet dataSet = new DataSet();
-        DataTable dataTable = new DataTable("table1");
-        dataTable.Columns.Add("col1", typeof(string));
-        dataSet.Tables.Add(dataTable);
+        //var connectionString = "Server=FAIRUZ-PC\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;";
 
-        string xmlData = "<XmlDS><table1><col1>Value1</col1></table1><table1><col1>Value2</col1></table1></XmlDS>";
+        var connStr = ConfigurationManager.ConnectionStrings["ShippingDB"].ConnectionString;
+        SqlConnection _sqlConnection = new SqlConnection(connStr);
 
-        System.IO.StringReader xmlSR = new System.IO.StringReader(xmlData);
+        var empAppService = new EmployeeAppService(_sqlConnection);
 
-        dataSet.ReadXml(xmlSR, XmlReadMode.IgnoreSchema);
-
-        foreach (DataRow row in dataSet.Tables[0].Rows)
+        bool showMenu = true;
+        while (showMenu)
         {
-            //Console.WriteLine(row["StudentId"] + " - " + row["Name"]);
+            Console.Clear();
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1) Create Employee");
+            Console.WriteLine("2) Update Employee");
+            Console.WriteLine("3) Get Employee By Id");
+            Console.WriteLine("4) Get All Employee");
+            Console.WriteLine("5) Delete Employee");
+            Console.WriteLine("6) Exit");
+            Console.Write("\r\nSelect an option: ");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Console.Clear();
+                    var createView = new CreateEmployeeView(empAppService);
+                    createView.DisplayView();
+                    showMenu = true;
+                    break;
+                case "2":
+                    Console.Clear();
+                    var updateView = new UpdateEmployeeView(empAppService);
+                    showMenu = true;
+                    break;
+                case "3":
+                    Console.Clear();
+                    var getAllView = new GetAllEmployeeView(empAppService);
+                    getAllView.DisplayView();
+                    showMenu = true;
+                    break;
+                case "4":
+                    Console.Clear();
+                    empAppService.GetAllEmployee();
+                    showMenu = true;
+                    break;
+                case "5":
+                    Console.Clear();
+                    empAppService.GetAllEmployee();
+                    showMenu = true;
+                    break;
+                case "6":
+                    showMenu = false;
+                    break;
+                default:
+                    showMenu = true;
+                    break;
+            }
         }
     }
 }

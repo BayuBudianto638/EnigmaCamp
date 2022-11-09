@@ -217,6 +217,5 @@ namespace DataTypes.SqlServices
 
             return newCommand;
         }
-
     }
 }
