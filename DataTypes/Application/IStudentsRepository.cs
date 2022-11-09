@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DataTypes.Application.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataTypes.Interfaces
+namespace DataTypes.Application
 {
     public interface IStudentsRepository
     {
@@ -12,5 +13,6 @@ namespace DataTypes.Interfaces
         void Delete(Student entity);
         void Update(Student entity);
         IEnumerable<Student> Query(string where = null);
+        StudentDto GetById(int Id);
     }
 }

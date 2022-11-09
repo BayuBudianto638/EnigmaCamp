@@ -29,33 +29,33 @@
 //}
 
 using Dapper;
-using DataTypes.Repositories;
+using DataTypes.Application;
 using System.Data.SqlClient;
 
 public class DapperORM
 {
-    private string sqlConnectionString = @"Data Source = YourDatabaseServerAddress;initial catalog=YourDatabaseName;user id=YourDatabaseLoginId;password=YourDatabaseLoginPassword";
+    private static string sqlConnectionString = @"Server=DESKTOP-QEO3NAA\SQLEXPRESS;Database=ShippingDB;Trusted_Connection=True;";
 
     //This method gets all record from student table    
-    private List<Student> GetAllStudent()
+    private static List<Student> GetAllStudent()
     {
         List<Student> students = new List<Student>();
         using (var connection = new SqlConnection(sqlConnectionString))
         {
             connection.Open();
-            students = connection.Query<Student>("Select Id, Name, Marks from Student").ToList();
+            students = connection.Query<Student>("Select Id, Name from Student").ToList();
             connection.Close();
         }
         return students;
     }
 
     //This method inserts a student record in database    
-    private int InsertStudent(Student student)
+    private static int InsertStudent(Student student)
     {
         using (var connection = new SqlConnection(sqlConnectionString))
         {
             connection.Open();
-            var affectedRows = connection.Execute("Insert into Student (Name, Marks) values (@Name, @Marks)",
+            var affectedRows = connection.Execute("Insert into Student (Name) values (@Name)",
                         new { Name = student.Name });
             connection.Close();
             return affectedRows;
@@ -63,12 +63,12 @@ public class DapperORM
     }
 
     //This method update student record in database    
-    private int UpdateStudent(Student student)
+    private static int UpdateStudent(Student student)
     {
         using (var connection = new SqlConnection(sqlConnectionString))
         {
             connection.Open();
-            var affectedRows = connection.Execute("Update Student set Name = @Name, Marks = @Marks Where Id = @Id",
+            var affectedRows = connection.Execute("Update Student set Name = @Name Where Id = @Id",
                     new { Id = student.StudentId, Name = student.Name });
             connection.Close();
             return affectedRows;
@@ -76,7 +76,7 @@ public class DapperORM
     }
 
     //This method deletes a student record from database    
-    private int DeleteStudent(Student student)
+    private static int DeleteStudent(Student student)
     {
         using (SqlConnection connection = new SqlConnection(sqlConnectionString))
         {
@@ -84,6 +84,17 @@ public class DapperORM
             var affectedRows = connection.Execute("Delete from Student Where Id = @Id", new { Id = student.StudentId });
             connection.Close();
             return affectedRows;
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            var student = new Student();
+            student.StudentId = 1001;
+            student.Name = "Anton";
+            var i = InsertStudent(student);
         }
     }
 }
@@ -94,14 +105,15 @@ public class Student
     public string Name { get; set; }
 }
 
-class Program
-{
-    static void Main()
-    {
-        var student = new Student();
-        student.StudentId = 1001;
-        student.Name = "Anton";
-        var studentRepo = new StudentRepository();
-        studentRepo.Insert(student);
-    }
-}
+//class Program
+//{
+//    static void Main()
+//    {
+//        var student = new Student();
+//        student.StudentId = 1001;
+//        student.Name = "Anton";
+//        var studentRepo = new StudentRepository();
+//        studentRepo.GetById(1002);
+//        //studentRepo.Insert(student);
+//    }
+//}
