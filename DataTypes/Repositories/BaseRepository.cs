@@ -8,7 +8,7 @@ namespace DataTypes.Repositories
 {
     public abstract class BaseRepository<T>
     {
-        protected string connectionString = @"<CONNECTION STRING HERE>";
+        protected string connectionString = @"Server=DESKTOP-QEO3NAA\SQLEXPRESS;Database=ShippingDB;Trusted_Connection=True;";
 
         public virtual void Insert(T entity)
         {

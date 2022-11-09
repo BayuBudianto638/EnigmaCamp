@@ -29,6 +29,7 @@
 //}
 
 using Dapper;
+using DataTypes.Repositories;
 using System.Data.SqlClient;
 
 public class DapperORM
@@ -68,7 +69,7 @@ public class DapperORM
         {
             connection.Open();
             var affectedRows = connection.Execute("Update Student set Name = @Name, Marks = @Marks Where Id = @Id",
-                    new { Id = student.Id, Name = student.Name });
+                    new { Id = student.StudentId, Name = student.Name });
             connection.Close();
             return affectedRows;
         }
@@ -80,7 +81,7 @@ public class DapperORM
         using (SqlConnection connection = new SqlConnection(sqlConnectionString))
         {
             connection.Open();
-            var affectedRows = connection.Execute("Delete from Student Where Id = @Id", new { Id = student.Id });
+            var affectedRows = connection.Execute("Delete from Student Where Id = @Id", new { Id = student.StudentId });
             connection.Close();
             return affectedRows;
         }
@@ -89,7 +90,7 @@ public class DapperORM
 
 public class Student
 {
-    public int Id { get; set; }
+    public int StudentId { get; set; }
     public string Name { get; set; }
 }
 
@@ -97,6 +98,10 @@ class Program
 {
     static void Main()
     {
-
+        var student = new Student();
+        student.StudentId = 1001;
+        student.Name = "Anton";
+        var studentRepo = new StudentRepository();
+        studentRepo.Insert(student);
     }
 }
