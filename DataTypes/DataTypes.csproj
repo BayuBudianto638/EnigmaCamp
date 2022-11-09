@@ -8,7 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Interfaces\ICommands.cs" />
+    <Compile Remove="Interfaces\IConnection.cs" />
+    <Compile Remove="Interfaces\IDataAccess.cs" />
+    <Compile Remove="Interfaces\IParameterCreation.cs" />
+    <Compile Remove="Interfaces\IParameterFactory.cs" />
+    <Compile Remove="Interfaces\ITransactionControl.cs" />
+    <Compile Remove="Interfaces\ITransactions.cs" />
+    <Compile Remove="SqlServices\Commands.cs" />
+    <Compile Remove="SqlServices\Connection.cs" />
     <Compile Remove="SqlServices\SqlDataAccess.cs" />
+    <Compile Remove="SqlServices\SqlParameterFactory.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using DataTypes.Applications.Employees.Dto;
+using DataTypes.Interfaces;
 using DataTypes.Models;
 using DataTypes.SqlServices;
 using System.Configuration;
@@ -26,9 +27,10 @@ namespace DataTypes.Applications.Employees
         {
             try
             {
-                _sqlTransaction = _sqlConnection.BeginTransaction();
-                var data = _sqlCommands.ExecuteNonQuery("DELETE FROM Employee WHERE EmployeeId = '" + id + "'");
                 _sqlConnection.Open();
+                _sqlTransaction = _sqlConnection.BeginTransaction();
+                
+                var data = _sqlCommands.ExecuteNonQuery("DELETE FROM Employee WHERE EmployeeId = '" + id + "'");               
                 _sqlTransaction.Commit();
             }
             catch (DbException dbex)

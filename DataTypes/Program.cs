@@ -65,43 +65,43 @@ using System.Data.SqlClient;
 
 //CONTOH 1
 // CREATE DATABASE VIA ADO.NET
-using System;
-using System.Data.SqlClient;
-using System.Xml.Linq;
+//using System;
+//using System.Xml.Linq;
 
-namespace EnigmaCampADONetConsole
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            new Program().ConnectToDb();
-        }
-        public void ConnectToDb()
-        {
-            SqlConnection con = null;
-            try
-            {
-                // Creating Connection  
-                con = new SqlConnection(@"Server=DESKTOP-QEO3NAA\SQLEXPRESS;Database=ShippingDB;Trusted_Connection=True;");
+//namespace EnigmaCampADONetConsole
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            new Program().ConnectToDb();
+//        }
 
-                // Opening Connection  
-                con.Open();
-                // Displaying a message  
-                Console.WriteLine("Connect Successfully");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("OOPs, something went wrong." + e);
-            }
-            // Closing the connection  
-            finally
-            {
-                con.Close();
-            }
-        }
-    }
-}
+//        public void ConnectToDb()
+//        {
+//            SqlConnection con = null;
+//            try
+//            {
+//                // Creating Connection  
+//                con = new SqlConnection(@"Server=DESKTOP-QEO3NAA\SQLEXPRESS;Database=ShippingDB;Trusted_Connection=True;");
+
+//                // Opening Connection  
+//                con.Open();
+//                // Displaying a message  
+//                Console.WriteLine("Connect Successfully");
+//            }
+//            catch (Exception e)
+//            {
+//                Console.WriteLine("OOPs, something went wrong." + e);
+//            }
+//            // Closing the connection  
+//            finally
+//            {
+//                con.Close();
+//            }
+//        }
+//    }
+//}
 
 
 //// CONTOH 1
@@ -149,49 +149,49 @@ namespace EnigmaCampADONetConsole
 //}
 
 
-//// CONTOH 2
-//// INSERT TABLE VIA ADO.NET
-////using System;
-////using System.Data.SqlClient;
-////using System.Xml.Linq;
+//CONTOH 2
+// INSERT TABLE VIA ADO.NET
+//using System;
+//using System.Data.SqlClient;
+//using System.Xml.Linq;
 
-////namespace EnigmaCampADONetConsole
-////{
-////    class Program
-////    {
-////        static void Main(string[] args)
-////        {
-////            new Program().CreateTable();
-////        }
-////        public void CreateTable()
-////        {
-////            SqlConnection con = null;
-////            try
-////            {
-////                // Creating Connection  
-////                con = new SqlConnection("data source=---NAMA LOCALHOST---; database=student; integrated security=SSPI");
-////                // writing sql query  
-////                SqlCommand cm = new SqlCommand(@"insert into student  
-////                (studentid, name)values('101', 'Ronald Trump')", con);
-////                // Opening Connection  
-////                con.Open();
-////                // Executing the SQL query  
-////                cm.ExecuteNonQuery();
-////                // Displaying a message  
-////                Console.WriteLine("Record Inserted Successfully");
-////            }
-////            catch (Exception e)
-////            {
-////                Console.WriteLine("OOPs, something went wrong." + e);
-////            }
-////            // Closing the connection  
-////            finally
-////            {
-////                con.Close();
-////            }
-////        }
-////    }
-////}
+//namespace EnigmaCampADONetConsole
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            new Program().CreateTable();
+//        }
+//        public void CreateTable()
+//        {
+//            SqlConnection con = null;
+//            try
+//            {
+//                // Creating Connection  
+//                con = new SqlConnection("data source=---NAMA LOCALHOST---; database=student; integrated security=SSPI");
+//                // writing sql query  
+//                SqlCommand cm = new SqlCommand(@"insert into student  
+//                (studentid, name)values('101', 'Ronald Trump')", con);
+//                // Opening Connection  
+//                con.Open();
+//                // Executing the SQL query  
+//                cm.ExecuteNonQuery();
+//                // Displaying a message  
+//                Console.WriteLine("Record Inserted Successfully");
+//            }
+//            catch (Exception e)
+//            {
+//                Console.WriteLine("OOPs, something went wrong." + e);
+//            }
+//            // Closing the connection  
+//            finally
+//            {
+//                con.Close();
+//            }
+//        }
+//    }
+//}
 
 //// CONTOH 3
 //// Get Data via ADONET
@@ -466,8 +466,8 @@ namespace EnigmaCampADONetConsole
 ////    }
 ////}
 
-//CONTOH 9
-//DATASET
+////CONTOH 9
+////DATASET
 //using System;
 //using System.Data.SqlClient;
 //using System.Data;
@@ -493,8 +493,8 @@ namespace EnigmaCampADONetConsole
 //    }
 //}
 
-//// CONTOH11
-//// DATATABLE
+// CONTOH11
+// DATATABLE
 //using System;
 //using System.Data;
 //using System.Data.SqlClient;
@@ -506,7 +506,7 @@ namespace EnigmaCampADONetConsole
 //        {
 //            try
 //            {
-//                string ConString = "data source=.; database=StudentDB; integrated security=SSPI";
+//                string ConString = "Server=DESKTOP-QEO3NAA\\SQLEXPRESS;Database=ShippingDB;Trusted_Connection=True;";
 //                using (SqlConnection connection = new SqlConnection(ConString))
 //                {
 //                    SqlDataAdapter da = new SqlDataAdapter("select * from students", connection);
@@ -537,7 +537,80 @@ namespace EnigmaCampADONetConsole
 //            Console.ReadKey();
 //        }
 //    }
-////}
+//}
+
+//using System;
+//using System.Data;
+//using System.Data.SqlClient;
+//using System.Reflection.PortableExecutable;
+//using System.Drawing;
+
+//namespace AdoNetConsoleApplication
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            try
+//            {
+//                string ConString = "Server=DESKTOP-QEO3NAA\\SQLEXPRESS;Database=ShippingDB;Trusted_Connection=True;";
+//                using (SqlConnection connection = new SqlConnection(ConString))
+//                {
+//                    SqlCommand cm = new SqlCommand(
+//                            "SELECT * FROM Student; SELECT * FROM Company", connection);
+//                    //adapter.TableMappings.Add("Table", "Student");
+//                    //adapter.TableMappings.Add("Table1", "Company");
+
+//                    ////Using DataSet
+//                    //DataSet ds = new DataSet();
+
+//                    //adapter.Fill(ds);
+
+//                    //Console.WriteLine("Student");
+//                    //foreach (DataRow row in ds.Tables[0].Rows)
+//                    //{
+//                    //    Console.WriteLine(row["StudentId"] + ",  " + row["Name"]);
+//                    //}
+
+//                    //Console.WriteLine("Companies");
+//                    //foreach (DataRow row in ds.Tables[1].Rows)
+//                    //{
+//                    //    Console.WriteLine(row["CompanyId"] + ",  " + row["CompanyName"]);
+//                    //}
+
+//                    connection.Open();
+//                    SqlDataReader dr = cm.ExecuteReader();
+
+//                    DataSet ds = new DataSet();
+//                    while (!dr.IsClosed)
+//                    {
+//                        DataTable t = new DataTable();
+//                        t.Load(dr);
+//                        ds.Tables.Add(t);
+//                    }
+
+//                    Console.WriteLine("Student");
+//                    foreach (DataRow row in ds.Tables[0].Rows)
+//                    {
+//                        Console.WriteLine(row["StudentId"] + ",  " + row["Name"]);
+//                    }
+
+//                    Console.WriteLine("Companies");
+//                    foreach (DataRow row in ds.Tables[1].Rows)
+//                    {
+//                        Console.WriteLine(row["CompanyId"] + ",  " + row["CompanyName"]);
+//                    }
+//                }
+//            }
+//            catch (Exception e)
+//            {
+//                Console.WriteLine("OOPs, something went wrong.\n" + e);
+//            }
+//            Console.ReadKey();
+//        }
+//    }
+//}
+
 
 ////Contoh 3 Using Menu like basic Pascal/C++ Console
 //using DataTypes.Model;
@@ -742,11 +815,13 @@ namespace EnigmaCampADONetConsole
 //// TRANSACTION
 //using System;
 //using System.Data.SqlClient;
+//using System.Data;
+
 //namespace ADOTransactionsDemo
 //{
 //    class Program
 //    {
-//        public static string ConnectionString = "data source=LAPTOP-ICA2LCQL\\SQLEXPRESS; initial catalog=ADODB; integrated security=True";
+//        public static string ConnectionString = "Server=DESKTOP-QEO3NAA\\SQLEXPRESS;Database=ShippingDB;Trusted_Connection=True;";
 //        static void Main(string[] args)
 //        {
 //            try
@@ -763,6 +838,7 @@ namespace EnigmaCampADONetConsole
 //            }
 //            Console.ReadKey();
 //        }
+
 //        private static void MoneyTransfer()
 //        {
 //            using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -791,6 +867,7 @@ namespace EnigmaCampADONetConsole
 //                }
 //            }
 //        }
+
 //        private static void GetAccountsData()
 //        {
 //            using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -877,3 +954,25 @@ namespace EnigmaCampADONetConsole
 //        }
 //    }
 //}
+
+class Program
+{
+    static void Main()
+    {
+        DataSet dataSet = new DataSet();
+        DataTable dataTable = new DataTable("table1");
+        dataTable.Columns.Add("col1", typeof(string));
+        dataSet.Tables.Add(dataTable);
+
+        string xmlData = "<XmlDS><table1><col1>Value1</col1></table1><table1><col1>Value2</col1></table1></XmlDS>";
+
+        System.IO.StringReader xmlSR = new System.IO.StringReader(xmlData);
+
+        dataSet.ReadXml(xmlSR, XmlReadMode.IgnoreSchema);
+
+        foreach (DataRow row in dataSet.Tables[0].Rows)
+        {
+            //Console.WriteLine(row["StudentId"] + " - " + row["Name"]);
+        }
+    }
+}

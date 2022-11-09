@@ -24,57 +24,25 @@ namespace DataTypes.SqlServices
             commandTypeToUse = new SqlCommandType(this.currentConnection.ConnectionString);
         }
 
-        /// <summary>
-        /// Executes a command that does not return a query
-        /// </summary>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">DbParameter collection to use in executing</param>
         public int ExecuteNonQuery(string commandText, params DbParameter[] parameters)
         {
             return Execute(x => x.ExecuteNonQuery(),  commandText, parameters);
         }
-
-        /// <summary>
-        /// Executes a command that does not return a query
-        /// </summary>
-        /// <param name="cmd">Output parameter that holds reference to the command object just executed</param>/// 
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">DbParameter collection to use in executing</param>
-        /// <returns>DbCommand containing the command executed</returns>
         public int ExecuteNonQuery(out DbCommand cmd, string commandText, params DbParameter[] parameters)
         {
             return Execute(x => x.ExecuteNonQuery(), out cmd, commandText, parameters);
         }
 
-        /// <summary>
-        /// Executes a command that returns a single value
-        /// </summary>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">DbParameter collection to use in executing</param>
-        /// <returns>Object holding result of execution of database</returns>
         public object ExecuteScalar(string commandText, params DbParameter[] parameters)
         {
             return Execute(x => x.ExecuteScalar(), commandText, parameters);
         }
 
-        /// <summary>
-        /// Executes a command that returns a single value
-        /// </summary>
-        /// <param name="cmd">Output parameter that holds reference to the command object just executed</param>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">DbParameter collection to use in executing</param>
-        /// <returns>Object holding result of execution of database</returns>
         public object ExecuteScalar(out DbCommand cmd, string commandText, params DbParameter[] parameters)
         {
             return Execute(x => x.ExecuteScalar(), out cmd, commandText, parameters); 
         }
 
-        /// <summary>
-        /// Executes a command and returns a data reader
-        /// </summary>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">DbParameter collection to use in executing</param>
-        /// <returns>SqlDataReader allowing access to results from command</returns>
         public DbDataReader ExecuteReader(string commandText, params DbParameter[] parameters)
         {
             SqlDataReader reader;
@@ -95,12 +63,6 @@ namespace DataTypes.SqlServices
             return reader;
         }
 
-        /// <summary>
-        /// Executes a command and returns a DataTable
-        /// </summary>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">DbParameter collection to use in executing</param>
-        /// <returns>DataTable populated with data from executing stored procedure</returns>
         public DataTable ExecuteDataTable(string commandText, params DbParameter[] parameters)
         {
             DbCommand cmd =null;
@@ -118,13 +80,6 @@ namespace DataTypes.SqlServices
             return results;
         }
 
-        /// <summary>
-        /// Executes a command and returns a DataTable
-        /// </summary>
-        /// <param name="cmd">Output parameter that holds reference to the command object just executed</param>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">SqlParameter collection to use in executing</param>
-        /// <returns>DataTable populated with data from executing stored procedure</returns>
         public DataTable ExecuteDataTable(out DbCommand cmd, string commandText, params DbParameter[] parameters)
         {
             DataTable result = new DataTable();
@@ -149,12 +104,6 @@ namespace DataTypes.SqlServices
             return result;
         }
 
-        /// <summary>
-        /// Executes a command and returns a DataTable
-        /// </summary>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">SqlParameter collection to use in executing</param>
-        /// <returns>DataTable populated with data from executing stored procedure</returns>
         public DataSet ExecuteDataSet(string commandText, params DbParameter[] parameters)
         {
             DbCommand cmd;
@@ -165,13 +114,6 @@ namespace DataTypes.SqlServices
             return results;
         }
 
-        /// <summary>
-        /// Executes a command and returns a DataTable
-        /// </summary>
-        /// <param name="cmd">Output parameter that holds reference to the command object just executed</param>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">SqlParameter collection to use in executing</param>
-        /// <returns>DataTable populated with data from executing stored procedure</returns>
         public DataSet ExecuteDataSet(out DbCommand cmd, string commandText, params DbParameter[] parameters)
         {
             SqlCommand cmdDataSet;
@@ -197,12 +139,6 @@ namespace DataTypes.SqlServices
             return result;
         }
 
-        /// <summary>
-        /// Executes a command and returns an XML reader.
-        /// </summary>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">SqlParameter collection to use in executing</param>
-        /// <returns>An instance of XmlReader pointing to the stream of xml returned</returns>
         public XmlReader ExecuteXmlReader(string commandText, params DbParameter[] parameters)
         {
             DbCommand cmd;
@@ -213,13 +149,6 @@ namespace DataTypes.SqlServices
             return result;
         }
 
-        /// <summary>
-        /// Executes a command and returns an XML reader.
-        /// </summary>
-        /// <param name="cmd">Output parameter that holds reference to the command object just executed</param>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">DbParameter collection to use in executing</param>
-        /// <returns>An instance of XmlReader pointing to the stream of xml returned</returns>
         public XmlReader ExecuteXmlReader(out DbCommand cmd, string commandText, params DbParameter[] parameters)
         {
             currentConnection.Open();
@@ -230,11 +159,6 @@ namespace DataTypes.SqlServices
             return outputReader;
         }
 
-        /// <summary>
-        /// Builds a SqlCommand to execute
-        /// </summary>
-        /// <param name="commandText">Name of stored procedure to execute</param>
-        /// <param name="parameters">Param array of DbParameter objects to use with command</param>
         /// <returns>SqlCommand object ready for use</returns>
         private SqlCommand BuildCommand(string commandText, params DbParameter[] parameters)
         {
