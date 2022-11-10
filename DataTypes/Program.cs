@@ -49,6 +49,20 @@ public class DapperORM
         return students;
     }
 
+    private static Student GetById()
+    {
+        Student student = new Student();
+        var Id = 1002;
+        using (var connection = new SqlConnection(sqlConnectionString))
+        {
+            connection.Open();
+            var studentRepo = connection.Query<Student>("SELECT * FROM Student Where StudentId = @StudentId", new {StudentId = Id}).ToList();
+            student = studentRepo.FirstOrDefault();
+            connection.Close();
+        }
+        return student;
+    }
+
     //This method inserts a student record in database    
     private static int InsertStudent(Student student)
     {
