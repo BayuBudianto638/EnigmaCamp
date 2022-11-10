@@ -28,106 +28,106 @@
 //    }
 //}
 
-using Dapper;
-using DataTypes.Application;
-using System.Data.SqlClient;
+//using Dapper;
+//using DataTypes.Application;
+//using System.Data.SqlClient;
 
-public class DapperORM
-{
-    private static string sqlConnectionString = @"Server=DESKTOP-QEO3NAA\SQLEXPRESS;Database=ShippingDB;Trusted_Connection=True;";
-
-    //This method gets all record from student table    
-    private static List<Student> GetAllStudent()
-    {
-        List<Student> students = new List<Student>();
-        using (var connection = new SqlConnection(sqlConnectionString))
-        {
-            connection.Open();
-            students = connection.Query<Student>("Select Id, Name from Student").ToList();
-            connection.Close();
-        }
-        return students;
-    }
-
-    private static Student GetById()
-    {
-        Student student = new Student();
-        var Id = 1002;
-        using (var connection = new SqlConnection(sqlConnectionString))
-        {
-            connection.Open();
-            var studentRepo = connection.Query<Student>("SELECT * FROM Student Where StudentId = @StudentId", new {StudentId = Id}).ToList();
-            student = studentRepo.FirstOrDefault();
-            connection.Close();
-        }
-        return student;
-    }
-
-    //This method inserts a student record in database    
-    private static int InsertStudent(Student student)
-    {
-        using (var connection = new SqlConnection(sqlConnectionString))
-        {
-            connection.Open();
-            var affectedRows = connection.Execute("Insert into Student (Name) values (@Name)",
-                        new { Name = student.Name });
-            connection.Close();
-            return affectedRows;
-        }
-    }
-
-    //This method update student record in database    
-    private static int UpdateStudent(Student student)
-    {
-        using (var connection = new SqlConnection(sqlConnectionString))
-        {
-            connection.Open();
-            var affectedRows = connection.Execute("Update Student set Name = @Name Where Id = @Id",
-                    new { Id = student.StudentId, Name = student.Name });
-            connection.Close();
-            return affectedRows;
-        }
-    }
-
-    //This method deletes a student record from database    
-    private static int DeleteStudent(Student student)
-    {
-        using (SqlConnection connection = new SqlConnection(sqlConnectionString))
-        {
-            connection.Open();
-            var affectedRows = connection.Execute("Delete from Student Where Id = @Id", new { Id = student.StudentId });
-            connection.Close();
-            return affectedRows;
-        }
-    }
-
-    class Program
-    {
-        static void Main()
-        {
-            var student = new Student();
-            student.StudentId = 1001;
-            student.Name = "Anton";
-            var i = InsertStudent(student);
-        }
-    }
-}
-
-public class Student
-{
-    public int StudentId { get; set; }
-    public string Name { get; set; }
-}
-
-//class Program
+//public class DapperORM
 //{
-//    static void Main()
+//    private static string sqlConnectionString = @"Server=DESKTOP-QEO3NAA\SQLEXPRESS;Database=ShippingDB;Trusted_Connection=True;";
+
+//    //This method gets all record from student table    
+//    private static List<Student> GetAllStudent()
 //    {
-//        var student = new Student();
-//        student.StudentId = 1001;
-//        student.Name = "Anton";
-//        var studentRepo = new StudentRepository();
-//        studentRepo.GetById(1002);
-//        //studentRepo.Insert(student);
+//        List<Student> students = new List<Student>();
+//        using (var connection = new SqlConnection(sqlConnectionString))
+//        {
+//            connection.Open();
+//            students = connection.Query<Student>("Select Id, Name from Student").ToList();
+//            connection.Close();
+//        }
+//        return students;
+//    }
+
+//    private static Student GetById()
+//    {
+//        Student student = new Student();
+//        var Id = 1002;
+//        using (var connection = new SqlConnection(sqlConnectionString))
+//        {
+//            connection.Open();
+//            var studentRepo = connection.Query<Student>("SELECT * FROM Student Where StudentId = @StudentId", new {StudentId = Id}).ToList();
+//            student = studentRepo.FirstOrDefault();
+//            connection.Close();
+//        }
+//        return student;
+//    }
+
+//    //This method inserts a student record in database    
+//    private static int InsertStudent(Student student)
+//    {
+//        using (var connection = new SqlConnection(sqlConnectionString))
+//        {
+//            connection.Open();
+//            var affectedRows = connection.Execute("Insert into Student (Name) values (@Name)",
+//                        new { Name = student.Name });
+//            connection.Close();
+//            return affectedRows;
+//        }
+//    }
+
+//    //This method update student record in database    
+//    private static int UpdateStudent(Student student)
+//    {
+//        using (var connection = new SqlConnection(sqlConnectionString))
+//        {
+//            connection.Open();
+//            var affectedRows = connection.Execute("Update Student set Name = @Name Where Id = @Id",
+//                    new { Id = student.StudentId, Name = student.Name });
+//            connection.Close();
+//            return affectedRows;
+//        }
+//    }
+
+//    //This method deletes a student record from database    
+//    private static int DeleteStudent(Student student)
+//    {
+//        using (SqlConnection connection = new SqlConnection(sqlConnectionString))
+//        {
+//            connection.Open();
+//            var affectedRows = connection.Execute("Delete from Student Where Id = @Id", new { Id = student.StudentId });
+//            connection.Close();
+//            return affectedRows;
+//        }
+//    }
+
+//    class Program
+//    {
+//        static void Main()
+//        {
+//            var student = new Student();
+//            student.StudentId = 1001;
+//            student.Name = "Anton";
+//            var i = InsertStudent(student);
+//        }
 //    }
 //}
+
+//public class Student
+//{
+//    public int StudentId { get; set; }
+//    public string Name { get; set; }
+//}
+
+////class Program
+////{
+////    static void Main()
+////    {
+////        var student = new Student();
+////        student.StudentId = 1001;
+////        student.Name = "Anton";
+////        var studentRepo = new StudentRepository();
+////        studentRepo.GetById(1002);
+////        //studentRepo.Insert(student);
+////    }
+////}
