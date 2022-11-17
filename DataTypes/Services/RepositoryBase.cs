@@ -14,17 +14,18 @@ namespace DataTypes.Services
 {
     public class RepositoryBase<T> : IRepository<T> where T : class
     {
-        protected SchoolContext context;
+        protected SchoolContext _context;
         private IDbContextTransaction _transaction;
 
-        public RepositoryBase()
+        public RepositoryBase(SchoolContext context)
         {
-            context = new SchoolContext();
+            //context = new SchoolContext();
+            _context = context;
         }
 
         public void Begin()
         {
-            this._transaction = context.Database.BeginTransaction();
+            this._transaction = _context.Database.BeginTransaction();
         }
 
         public (bool, string) Commit()
@@ -50,13 +51,13 @@ namespace DataTypes.Services
 
         public void Delete(object T)
         {
-            context.Remove(T);
-            context.SaveChanges();
+            _context.Remove(T);
+            _context.SaveChanges();
         }
 
         public List<T> GetAll()
         {
-            var query = context.Set<T>() as IQueryable<T>;
+            var query = _context.Set<T>() as IQueryable<T>;
             return query.ToList();
         }
 
@@ -76,14 +77,14 @@ namespace DataTypes.Services
 
         public void Save(object T)
         {
-            context.Add(T);
-            context.SaveChanges();
+            _context.Add(T);
+            _context.SaveChanges();
         }
 
         public void Update(object T)
         {
-            context.Update(T);
-            context.SaveChanges();
+            _context.Update(T);
+            _context.SaveChanges();
         }
     }
 }

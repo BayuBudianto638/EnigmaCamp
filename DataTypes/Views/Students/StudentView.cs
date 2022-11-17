@@ -1,4 +1,5 @@
 ﻿using DataTypes.Services.Students;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,10 +50,12 @@ namespace DataTypes.Views.Students
                         break;
                     case "4":
                         //GetAllStudent();
+                        //var data = _service.GetAllStudents();
                         showMenu = true;
                         break;
                     case "5":
                         //GetAllStudent();
+                        var data = _service.GetAllStudents();
                         showMenu = true;
                         break;
                     case "6":

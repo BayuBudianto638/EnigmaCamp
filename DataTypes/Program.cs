@@ -261,35 +261,49 @@ using DataTypes.Views.Courses;
 using DataTypes.Interfaces;
 using DataTypes.Services;
 using DataTypes.Services.Courses;
+using Microsoft.Extensions.Logging;
+using System.Globalization;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var serviceProvider = new ServiceCollection()
-            .AddLogging()
-            .AddSingleton<ICourseService, CourseService>()
-            .AddSingleton<IRepository<Course>, RepositoryBase<Course>>()
-            .AddSingleton<IRepository<Student>, RepositoryBase<Student>>()            
-            // Dependency Injection for Course
-            .AddSingleton<CourseView>(x => new CourseView(x.GetService<IRepository<Course>>(), x.GetService<CreateCourseView>(), 
-                                            x.GetService<DeleteCourseView>(), x.GetService<EditCourseView>(), 
-                                            x.GetService<GetAllCourseView>()))
-            .AddSingleton<CreateCourseView>(x => new CreateCourseView(x.GetService<ICourseService>(),x.GetService<IRepository<Course>>()))
-            .AddSingleton<DeleteCourseView>(x => new DeleteCourseView(x.GetService<IRepository<Course>>()))
-            .AddSingleton<EditCourseView>(x => new EditCourseView(x.GetService<IRepository<Course>>()))
-            .AddSingleton<GetAllCourseView>(x => new GetAllCourseView(x.GetService<IRepository<Course>>()))
+        #region Hide
+        //var serviceProvider = new ServiceCollection()
+        //    .AddLogging()
+        //    .AddSingleton<ICourseService, CourseService>()
+        //    .AddSingleton<IRepository<Course>, RepositoryBase<Course>>()
+        //    .AddSingleton<IRepository<Student>, RepositoryBase<Student>>()            
+        //    // Dependency Injection for Course
+        //    .AddSingleton<CourseView>(x => new CourseView(x.GetService<IRepository<Course>>(), x.GetService<CreateCourseView>(), 
+        //                                    x.GetService<DeleteCourseView>(), x.GetService<EditCourseView>(), 
+        //                                    x.GetService<GetAllCourseView>()))
+        //    .AddSingleton<CreateCourseView>(x => new CreateCourseView(x.GetService<ICourseService>(),x.GetService<IRepository<Course>>()))
+        //    .AddSingleton<DeleteCourseView>(x => new DeleteCourseView(x.GetService<IRepository<Course>>()))
+        //    .AddSingleton<EditCourseView>(x => new EditCourseView(x.GetService<IRepository<Course>>()))
+        //    .AddSingleton<GetAllCourseView>(x => new GetAllCourseView(x.GetService<IRepository<Course>>()))
 
-            // Dependency Injection for Student
+        //    // Dependency Injection for Student
 
-            .BuildServiceProvider();
+        //    .BuildServiceProvider();
 
-        var studentService = serviceProvider.GetService<IStudentService>();
-        var studentCourseService = serviceProvider.GetService<IStudentCourseService>();
-        var courseRepoService = serviceProvider.GetService<IRepository<Course>>();
-        var studentRepoService = serviceProvider.GetService<IRepository<Student>>();
+        //var studentService = serviceProvider.GetService<IStudentService>();
+        //var studentCourseService = serviceProvider.GetService<IStudentCourseService>();
+        //var courseRepoService = serviceProvider.GetService<IRepository<Course>>();
+        //var studentRepoService = serviceProvider.GetService<IRepository<Student>>();
 
-        //
+        ////
+        //var courseView = serviceProvider.GetService<CourseView>();
+        //var studentView = serviceProvider.GetService<StudentView>();
+        #endregion
+
+        string s = DateTime.Now.ToString("ddMMyyyy");
+
+        IServiceCollection services = new ServiceCollection();
+        Startup startup = new Startup();
+        startup.ConfigureServices(services);
+        IServiceProvider serviceProvider = services.BuildServiceProvider();
+
         var courseView = serviceProvider.GetService<CourseView>();
         var studentView = serviceProvider.GetService<StudentView>();
 
@@ -317,8 +331,8 @@ class Program
                     showMenu = true;
                     break;
                 case "3":
-                    var studentCourse = new StudentCourseView(studentCourseService);
-                    studentCourse.DisplayView();
+                    //var studentCourse = new StudentCourseView(studentCourseService);
+                    //studentCourse.DisplayView();
                     showMenu = true;
                     break;
                 case "4":

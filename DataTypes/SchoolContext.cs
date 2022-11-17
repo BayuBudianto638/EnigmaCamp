@@ -17,14 +17,19 @@ namespace DataTypes
         public DbSet<StudentCourse> StudentCourses { get; set; }
         //public DbSet<>
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public SchoolContext(DbContextOptions<SchoolContext> options)
+                : base(options)
         {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false);
-            var configuration = builder.Build();
-
-            string conStr = configuration.GetConnectionString("DBConnection");
-            optionsBuilder.UseLazyLoadingProxies(); // Lazy Loading, use Microsoft.EntityFrameworkCore.Proxies
-            optionsBuilder.UseSqlServer(conStr);
         }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false);
+        //    var configuration = builder.Build();
+
+        //    string conStr = configuration.GetConnectionString("DBConnection");
+        //    //optionsBuilder.UseLazyLoadingProxies(); // Lazy Loading, use Microsoft.EntityFrameworkCore.Proxies
+        //    optionsBuilder.UseSqlServer(conStr);
+        //}
     }
 }

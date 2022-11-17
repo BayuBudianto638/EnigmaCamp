@@ -43,8 +43,8 @@ namespace DataTypes.Views.StudentCourses
                         showMenu = true;
                         break;
                     case "3":
-                        var deleteStudentView = new DeleteStudentCourseView(_service);
-                        deleteStudentView.DisplayView();
+                        //var deleteStudentView = new DeleteStudentCourseView(_service);
+                        //deleteStudentView.DisplayView();
                         showMenu = true;
                         break;
                     case "4":
