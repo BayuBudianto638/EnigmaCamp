@@ -17,8 +17,8 @@ namespace ECWebApi.Controllers
             _studentService = studentService;
         }
 
-        //[Route("api/[GetAllStudent]")]
-        [HttpGet(Name = "GetAllStudent")]
+        //[Route("GetAllStudent")]
+        [HttpGet("GetAllStudent")]
         [Produces("application/json")]
         public List<StudentModel> GetAllStudent()
         {
@@ -27,19 +27,22 @@ namespace ECWebApi.Controllers
             return studentList;
         }
 
-        [HttpPost(Name = "SaveStudent")]
+        [Route("SaveStudent")]
+        [HttpPost]
         public void SaveStudent([FromBody] StudentModel model)
         {
             _studentService.SaveStudent(model);
         }
 
-        [HttpPatch(Name = "UpdateStudent")]
+        [Route("UpdateStudent")]
+        [HttpPatch]
         public void UpdateStudent([FromBody] StudentModel model)
         {
             _studentService.UpdateStudent(model);
         }
 
-        [HttpDelete(Name = "DeleteStudent")]
+        [Route("DeleteStudent")]
+        [HttpDelete]
         public void DeleteStudent(int studentId)
         {
             _studentService.DeleteStudent(studentId);

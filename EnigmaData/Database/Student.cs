@@ -9,8 +9,9 @@ namespace EnigmaData.Database
     public class Student
     {
         public int StudentId { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Country { get; set; }
+        public string StudentCode { get; set; }
+        public string StudentName { get; set; }
+        //public DateTime DoB { get; set; }
+        //public string Gend { get; set; }
     }
 }

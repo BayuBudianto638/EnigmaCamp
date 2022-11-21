@@ -39,9 +39,9 @@ namespace EnigmaService.DefaultService
                 var student = new StudentModel();
 
                 student.StudentId = item.StudentId;
-                student.Name = item.Name;
-                student.Address = item.Address;
-                student.Country = item.Country;
+                student.Name = item.StudentName;
+                //student.Address = item.Address;
+                //student.Country = item.Country;
 
                 studentModelList.Add(student);
             }
@@ -53,9 +53,9 @@ namespace EnigmaService.DefaultService
         {
             var student = new Student()
             {
-                Name = studentModel.Name,
-                Address = studentModel.Address,
-                Country = studentModel.Country
+                //Name = studentModel.Name,
+                //Address = studentModel.Address,
+                //Country = studentModel.Country
             };
 
             _schoolContext.Students.Add(student);
@@ -67,9 +67,9 @@ namespace EnigmaService.DefaultService
             var student = new Student()
             {
                 StudentId = studentModel.StudentId,
-                Name = studentModel.Name,
-                Address = studentModel.Address,
-                Country = studentModel.Country
+                //Name = studentModel.Name,
+                //Address = studentModel.Address,
+                //Country = studentModel.Country
             };
 
             _schoolContext.Students.Update(student);
