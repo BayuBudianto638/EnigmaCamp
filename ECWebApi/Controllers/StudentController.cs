@@ -17,7 +17,7 @@ namespace ECWebApi.Controllers
             _studentService = studentService;
         }
 
-        [Route("api/[GetAllStudent]")]
+        //[Route("api/[GetAllStudent]")]
         [HttpGet(Name = "GetAllStudent")]
         [Produces("application/json")]
         public List<StudentModel> GetAllStudent()
