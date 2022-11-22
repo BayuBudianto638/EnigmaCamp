@@ -1,82 +1,103 @@
-﻿using DataTypes.Interfaces;
-using DataTypes.Model;
-using DataTypes.Services.Courses;
-using DataTypes.Services.StudentCourses;
-using DataTypes.Services;
-using DataTypes.Services.Students;
-using DataTypes.Views.Courses;
-using DataTypes.Views.Students;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
 
 namespace DataTypes
 {
+
+    //public delegate ProductRegistrationUseCase ProductRegistrationResolver(RepoType key);
+
+    //public delegate FindProductUseCase FindProductResolver(RepoType key);
+
     public class Startup
     {
-        IConfigurationRoot Configuration { get; }
-        private string conStr = "";
-        private SchoolContext _schoolContext;
-        public Startup()
-        {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false);
-            var configuration = builder.Build();
+        //private readonly IConfiguration _configuration;
 
-            conStr = configuration.GetConnectionString("DBConnection");
+        //public IServiceProvider Provider { get; }
 
-            Configuration = builder.Build();
-        }
+        //public Startup()
+        //{
+        //    _configuration = readConfiguration();
+        //    Provider = ConfigureServices();
+        //}
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddLogging();            
-            services.AddSingleton<IConfigurationRoot>(Configuration);
-            services.AddSingleton<IStudentService, StudentService>();
-            services.AddSingleton<ICourseService, CourseService>();
-            services.AddSingleton<IRepository<Course>, RepositoryBase<Course>>();
-            services.AddSingleton<IRepository<Student>, RepositoryBase<Student>>();
+        ////public void ConfigureServices(IServiceCollection services)
+        ////{
+        ////    services
+        ////   .AddSingleton<IProductRepository>(_ => new ProductArrayRepository())
+        ////   .AddTransient<ProductRegistrationUseCase>(provider => new ProductRegistrationUseCase(provider.GetRequiredService<IProductRepository>()))
+        ////   .AddTransient<FindProductUseCase>(provider => new FindProductUseCase(provider.GetRequiredService<IProductRepository>()));
+        ////}
 
-            services.AddDbContext<SchoolContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
-            services
-            .AddDbContext<SchoolContext>(options =>
-            {
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DBConnection"), builder =>
-                        builder.MigrationsAssembly("migration.presentence"));
-            }, ServiceLifetime.Singleton);
+        //private IConfiguration readConfiguration()
+        //{
+        //    var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        //    return new ConfigurationBuilder()
+        //        .SetBasePath(Directory.GetCurrentDirectory())
+        //        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        //        .AddJsonFile($"appsettings.{environment}.json", optional: true)
+        //        .AddEnvironmentVariables().Build();
+        //}
 
-            //// Dependency Injection for Course
-            services.AddSingleton<CourseView>(x => new CourseView(x.GetService<IRepository<Course>>(), x.GetService<CreateCourseView>(),
-                                            x.GetService<DeleteCourseView>(), x.GetService<EditCourseView>(),
-                                            x.GetService<GetAllCourseView>()));
-            services.AddSingleton<CreateCourseView>(x => new CreateCourseView(x.GetService<ICourseService>(), x.GetService<IRepository<Course>>()));
-            services.AddSingleton<DeleteCourseView>(x => new DeleteCourseView(x.GetService<IRepository<Course>>()));
-            services.AddSingleton<EditCourseView>(x => new EditCourseView(x.GetService<IRepository<Course>>()));
-            services.AddSingleton<GetAllCourseView>(x => new GetAllCourseView(x.GetService<IRepository<Course>>()));
-
-            services.AddSingleton<StudentView>(x => new StudentView(x.GetService<IStudentService>()));
-
-            // Dependency Injection for Student
-            //_schoolContext = services.GetService<SchoolContext>();
-
-            services.BuildServiceProvider();
-           
-
-            //var studentService = services.GetService<IStudentService>();
-            //var studentCourseService = services.GetService<IStudentCourseService>();
-            //var courseRepoService = services.GetService<IRepository<Course>>();
-            //var studentRepoService = services.GetService<IRepository<Student>>();
-
-            ////
-            //var courseView = services.GetService<CourseView>();
-            //var studentView = services.GetService<StudentView>();
-        }
-
+        //private IServiceProvider ConfigureServices()
+        //{
+        //    var services = new ServiceCollection();
+        //    services
+        //        .Configure<AppSettings>(_configuration.GetSection("App")) // For using IOptions
+        //        .AddSingleton<IConfiguration>(_configuration)
+        //        .AddSingleton<DapperContext>(provider =>
+        //        {
+        //            var config = provider.GetRequiredService<IConfiguration>();
+        //            var connString = config.GetConnectionString("DefaultConnection");
+        //            return new DapperContext(connString);
+        //        })
+        //        .AddSingleton<AppSettings>((provider) => // For using Binding
+        //        {
+        //            var appSettings = new AppSettings();
+        //            var config = provider.GetRequiredService<IConfiguration>();
+        //            config.Bind("App", appSettings);
+        //            return appSettings;
+        //        })
+        //        .AddSingleton<IProductArrayRepository>(_ => new ProductArrayRepository())
+        //        .AddTransient<IProductFileRepository>((provider) =>
+        //        {
+        //            var appSettings = provider.GetRequiredService<AppSettings>();
+        //            var filePath = appSettings.FileDirectory + appSettings.FileName;
+        //            return new ProductFileRepository(filePath);
+        //        })
+        //        .AddTransient<IProductDbRepository, ProductDbRepository>()
+        //        .AddTransient<ProductRegistrationResolver>(provider => key =>
+        //        {
+        //            switch (key)
+        //            {
+        //                case RepoType.ARRAY:
+        //                    return new ProductRegistrationUseCase(
+        //                    provider.GetRequiredService<IProductArrayRepository>());
+        //                case RepoType.FILE:
+        //                    return new ProductRegistrationUseCase(
+        //                    provider.GetRequiredService<IProductFileRepository>());
+        //                case RepoType.DB:
+        //                    return new ProductRegistrationUseCase(
+        //                    provider.GetRequiredService<IProductDbRepository>());
+        //                default: throw new Exception("Key not found");
+        //            }
+        //        }
+        //        )
+        //        .AddTransient<FindProductResolver>(provider => key =>
+        //        {
+        //            switch (key)
+        //            {
+        //                case RepoType.ARRAY:
+        //                    return new FindProductUseCase(provider.GetRequiredService<IProductArrayRepository>());
+        //                case RepoType.FILE:
+        //                    return new FindProductUseCase(provider.GetRequiredService<IProductFileRepository>());
+        //                case RepoType.DB:
+        //                    return new FindProductUseCase(provider.GetRequiredService<IProductDbRepository>());
+        //                default: throw new Exception("Key not found");
+        //            }
+        //        }
+        //        ).AddTransient<BulkProductRegistrationUseCase>(provider =>
+        //            new BulkProductRegistrationUseCase(provider.GetRequiredService<IProductDbRepository>()));
+        //    return services.BuildServiceProvider();
+        //}
     }
 }
