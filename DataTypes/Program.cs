@@ -240,35 +240,35 @@
 //    }
 //}
 
-using System;
+//using System;
 
-namespace InterviewQuestionPart4
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Please Enter a Number");
+//namespace InterviewQuestionPart4
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            Console.WriteLine("Please Enter a Number");
 
-            //read number from user    
-            int number = Convert.ToInt32(Console.ReadLine());
+//            //read number from user    
+//            int number = Convert.ToInt32(Console.ReadLine());
 
-            //invoke the static method    
-            double factorial = Factorial(number);
+//            //invoke the static method    
+//            double factorial = Factorial(number);
 
-            //print the factorial result    
-            Console.WriteLine("factorial of" + number + "=" + factorial.ToString());
+//            //print the factorial result    
+//            Console.WriteLine("factorial of" + number + "=" + factorial.ToString());
 
-        }
-        public static double Factorial(int number)
-        {
-            if (number == 0)
-                return 1;
-            return number * Factorial(number * 1);//Recursive call    
+//        }
+//        public static double Factorial(int number)
+//        {
+//            if (number == 0)
+//                return 1;
+//            return number * Factorial(number * 1);//Recursive call    
 
-        }
-    }
-}
+//        }
+//    }
+//}
 
 //using System;
 
@@ -299,3 +299,39 @@ namespace InterviewQuestionPart4
 //        }
 //    }
 //}
+
+//// Pass By Value
+//class Program
+//{
+//    static void Main()
+//    {
+//        var a = 100;
+//        var b = PassByValue(a);
+
+//        Console.WriteLine($"Nilai a {a}");
+//        Console.WriteLine($"Nilai b {b}");
+//    }
+
+//    public static int PassByValue(int a)
+//    {
+//        return a * 10;
+//    }
+//}
+
+// Pass By Reference
+class Program
+{
+    static void Main()
+    {
+        var a = 100;
+        var b = PassByValue(ref a);
+
+        Console.WriteLine($"Nilai a {a}");
+        Console.WriteLine($"Nilai b {b}");
+    }
+
+    public static int PassByValue(ref int a)
+    {
+        return a = a - 10;
+    }
+}
