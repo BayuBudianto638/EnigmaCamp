@@ -243,29 +243,29 @@
 
 // C# program to demonstrate the working
 // of Conditional Operator
-using System;
-namespace Conditional
-{
-    class EnigmaCamp
-    {
-        // Main Function
-        static void Main(string[] args)
-        {
-            int x = 5, y = 10, result;
+//using System;
+//namespace Conditional
+//{
+//    class EnigmaCamp
+//    {
+//        // Main Function
+//        static void Main(string[] args)
+//        {
+//            int x = 5, y = 10, result;
 
-            // To find which value is greater
-            // Using Conditional Operator
-            result = x > y ? x : y;
+//            // To find which value is greater
+//            // Using Conditional Operator
+//            result = x > y ? x : y;
 
-            // To display the result
-            Console.WriteLine("Result: " + result);
+//            // To display the result
+//            Console.WriteLine("Result: " + result);
 
-            // To find which value is greater
-            // Using Conditional Operator
-            result = x < y ? x : y;
+//            // To find which value is greater
+//            // Using Conditional Operator
+//            result = x < y ? x : y;
 
-            // To display the result
-            Console.WriteLine("Result: " + result);
-        }
-    }
-}
+//            // To display the result
+//            Console.WriteLine("Result: " + result);
+//        }
+//    }
+//}
