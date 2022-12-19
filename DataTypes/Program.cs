@@ -44,8 +44,8 @@
 //    }
 //}
 
-// C# program to demonstrate the working
-// of Relational Operators
+//// C# program to demonstrate the working
+//// of Relational Operators
 //using System;
 //namespace Relational
 //{
@@ -116,48 +116,48 @@
 //    }
 //}
 
-//// C# program to demonstrate the working
-//// of Bitwise Operators
-//using System;
-//namespace Bitwise
-//{
-//    class EnigmaCamp
-//    {
+// C# program to demonstrate the working
+// of Bitwise Operators
+using System;
+namespace Bitwise
+{
+    class EnigmaCamp
+    {
 
-//        // Main Function
-//        static void Main(string[] args)
-//        {
-//            int x = 5, y = 10, result;
+        // Main Function
+        static void Main(string[] args)
+        {
+            int x = 1, y = 4, result;
 
-//            // Bitwise AND Operator
-//            result = x & y;
-//            Console.WriteLine("Bitwise AND: " + result);
+            // Bitwise AND Operator
+            result = x & y;
+            Console.WriteLine("Bitwise AND: " + result);
 
-//            // Bitwise OR Operator
-//            result = x | y;
-//            Console.WriteLine("Bitwise OR: " + result);
+            // Bitwise OR Operator
+            result = x | y;
+            Console.WriteLine("Bitwise OR: " + result);
 
-//            // Bitwise XOR Operator
-//            result = x ^ y;
-//            Console.WriteLine("Bitwise XOR: " + result);
+            // Bitwise XOR Operator
+            result = x ^ y;
+            Console.WriteLine("Bitwise XOR: " + result);
 
-//            // Bitwise AND Operator
-//            result = ~x;
-//            Console.WriteLine("Bitwise Complement: " + result);
+            // Bitwise AND Operator
+            result = ~x;
+            Console.WriteLine("Bitwise Complement: " + result);
 
-//            // Bitwise LEFT SHIFT Operator
-//            result = x << 2;
-//            Console.WriteLine("Bitwise Left Shift: " + result);
+            // Bitwise LEFT SHIFT Operator
+            result = x << 2;
+            Console.WriteLine("Bitwise Left Shift: " + result);
 
-//            // Bitwise RIGHT SHIFT Operator
-//            result = x >> 2;
-//            Console.WriteLine("Bitwise Right Shift: " + result);
-//        }
-//    }
-//}
+            // Bitwise RIGHT SHIFT Operator
+            result = x >> 2;
+            Console.WriteLine("Bitwise Right Shift: " + result);
+        }
+    }
+}
 
-//// C# program to demonstrate the working
-//// of Assignment Operators
+// C# program to demonstrate the working
+// of Assignment Operators
 //using System;
 //namespace Assignment
 //{
@@ -206,44 +206,44 @@
 //            // initialize variable x again
 //            x = 8;
 
-//            // it means x = x << 2
-//            x <<= 2;
-//            Console.WriteLine("Left Shift Assignment Operator: " + x);
+//// it means x = x << 2
+//x <<= 2;
+//Console.WriteLine("Left Shift Assignment Operator: " + x);
 
-//            // initialize variable x again
-//            x = 8;
+//// initialize variable x again
+//x = 8;
 
-//            // it means x = x >> 2
-//            x >>= 2;
-//            Console.WriteLine("Right Shift Assignment Operator: " + x);
+//// it means x = x >> 2
+//x >>= 2;
+//Console.WriteLine("Right Shift Assignment Operator: " + x);
 
-//            // initialize variable x again
-//            x = 12;
+//// initialize variable x again
+//x = 12;
 
-//            // it means x = x >> 4
-//            x &= 4;
-//            Console.WriteLine("Bitwise AND Assignment Operator: " + x);
+//// it means x = x >> 4
+//x &= 4;
+//Console.WriteLine("Bitwise AND Assignment Operator: " + x);
 
-//            // initialize variable x again
-//            x = 12;
+//// initialize variable x again
+//x = 12;
 
-//            // it means x = x >> 4
-//            x ^= 4;
-//            Console.WriteLine("Bitwise Exclusive OR Assignment Operator: " + x);
+//// it means x = x >> 4
+//x ^= 4;
+//Console.WriteLine("Bitwise Exclusive OR Assignment Operator: " + x);
 
-//            // initialize variable x again
-//            x = 12;
+//// initialize variable x again
+//x = 12;
 
-//            // it means x = x >> 4
-//            x |= 4;
-//            Console.WriteLine("Bitwise Inclusive OR Assignment Operator: " + x);
+//// it means x = x >> 4
+//x |= 4;
+//Console.WriteLine("Bitwise Inclusive OR Assignment Operator: " + x);
 //        }
 //    }
 //}
 
-// C# program to demonstrate the working
-// of Conditional Operator
-//using System;
+//// C# program to demonstrate the working
+//// of Conditional Operator
+////using System;
 //namespace Conditional
 //{
 //    class EnigmaCamp
