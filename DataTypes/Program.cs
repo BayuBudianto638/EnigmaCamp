@@ -141,68 +141,306 @@
 //	}
 //}
 
+// for with switch and if
+//using System;
+//class Program
+//{
+//    static void Main()
+//    {
+//        for (int i = 1; i <= 10; i++)
+//        {
+//            switch (i)
+//            {
+//                case 1:
+//                case 3:
+//                case 5:
+//                case 7:
+//                case 9:
+//                    Console.WriteLine(i + " is odd");
+//                    break;
+//                case 2:
+//                case 4:
+//                case 6:
+//                case 8:
+//                case 10:
+//                    Console.WriteLine(i + " is even");
+//                    break;
+//            }
 
-using System;
-class EnigmaCamp
+//            if (i % 3 == 0 || i % 5 == 0)
+//            {
+//                Console.WriteLine(i + " is divisible by 3 or 5");
+//            }
+//        }
+
+//        Console.WriteLine("Done!");
+//    }
+//}
+
+// for while with if logical operator
+//using System;
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        for (int i = 1; i <= 10; i++)
+//        {
+//            int j = 1;
+//            while (j <= i)
+//            {
+//                if (i % j == 0 && j != 1 && j != i)
+//                {
+//                    Console.WriteLine(i + " is not a prime number");
+//                    break;
+//                }
+
+//                if (j == i)
+//                {
+//                    Console.WriteLine(i + " is a prime number");
+//                }
+
+//                j++;
+//            }
+
+//        }
+
+//        Console.WriteLine("Done!");
+//    }
+//}
+
+//using System;
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 10;
+
+//        while (x > 0 && x < 20)
+//        {
+//            if (x % 2 == 0)
+//            {
+//                Console.WriteLine(x + " is even");
+//            }
+//            else
+//            {
+//                Console.WriteLine(x + " is odd");
+//            }
+//            x++;
+//        }
+
+//        Console.WriteLine("Done!");
+//    }
+//}
+
+//// do while switch and if
+//using System;
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 10;
+
+//        do
+//        {
+//            switch (x)
+//            {
+//                case 10:
+//                    Console.WriteLine("x is 10");
+//                    break;
+//                case 9:
+//                    Console.WriteLine("x is 9");
+//                    break;
+//                default:
+//                    Console.WriteLine("x is not 10 or 9");
+//                    break;
+//            }
+
+//            if (x % 2 == 0 && x % 3 == 0)
+//            {
+//                Console.WriteLine(x + " is divisible by both 2 and 3");
+//            }
+//            else if (x % 2 == 0)
+//            {
+//                Console.WriteLine(x + " is divisible by 2");
+//            }
+//            else if (x % 3 == 0)
+//            {
+//                Console.WriteLine(x + " is divisible by 3");
+//            }
+//            else
+//            {
+//                Console.WriteLine(x + " is not divisible by 2 or 3");
+//            }
+
+//            x--;
+//        } while (x > 0);
+
+//        Console.WriteLine("Done!");
+//    }
+//}
+
+// for, while, do while, switch and if
+class Program
 {
-    // Main Method
-    static public void Main()
+    static void Main()
     {
-        // EnigmaCamp is printed only 2 times
-        // because of break statement
-        List<int> list = new List<int>();
-        int size = 10;
+        int x = 10;
 
-        list = Enumerable.Range(1, size).Select(i => i).ToList();
-
-        // FOR
-        Console.WriteLine("FOR");
-        for (int i = 1; i <= list.Count; i++)
+        for (int i = 1; i <= 5; i++)
         {
-            Console.WriteLine($"{i}");
+            int j = 1;
+            while (j <= i)
+            {
+                if (i % j == 0 && j != 1 && j != i)
+                {
+                    Console.WriteLine(i + " is not a prime number");
+                    goto label;
+                }
+
+                if (j == i)
+                {
+                    Console.WriteLine(i + " is a prime number");
+                }
+
+                j++;
+            }
+
+        label:
+            continue;
         }
 
-        Console.WriteLine("WHILE");
-        // WHILE
-        int item = 1;
-        while (item <= list.Count)
+        do
         {
-            Console.WriteLine($"{item}");
-            item++;
-        }
+            switch (x)
+            {
+                case 10:
+                    Console.WriteLine("x is 10");
+                    break;
+                case 9:
+                    Console.WriteLine("x is 9");
+                    break;
+                default:
+                    Console.WriteLine("x is not 10 or 9");
+                    break;
+            }
 
-        Console.WriteLine("FOREACH");
-        // FOREACH
-        foreach (var i in list)
-        {
-            Console.WriteLine($"{i}");
-        }
+            if (x % 2 == 0 && x % 3 == 0)
+            {
+                Console.WriteLine(x + " is divisible by both 2 and 3");
+            }
+            else if (x % 2 == 0 || x % 3 == 0)
+            {
+                Console.WriteLine(x + " is divisible by 2 or 3");
+            }
+            else
+            {
+                Console.WriteLine(x + " is not divisible by 2 or 3");
+            }
 
-        // LINQ FOREACH
-        Console.WriteLine("LINQ_FOREACH");
-        list.Sort();
-        list.ForEach(i =>
-        {
-            Console.WriteLine($"{i}");
-        });
+            x--;
+        } while (x > 0);
 
-        // PARALLEL FOREACH
-        Console.WriteLine("PARALLEL FOREACH");
-        list.Sort();
-        Parallel.ForEach(list, i =>
-        {
-            Console.WriteLine($"{i}");
-        });
+        Console.WriteLine("Done!");
 
-        // PARALLEL LINQ
-        Console.WriteLine("PARALLEL LINQ");
-        list.Sort();
-        list.AsParallel().ForAll(i =>
-        {
-            Console.WriteLine($"{i}");
-        });
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//using System;
+//class EnigmaCamp
+//{
+//    // Main Method
+//    static public void Main()
+//    {
+//        // EnigmaCamp is printed only 2 times
+//        // because of break statement
+//        List<int> list = new List<int>();
+//        int size = 10;
+
+//        list = Enumerable.Range(1, size).Select(i => i).ToList();
+
+//        // FOR
+//        Console.WriteLine("FOR");
+//        for (int i = 1; i <= list.Count; i++)
+//        {
+//            Console.WriteLine($"{i}");
+//        }
+
+//        Console.WriteLine("WHILE");
+//        // WHILE
+//        int item = 1;
+//        while (item <= list.Count)
+//        {
+//            Console.WriteLine($"{item}");
+//            item++;
+//        }
+
+//        Console.WriteLine("FOREACH");
+//        // FOREACH
+//        foreach (var i in list)
+//        {
+//            Console.WriteLine($"{i}");
+//        }
+
+//        // LINQ FOREACH
+//        Console.WriteLine("LINQ_FOREACH");
+//        list.Sort();
+//        list.ForEach(i =>
+//        {
+//            Console.WriteLine($"{i}");
+//        });
+
+//        // PARALLEL FOREACH
+//        Console.WriteLine("PARALLEL FOREACH");
+//        list.Sort();
+//        Parallel.ForEach(list, i =>
+//        {
+//            Console.WriteLine($"{i}");
+//        });
+
+//        // PARALLEL LINQ
+//        Console.WriteLine("PARALLEL LINQ");
+//        list.Sort();
+//        list.AsParallel().ForAll(i =>
+//        {
+//            Console.WriteLine($"{i}");
+//        });
+//    }
+//}
 
 //// C# Program to illustrate the use
 //// of throw keyword
