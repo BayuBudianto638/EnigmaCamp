@@ -639,6 +639,27 @@
 //    }
 //}
 
+// goto
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 10;
+
+//    // Labeled statement
+//    label:
+
+//        if (x > 0)
+//        {
+//            Console.WriteLine("x is greater than 0");
+//            x--;
+//            goto label; // Jump to the labeled statement
+//        }
+
+//        Console.WriteLine("x is not greater than 0");
+//    }
+//}
+
 ////How to avoid if
 //var a = new int[] { 1, 2, 3, 4, 5 };
 
