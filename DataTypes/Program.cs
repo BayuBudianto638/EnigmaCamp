@@ -56,8 +56,8 @@
 //    }
 //}
 
-// C# program to illustrate
-// nested-if statement
+////C# program to illustrate
+//// nested-if statement
 //using System;
 //class EnigmaCamp
 //{
@@ -75,6 +75,219 @@
 //                Console.WriteLine("i is smaller than 12 too");
 //            else
 //                Console.WriteLine("i is greater than 15");
+//        }
+//    }
+//}
+
+//// complex nested if
+//using System;
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = -2;
+//        int z = 3;
+
+//        if (x > 0)
+//        {
+//            if (y > 0)
+//            {
+//                if (z > 0)
+//                {
+//                    Console.WriteLine("x, y, and z are all positive");
+//                }
+//                else
+//                {
+//                    Console.WriteLine("x and y are positive, but z is not");
+//                }
+//            }
+//            else
+//            {
+//                if (z > 0)
+//                {
+//                    Console.WriteLine("x and z are positive, but y is not");
+//                }
+//                else
+//                {
+//                    Console.WriteLine("x is positive, but y and z are not");
+//                }
+//            }
+//        }
+//        else
+//        {
+//            if (y > 0)
+//            {
+//                if (z > 0)
+//                {
+//                    Console.WriteLine("y and z are positive, but x is not");
+//                }
+//                else
+//                {
+//                    Console.WriteLine("y is positive, but x and z are not");
+//                }
+//            }
+//            else
+//            {
+//                if (z > 0)
+//                {
+//                    Console.WriteLine("z is positive, but x and y are not");
+//                }
+//                else
+//                {
+//                    Console.WriteLine("x, y, and z are all not positive");
+//                }
+//            }
+//        }
+
+//    }
+//}
+
+// if with logical operator
+// AND
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = 10;
+
+//        if (x > 0 && y > 0)
+//        {
+//            Console.WriteLine("x and y are both positive");
+//        }
+//        else
+//        {
+//            Console.WriteLine("either x or y, or both, are not positive");
+//        }
+//    }
+//}
+
+//OR
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = -10;
+
+//        if (x > 0 || y > 0)
+//        {
+//            Console.WriteLine("either x or y, or both, are positive");
+//        }
+//        else
+//        {
+//            Console.WriteLine("x and y are both not positive");
+//        }
+//    }
+//}
+
+// nested if logical Operator
+// AND
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = 10;
+//        int z = 15;
+
+//        if (x > 0)
+//        {
+//            if (y > 0 && z > 0)
+//            {
+//                Console.WriteLine("x, y, and z are all positive");
+//            }
+//            else
+//            {
+//                Console.WriteLine("x is positive, but either y or z, or both, are not");
+//            }
+//        }
+//        else
+//        {
+//            Console.WriteLine("x is not positive");
+//        }
+//    }
+//}
+
+// OR
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = -10;
+//        int z = 15;
+
+//        if (x > 0)
+//        {
+//            if (y > 0 || z > 0)
+//            {
+//                Console.WriteLine("either x, y, or z, or any combination of them, are positive");
+//            }
+//            else
+//            {
+//                Console.WriteLine("x is positive, but y and z are not");
+//            }
+//        }
+//        else
+//        {
+//            Console.WriteLine("x is not positive");
+//        }
+//    }
+//}
+
+//// NOT
+//class Progam
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = -10;
+//        int z = 15;
+
+//        if (!(x > 0))
+//        {
+//            if (!(y > 0) && !(z > 0))
+//            {
+//                Console.WriteLine("x, y, and z are all not positive");
+//            }
+//            else
+//            {
+//                Console.WriteLine("either x or y or z, or any combination of them, are positive");
+//            }
+//        }
+//        else
+//        {
+//            Console.WriteLine("x is positive");
+//        }
+//    }
+//}
+
+//// combination of AND, OR and NOT
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = -10;
+//        int z = 15;
+//        int w = 20;
+
+//        if (x > 0 || !(y > 0))
+//        {
+//            if (!(z > 0) && (w > 0 || x > 0))
+//            {
+//                Console.WriteLine("either x is positive, y is not positive, w is positive, or x is positive");
+//            }
+//            else
+//            {
+//                Console.WriteLine("either x is not positive, y is positive, w is not positive, or x is not positive");
+//            }
+//        }
+//        else
+//        {
+//            Console.WriteLine("either x is not positive, or y is not positive");
 //        }
 //    }
 //}
@@ -174,103 +387,229 @@
 //    }
 //}
 
-// C# program to illustrate
-// if-else statement
-//using System;
-//class EnigmaCamp
+//class Program
 //{
-//    // Main Method
-//    public static void Main(String[] args)
+//    static void Main()
 //    {
-//        // taking two strings value
-//        string topic;
-//        string category;
+//        int x = 5;
+//        int y = 2;
 
-//        // taking topic name
-//        topic = "Inheritance";
-
-//        // using compare function of string class
-//        if ((String.Compare(topic, "Introduction to C#") == 0) ||
-//            (String.Compare(topic, "Variables") == 0) ||
-//            (String.Compare(topic, "Data Types") == 0))
+//        switch (x)
 //        {
-//            category = "Basic";
-//        }
-
-//        // using compare function of string class
-//        else if ((String.Compare(topic, "Loops") == 0) ||
-//                (String.Compare(topic, "If Statements") == 0) ||
-//                (String.Compare(topic, "Jump Statements") == 0))
-//        {
-//            category = "Control Flow";
-//        }
-
-//        // using compare function of string class
-//        else if ((String.Compare(topic, "Class & Object") == 0) ||
-//                (String.Compare(topic, "Inheritance") == 0) ||
-//                (String.Compare(topic, "Constructors") == 0))
-//        {
-//            category = "OOPS Concept";
-//        }
-
-//        else
-//        {
-//            category = "Not Mentioned";
-//        }
-
-//        System.Console.Write("Category is " + category);
-//    }
-//}
-
-// C# program to illustrate
-// switch statement
-//using System;
-//class EnigmaCamp
-//{
-//    // Main Method
-//    public static void Main(String[] args)
-//    {
-//        // taking two strings value
-//        string topic;
-//        string category;
-
-//        // taking topic name
-//        topic = "Inheritance";
-
-//        // using switch Statement
-//        switch (topic)
-//        {
-//            case "Introduction to C#":
-//            case "Variables":
-//            case "Data Types":
-
-//                category = "Basic";
+//            case 1:
+//                switch (y)
+//                {
+//                    case 1:
+//                        Console.WriteLine("x and y are both 1");
+//                        break;
+//                    case 2:
+//                        Console.WriteLine("x is 1 and y is 2");
+//                        break;
+//                    default:
+//                        Console.WriteLine("x is 1, but y is not 1 or 2");
+//                        break;
+//                }
 //                break;
-
-//            case "Loops":
-//            case "If Statements":
-//            case "Jump Statements":
-
-//                category = "Control Flow";
+//            case 2:
+//                Console.WriteLine("x is 2");
 //                break;
-
-//            case "Class & Object":
-//            case "Inheritance":
-//            case "Constructors":
-
-//                category = "OOPS Concept";
+//            case 3:
+//                Console.WriteLine("x is 3");
 //                break;
-
-//            // default case
 //            default:
-//                category = "Not Mentioned";
+//                Console.WriteLine("x is not 1, 2, or 3");
 //                break;
-
 //        }
-
-//        System.Console.Write("Category is " + category);
 //    }
 //}
+
+// Complex nested switch
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = 2;
+//        int z = -3;
+
+//        switch (x)
+//        {
+//            case > 0:
+//                if (y > 0)
+//                {
+//                    switch (z)
+//                    {
+//                        case > 0:
+//                            Console.WriteLine("x, y, and z are all positive");
+//                            break;
+//                        default:
+//                            Console.WriteLine("x and y are positive, but z is not");
+//                            break;
+//                    }
+//                }
+//                else
+//                {
+//                    switch (z)
+//                    {
+//                        case > 0:
+//                            Console.WriteLine("x and z are positive, but y is not");
+//                            break;
+//                        default:
+//                            Console.WriteLine("x is positive, but y and z are not");
+//                            break;
+//                    }
+//                }
+//                break;
+//            default:
+//                if (y > 0)
+//                {
+//                    switch (z)
+//                    {
+//                        case > 0:
+//                            Console.WriteLine("y and z are positive but x is not");
+//                            break;
+//                        default:
+//                            Console.WriteLine("y is positive, but x and z are not");
+//                            break;
+//                    }
+//                }
+//                else
+//                {
+//                    switch (z)
+//                    {
+//                        case > 0:
+//                            Console.WriteLine("z is positive but x and y are not");
+//                            break;
+//                        default:
+//                            Console.WriteLine("x, y and z are all positive");
+//                            break;
+//                    }
+//                }
+//                break;
+//        }
+//    }
+//}
+
+// switch with logical operator
+//// AND
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = 10;
+
+//        switch (x > 0 && y > 0)
+//        {
+//            case true:
+//                Console.WriteLine("x and y are both positive");
+//                break;
+//            case false:
+//                Console.WriteLine("either x or y, or both, are not positive");
+//                break;
+//        }
+//    }
+//}
+
+// OR
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = -10;
+
+//        switch (x > 0 || y > 0)
+//        {
+//            case true:
+//                Console.WriteLine("either x or y, or both, are positive");
+//                break;
+//            case false:
+//                Console.WriteLine("x and y are both not positive");
+//                break;
+//        }
+//    }
+//}
+
+// NOT
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = -10;
+
+//        switch (!(x > 0))
+//        {
+//            case true:
+//                Console.WriteLine("x is not positive");
+//                break;
+//            case false:
+//                Console.WriteLine("x is positive");
+//                break;
+//        }
+//    }
+//}
+
+////  nested switch with logical operator
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = -10;
+//        int z = 15;
+//        int w = 20;
+
+//        switch (x > 0 || !(y > 0))
+//        {
+//            case true:
+//                switch (!(z > 0) && (w > 0 || x > 0))
+//                {
+//                    case true:
+//                        Console.WriteLine("either x is positive, y is not positive, w is positive, or x is positive");
+//                        break;
+//                    case false:
+//                        Console.WriteLine("either x is not positive, y is positive, w is not positive, or x is not positive");
+//                        break;
+//                }
+//                break;
+//            case false:
+//                Console.WriteLine("either x is not positive, or y is not positive");
+//                break;
+//        }
+//    }
+//}
+
+// switch logical operator with if
+//class Program
+//{
+//    static void Main()
+//    {
+//        int x = 5;
+//        int y = -10;
+//        int z = 15;
+//        int w = 20;
+
+//        switch (x > 0 || !(y > 0))
+//        {
+//            case true:
+//                if (!(z > 0) && (w > 0 || x > 0))
+//                {
+//                    Console.WriteLine("either x is positive, y is not positive, w is positive, or x is positive");
+//                }
+//                else
+//                {
+//                    Console.WriteLine("either x is not positive, y is positive, w is not positive, or x is not positive");
+//                }
+//                break;
+//            case false:
+//                Console.WriteLine("either x is not positive, or y is not positive");
+//                break;
+//        }
+//    }
+//}
+
 
 // C# program to illustrate the
 // use of goto in switch statement
@@ -298,45 +637,45 @@
 //                break;
 //        }
 //    }
-//}
+////}
 
-//How to avoid if
-var a = new int[] { 1, 2, 3, 4, 5 };
+////How to avoid if
+//var a = new int[] { 1, 2, 3, 4, 5 };
 
-var foundInt = a.FirstOrDefault(w => w == 4);
+//var foundInt = a.FirstOrDefault(w => w == 4);
 
-Console.WriteLine($"{foundInt.ToString()}");
-Console.ReadKey();
+//Console.WriteLine($"{foundInt.ToString()}");
+//Console.ReadKey();
 
-var foundIntSingle = a.Single(w => w == 4);
+//var foundIntSingle = a.Single(w => w == 4);
 
-Console.WriteLine($"{foundIntSingle.ToString()}");
-Console.ReadKey();
-
-
-string monthName = "Juni";
-
-var tableMonth = new string[] { "Bulan", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" };
-var listMonth = tableMonth.ToList();
-int month = listMonth.IndexOf(monthName);
-Console.WriteLine($"{month}");
-Console.ReadKey();
+//Console.WriteLine($"{foundIntSingle.ToString()}");
+//Console.ReadKey();
 
 
-if (month == 1) Console.WriteLine($"{31}");
-if (month == 2) Console.WriteLine($"{29}");
-if (month == 3) Console.WriteLine($"{31}");
-if (month == 4) Console.WriteLine($"{30}");
-if (month == 5) Console.WriteLine($"{31}");
-if (month == 6) Console.WriteLine($"{30}");
-if (month == 7) Console.WriteLine($"{31}");
-if (month == 8) Console.WriteLine($"{31}");
-if (month == 9) Console.WriteLine($"{30}");
-if (month == 10) Console.WriteLine($"{31}");
-if (month == 11) Console.WriteLine($"{30}");
-if (month == 12) Console.WriteLine($"{31}");
+//string monthName = "Juni";
 
-var monthDays= new int[] { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-Console.WriteLine($"{monthDays[month - 1]}");
+//var tableMonth = new string[] { "Bulan", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" };
+//var listMonth = tableMonth.ToList();
+//int month = listMonth.IndexOf(monthName);
+//Console.WriteLine($"{month}");
+//Console.ReadKey();
 
-Console.ReadKey();
+
+//if (month == 1) Console.WriteLine($"{31}");
+//if (month == 2) Console.WriteLine($"{29}");
+//if (month == 3) Console.WriteLine($"{31}");
+//if (month == 4) Console.WriteLine($"{30}");
+//if (month == 5) Console.WriteLine($"{31}");
+//if (month == 6) Console.WriteLine($"{30}");
+//if (month == 7) Console.WriteLine($"{31}");
+//if (month == 8) Console.WriteLine($"{31}");
+//if (month == 9) Console.WriteLine($"{30}");
+//if (month == 10) Console.WriteLine($"{31}");
+//if (month == 11) Console.WriteLine($"{30}");
+//if (month == 12) Console.WriteLine($"{31}");
+
+//var monthDays= new int[] { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+//Console.WriteLine($"{monthDays[month - 1]}");
+
+//Console.ReadKey();
