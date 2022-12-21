@@ -1,6 +1,8 @@
 ﻿/*
- * Methods are generally the block of codes or statements in a program that gives the user the ability to reuse the same code which ultimately saves the excessive use of memory, 
- * acts as a time saver and more importantly, it provides a better readability of code. So basically, a method is a collection of statements that perform some specific task and 
+ * Methods are generally the block of codes or statements in a program that gives the user the ability 
+ * to reuse the same code which ultimately saves the excessive use of memory, 
+ * acts as a time saver and more importantly, it provides a better readability of code. So basically, 
+ * a method is a collection of statements that perform some specific task and 
  * return the result to the caller. A method can also perform some specific task without returning anything.
  * */
 
@@ -319,19 +321,44 @@
 //}
 
 // Pass By Reference
-class Program
-{
-    static void Main()
-    {
-        var a = 100;
-        var b = PassByValue(ref a);
+//class Program
+//{
+//    static void Main()
+//    {
+//        var a = 100;
+//        var b = PassByValue(ref a);
 
-        Console.WriteLine($"Nilai a {a}");
-        Console.WriteLine($"Nilai b {b}");
-    }
+//        Console.WriteLine($"Nilai a {a}");
+//        Console.WriteLine($"Nilai b {b}");
+//    }
 
-    public static int PassByValue(ref int a)
-    {
-        return a = a - 10;
-    }
-}
+//    public static int PassByValue(ref int a)
+//    {
+//        return a = a - 10;
+//    }
+//}
+
+// Palindrome using ArrayReverse
+//class Program
+//{
+//    static void Main()
+//    {
+//        string word = "Level";
+//        word = word.ToLower();
+
+//        char[] wordArray = word.ToCharArray();
+
+//        Array.Reverse(wordArray);
+
+//        string reversedWord = new string(wordArray);
+
+//        if (word.Equals(reversedWord))
+//        {
+//            Console.WriteLine("The word is a palindrome.");
+//        }
+//        else
+//        {
+//            Console.WriteLine("The word is not a palindrome.");
+//        }
+//    }
+//}
