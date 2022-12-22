@@ -1140,6 +1140,78 @@ while reference types (such as class and string) are stored on the heap.
 ////}
 
 ////// CONTOH DELEGATE
+
+///In C#, a delegate is a type that represents a reference to a method. 
+///It is similar to a function pointer in other programming languages, 
+///but is safer and more flexible. Delegates are used to pass methods as arguments to other methods, 
+///allowing you to execute a method at a later time or in a different context.
+
+///To declare a delegate, you use the delegate keyword followed by the return type 
+///and the parameter list of the methods that the delegate will reference.
+///
+/// using System;
+
+//delegate int MyDelegate(int x, int y);
+
+//class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        // Create an instance of the delegate that references the Add method
+//        MyDelegate d = new MyDelegate(Add);
+
+//        // Pass the delegate as an argument to the Process method
+//        int result = Process(d, 10, 20);
+//        Console.WriteLine(result);  // Outputs 30
+//    }
+
+//    static int Add(int x, int y)
+//    {
+//        return x + y;
+//    }
+
+//    static int Process(MyDelegate del, int x, int y)
+//    {
+//        // Invoke the delegate to execute the method it references
+//        return del(x, y);
+//    }
+//}
+
+//using System;
+
+//delegate void MyEventHandler();
+
+//class MyEvent
+//{
+//    public event MyEventHandler SomethingHappened;
+
+//    public void DoSomething()
+//    {
+//        // Raise the event
+//        SomethingHappened?.Invoke();
+//    }
+//}
+
+//class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        MyEvent evt = new MyEvent();
+
+//        // Register the event handler method
+//        evt.SomethingHappened += OnSomethingHappened;
+
+//        // Do something to raise the event
+//        evt.DoSomething();
+//    }
+
+//    static void OnSomethingHappened()
+//    {
+//        Console.WriteLine("Something happened!");
+//    }
+//}
+
+
 ////// C# program to illustrate the use of Delegates
 ////using System;
 ////namespace EnigmaCamp
