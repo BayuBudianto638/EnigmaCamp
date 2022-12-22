@@ -23,6 +23,208 @@
 //    Console.WriteLine(name);
 //}
 
+/*
+ * In C#, an enum (short for "enumeration") is a value type that represents a set of related constants. 
+ * It is used to give a name to a set of numeric values to make the code more expressive and easier to read.
+ * 
+ * By default, the underlying type of an enum is int, but you can specify a different underlying 
+ * type by using a type suffix. For example, you can use short as the underlying type like this: 
+ * public enum MyEnum : short {...}. Other possible underlying types for an enum are byte, sbyte, ushort, uint, long, and ulong.
+
+    You can use the Flags attribute to indicate that an enum can be treated as a set of flags, 
+    each of which represents a distinct value. For example:
+ */
+
+//class Program
+//{
+//    public enum DaysOfTheWeek
+//    {
+//        Monday,
+//        Tuesday,
+//        Wednesday,
+//        Thursday,
+//        Friday,
+//        Saturday,
+//        Sunday
+//    }
+
+//    //public enum DaysOfTheWeek
+//    //{
+//    //    Monday = 1,
+//    //    Tuesday = 2,
+//    //    Wednesday = 3,
+//    //    Thursday = 4,
+//    //    Friday = 5,
+//    //    Saturday = 6,
+//    //    Sunday = 7
+//    //}
+
+
+//    static void Main()
+//    {
+//        DaysOfTheWeek today = DaysOfTheWeek.Monday;
+
+//        if (today == DaysOfTheWeek.Friday)
+//        {
+//            Console.WriteLine("It's Friday!");
+//        }
+
+//        switch (today)
+//        {
+//            case DaysOfTheWeek.Monday:
+//                Console.WriteLine("It's Monday.");
+//                break;
+//            case DaysOfTheWeek.Tuesday:
+//                Console.WriteLine("It's Tuesday.");
+//                break;
+//                // ...
+//        }
+
+//        int dayNumber = (int)today; // dayNumber will be 1
+//        DaysOfTheWeek anotherDay = (DaysOfTheWeek)3; // anotherDay will be Wednesday
+//    }
+//}
+
+//class Program
+//{
+//    public enum Colors
+//    {
+//        Red,
+//        Green,
+//        Blue
+//    }
+
+//    static void Main()
+//    {
+//        Colors favoriteColor = Colors.Green;
+
+//        if (favoriteColor == Colors.Red)
+//        {
+//            Console.WriteLine("Your favorite color is red.");
+//        }
+
+
+//        switch (favoriteColor)
+//        {
+//            case Colors.Red:
+//                Console.WriteLine("Your favorite color is red.");
+//                break;
+//            case Colors.Green:
+//                Console.WriteLine("Your favorite color is green.");
+//                break;
+//            case Colors.Blue:
+//                Console.WriteLine("Your favorite color is blue.");
+//                break;
+//        }
+
+//        int colorNumber = (int)favoriteColor; // colorNumber will be 1
+//        Colors anotherColor = (Colors)2; // anotherColor will be Blue
+//    }
+//}
+
+//using System.Runtime.Intrinsics.X86;
+//using System;
+//using System.ComponentModel;
+//using System.Reflection;
+
+//class Program
+//{
+//    [Flags]
+//    public enum AccessRights
+//    {
+//        None = 0,
+//        Read = 1,
+//        Write = 2,
+//        Execute = 4
+//    }
+
+//    public enum DaysOfTheWeek
+//    {
+//        [Description("Monday")]
+//        Monday,
+//        [Description("Tuesday")]
+//        Tuesday,
+//        [Description("Wednesday")]
+//        Wednesday,
+//        [Description("Thursday")]
+//        Thursday,
+//        [Description("Friday")]
+//        Friday,
+//        [Description("Saturday")]
+//        Saturday,
+//        [Description("Sunday")]
+//        Sunday
+//    }
+
+
+//    static void Main()
+//    {
+//        AccessRights rights = AccessRights.Read | AccessRights.Write; // rights will have a value of 3 (1 | 2)
+//        if ((rights & AccessRights.Read) == AccessRights.Read)
+//        {
+//            Console.WriteLine("Has read access");
+//        }
+
+//        //You can use the ToString method to convert an enum value to a string representation.For example:
+//        //string colorName = favoriteColor.ToString(); // colorName will be "Green"
+
+//        //You can also use the Parse method to convert a string representation of an enum value to the corresponding enum value :
+//        //Colors parsedColor = (Colors) Enum.Parse(typeof(Colors), "Blue"); // parsedColor will be Colors.Blue
+
+//        //Type type = typeof(DaysOfTheWeek);
+//        //FieldInfo field = type.GetField(favoriteDay.ToString());
+//        //DescriptionAttribute attribute = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
+//        //string description = attribute.Description;
+//    }
+//}
+
+//// Complex enum
+//class Program
+//{
+//    public enum FileAttributes
+//    {
+//        ReadOnly = 0x00000001,
+//        Hidden = 0x00000002,
+//        System = 0x00000004,
+//        Directory = 0x00000010,
+//        Archive = 0x00000020,
+//        Device = 0x00000040,
+//        Normal = 0x00000080,
+//        Temporary = 0x00000100,
+//        SparseFile = 0x00000200,
+//        ReparsePoint = 0x00000400,
+//        Compressed = 0x00000800,
+//        Offline = 0x00001000,
+//        NotContentIndexed = 0x00002000,
+//        Encrypted = 0x00004000,
+//        IntegrityStream = 0x00008000,
+//        Virtual = 0x00010000,
+//        NoScrubData = 0x00020000,
+//        Ea = 0x00040000,
+//        Pinned = 0x00080000,
+//        Unpinned = 0x00100000,
+//        RecallOnDataAccess = 0x00400000,
+//        RecallOnOpen = 0x00800000,
+//        RecallOnClose = 0x01000000
+//    }
+
+
+//    static void Main()
+//    {
+//        bool isDefined = Enum.IsDefined(typeof(FileAttributes), FileAttributes.Hidden); // isDefined will be true
+//        bool isNotDefined = Enum.IsDefined(typeof(FileAttributes), 0x00002000); // isNotDefined will be false
+
+//        FileAttributes attr;
+//        bool success = Enum.TryParse("Hidden", out attr); // success will be true and attr will be FileAttributes.Hidden
+//        bool failure = Enum.TryParse("Foo", out attr); // failure will be false and attr will be 0
+
+//        string[] names = Enum.GetNames(typeof(FileAttributes)); // names will be ["ReadOnly", "Hidden", "System", "Directory", ...]
+
+//        Array values = Enum.GetValues(typeof(FileAttributes)); // values will be an array containing the values of the FileAttributes enum
+
+//    }
+//}
+
 
 ////CONTOH 1 ENUM
 //class Program
@@ -102,6 +304,104 @@
 //////}
 /////
 
+/*
+ *  A struct is a value type that represents a composite data structure in C#. 
+ *  It is similar to a class, but it is stored on the stack rather than the heap.
+ *  Structs can have methods, properties, fields, and constructors just like classes. However, structs have a few differences from classes:
+
+ *  Structs cannot be inherited from other structs or classes.
+ *  Structs do not have a default constructor (a constructor with no parameters). 
+ *  You must explicitly define a constructor for a struct.
+ *  Structs are value types, while classes are reference types. 
+ *  This means that when you pass a struct to a method or assign it to a new variable, a copy of the struct is made. 
+ *  With classes, the reference to the object is copied, not the object itself.
+ *  Perbedaan antara Struct dengan Class
+ *  There are several differences between classes and structs in C#:
+
+ *  Memory location: Classes are stored on the heap, while structs are stored on the stack. 
+ *  This means that when you pass a struct to a method or assign it to a new variable, a copy of the struct is made. 
+ *  With classes, the reference to the object is copied, not the object itself.
+
+ *  Inheritance: Structs cannot be inherited from other structs or classes. 
+ *  Classes can be inherited from other classes, which allows you to create a hierarchy of related classes and reuse code.
+
+ *  Default constructor: Structs do not have a default constructor (a constructor with no parameters). 
+ *  You must explicitly define a constructor for a struct. Classes have a default constructor that is 
+ *  provided by the system if you do not define any constructors for the class.
+
+ *  Value types vs. reference types: Structs are value types, while classes are reference types. 
+ *  This means that when you pass a struct to a method or assign it to a new variable, 
+ *  a copy of the struct is made. With classes, the reference to the object is copied, not the object itself.
+
+ *  Performance: Because structs are stored on the stack and are smaller in size than classes, 
+ *  they can be more efficient in some cases, especially if you are creating a large number of instances. 
+ *  However, this can depend on various factors such as the size of the struct and the operations you are performing on it.
+ *  
+ *  Di C#, class adalah tipe referensi yang mewakili struktur data komposit, 
+ *  sementara struct adalah tipe nilai yang mewakili struktur data komposit. 
+ *  Ini berarti bahwa saat Anda mengirim struct ke metode atau menetapkannya ke variabel baru, salinan struct akan dibuat. 
+ *  Dengan kelas, referensi ke objek yang dicopy, bukan objek itu sendiri.
+
+Ada beberapa perbedaan utama antara kelas dan struct di C#:
+
+Lokasi memori: Kelas disimpan di heap, sementara struct disimpan di stack. 
+Ini berarti bahwa saat Anda mengirim struct ke metode atau menetapkannya ke variabel baru, 
+salinan struct akan dibuat. Dengan kelas, referensi ke objek yang dicopy, bukan objek itu sendiri.
+
+Pewarisan: Struct tidak dapat diwarisi dari struct lain atau kelas. Kelas dapat diwarisi dari kelas lain, 
+yang memungkinkan Anda untuk membuat hierarki kelas terkait dan menggunakan ulang kode.
+
+Constructor default: Struct tidak memiliki constructor default (constructor tanpa parameter). 
+Anda harus secara eksplisit menentukan constructor untuk struct. 
+Kelas memiliki constructor default yang disediakan oleh sistem jika Anda tidak menentukan constructor apa pun untuk kelas.
+
+Tipe nilai vs tipe referensi: Struct adalah tipe nilai, sementara kelas adalah tipe referensi. 
+Ini berarti bahwa saat Anda mengirim struct ke metode atau menetapkannya ke variabel baru, 
+salinan struct akan dibuat. Dengan kelas, referensi ke objek yang dicopy, bukan objek itu sendiri.
+
+Kinerja: Karena struct disimpan di stack dan lebih kecil ukurannya dibanding kelas, 
+struct dapat lebih efisien dalam beberapa kasus, terutama jika Anda membuat banyak instance. 
+Namun, ini bisa tergantung pada berbagai faktor seperti ukuran struct dan operasi yang Anda lakukan pada struct tersebut.
+
+Perbedaan antara Stack dan Heap
+The stack and the heap are areas of memory that are used for storing data in a computer program.
+
+The stack is a region of memory that is used for storing local variables, 
+function arguments, and other data that is specific to a single function call. 
+The stack grows and shrinks dynamically as the program executes, and data is added to the stack in a last-in, 
+first-out (LIFO) order. When a function returns, the data that was added to the stack for that function is removed.
+
+The heap is a region of memory that is used for storing data that needs to be available to the entire program. 
+The heap is managed dynamically by the program, and data can be added to or removed from the heap at any time.
+The heap is typically used for storing objects in object-oriented programming languages.
+
+In C#, value types (such as int, float, and struct) are typically stored on the stack, 
+while reference types (such as class and string) are stored on the heap.
+ */
+
+//class Program
+//{
+//    struct Point
+//    {
+//        public int X { get; set; }
+//        public int Y { get; set; }
+
+//        public Point(int x, int y)
+//        {
+//            X = x;
+//            Y = y;
+//        }
+//    }
+
+//    static void Main()
+//    {
+//        Point p1 = new Point(0, 0);
+//        Point p2 = new Point(10, 10);
+
+//        int distance = p2.X - p1.X; // distance will be 10
+
+//    }
+//}
 
 ////// CONTOH 1 STRUCT
 ////class Program
