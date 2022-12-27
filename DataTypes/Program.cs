@@ -2,37 +2,50 @@
 //A class is a template for creating objects, and it is defined using the class keyword.
 
 //Here is an example of a simple
-class Program
-{
-    public class Person
-    {
-        // Properties (data)
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public string Gender { get; set; }
+//class Program
+//{
+//    public class Person
+//    {
+//        // Properties (data)
+//        public string Name { get; set; }
+//        public int Age { get; set; }
+//        public string Gender { get; set; }
 
-        // Constructor
-        public Person(string name, int age, string gender)
-        {
-            Name = name;
-            Age = age;
-            Gender = gender;
-        }
+//        // Constructor
+//        public Person(string name, int age, string gender)
+//        {
+//            Name = name;
+//            Age = age;
+//            Gender = gender;
+//        }
 
-        // Method (behavior)
-        public void SayHello()
-        {
-            Console.WriteLine("Hello, my name is " + Name);
-        }
-    }
+//        // Method (behavior)
+//        public void SayHello()
+//        {
+//            Console.WriteLine("Hello, my name is " + Name);
+//        }
+//    }
 
-    static void Main()
-    {
-        Person p = new Person("John", 30, "Male");
-        Console.WriteLine(p.Name); // Outputs "John"
-        p.SayHello(); // Outputs "Hello, my name is John"
-    }
-}
+//    static void Main()
+//    {
+//        Person p = new Person("John", 30, "Male");
+//        Console.WriteLine(p.Name); // Outputs "John"
+//        p.SayHello(); // Outputs "Hello, my name is John"
+//    }
+//}
+
+
+// Access Modifier
+// Access Modifier adalah keyword yg mengontrol aksesibilitas dr sebuah class, method, property dan lainnya dr sebuah program
+// Access modifier menentukan apakah anggota dr class itu bisa di akses dr luar atauhanya dr class itu sendiri.
+
+// public : access modifier ini membuat sebuah method, property atau class bisa di panggil dimanapu dlm sebuah program
+// private : access modifier ini membuat sebuah method, property atau class hanya bisa di panggil didalam class itu sendiri
+// protected : access modifier ini hanya membuat sebuah method property hanya bisa di panggil didalam class itu sendiri,
+// atau dr class turunannya
+// internal : access modifier ini membuat sebuah method, property atau class bisa di panggil dimanapun tp hanya
+// dlm project sendiri atau assemblies sendiri
+// protected internal : gabungan antara internal dan protected
 
 
 
@@ -69,7 +82,9 @@ class Program
 //Private Constructor
 //Static Constructor
 
-// Default Constructor
+//using System.Xml.Linq;
+
+////Default Constructor
 //class Program
 //{
 //    static void Main()
@@ -81,11 +96,17 @@ class Program
 //        int resultStatic = MyClass.AdditionStatic(1, 2);
 //    }
 
-//    class MyClass
+//    public class MyClass
 //    {
-//        MyClass()
+//        public MyClass()
 //        {
 //            Console.WriteLine("Constructor called");
+//        }
+
+//        ~MyClass()
+//        {
+//            // Release resources here
+//            Console.WriteLine("MyClass object being garbage collected");
 //        }
 
 //        public int Addition(int x, int y) // by default adalah private
@@ -288,6 +309,39 @@ class Program
 //    }
 //}
 
+//public class Person
+//{
+//    private string name;
+//    private int age;
+
+//    public string Name
+//    {
+//        get { return name; }
+//        set
+//        {
+//            if (value != null && value.Length > 0)
+//            {
+//                name = value;
+//            }
+//            else
+//            {
+//                throw new ArgumentException("Error");
+//            }
+//        }
+//    }
+//}
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        Person p = new Person();
+//        p.Name = null;
+
+//        Console.WriteLine($"{p.Name}");
+//    }
+//}
+
 
 //public class Person
 //{
@@ -318,6 +372,38 @@ class Program
 //        Person p = new Person("John", 30, "Male");
 //        Console.WriteLine(p.Name); // Outputs "John"
 //        p.SayHello(); // Outputs "Hello, my name is John"
+//    }
+//}
+
+//class Something
+//{
+//    private int _w;
+//    public int Weight
+//    {
+//        get { return _w; }
+//        set
+//        {
+//            if (value < 100)
+//                throw new ArgumentException("weight too small");
+
+//            _w = value;
+//            RecalculateDensity();
+//        }
+//    }
+//    void RecalculateDensity()
+//    {
+//        // statement
+//        Console.WriteLine("Recalculate Method");
+//    }
+//    // and other methods
+//}
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        Something s = new Something();
+//        s.Weight = 10;
 //    }
 //}
 
@@ -396,6 +482,91 @@ class Program
 
 //    } // End class Program
 
+//}
+
+//using System;
+//namespace DestructorExample
+//{
+//    class DestructorDemo
+//    {
+//        public DestructorDemo()
+//        {
+//            Console.WriteLine("Constructor Object Created");
+//        }
+//        ~DestructorDemo()
+//        {
+//            string type = GetType().Name;
+//            Console.WriteLine($"Object {type} is Destroyed");
+//        }
+//    }
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            DestructorDemo obj1 = new DestructorDemo();
+//            DestructorDemo obj2 = new DestructorDemo();
+//            //Making obj1 for Garbage Collection
+//            obj1 = null;
+//            GC.Collect();
+//            Console.ReadKey();
+//        }
+//    }
+//}
+
+//using System;
+//namespace GarbageCollectionDemo
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            MyClass1 obj1 = new MyClass1();
+//            obj1.Dispose();
+
+//            Console.Read();
+//        }
+//    }
+
+//    public class MyClass1 : IDisposable
+//    {
+
+//        #region IDisposable Support
+//        private bool disposedValue = false; // To detect redundant calls
+
+//        protected virtual void Dispose(bool disposing)
+//        {
+//            if (!disposedValue)
+//            {
+//                if (disposing)
+//                {
+//                    // TODO: dispose managed state (managed objects).
+//                }
+
+//                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+//                // TODO: set large fields to null.
+
+//                disposedValue = true;
+//            }
+//        }
+
+//        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+//        ~MyClass1()
+//        {
+//            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.            
+//            Dispose(false);
+//        }
+
+//        // This code added to correctly implement the disposable pattern.
+//        public void Dispose()
+//        {
+//            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+//            Dispose(true);
+//            // TODO: uncomment the following line if the finalizer is overridden above.
+//            GC.SuppressFinalize(this);
+//        }
+//        #endregion
+
+//    }
 //}
 
 ////// CONTOH 1
@@ -517,7 +688,7 @@ class Program
 ////        Console.ReadKey();
 ////    }
 ////}
-
+///
 
 ////// Contoh 4
 ////class Animal  // Base class (parent) 
