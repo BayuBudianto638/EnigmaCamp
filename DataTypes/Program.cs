@@ -493,6 +493,44 @@
 //        $"{this.Id} - {this.Name}";
 //}
 
+//public class Animal
+//{
+//    public string Name { get; set; }
+//    public int Age { get; set; }
+
+//    public Animal(string name, int age)
+//    {
+//        Name = name;
+//        Age = age;
+//    }
+//}
+
+//public class Dog : Animal
+//{
+//    public string Breed { get; set; }
+
+//    public Dog(string name, int age, string breed)
+//        : base(name, age) // Call the base class's constructor
+//    {
+//        Breed = breed;
+//    }
+//}
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        Dog dog = new Dog("Labrador", 10, "Wolf");
+//        Animal animal = new Animal("Dog Animal", 100);
+
+//        Console.WriteLine(dog.Name);
+//        Console.WriteLine(dog.Age);
+
+//        Console.WriteLine(animal.Name);
+//        Console.WriteLine(animal.Age);
+//    }
+//}
+
 //class Sub_Base_Class : Base_Class
 //{
 //    // do something
@@ -862,109 +900,109 @@
 //}
 
 // MULTIPLE INHERITANCE
-// C# program to illustrate how to
-// implement multiple class inheritance
-// using interfaces
-using System;
-using System.Collections;
+//// C# program to illustrate how to
+//// implement multiple class inheritance
+//// using interfaces
+//using System;
+//using System.Collections;
 
-// Interface 1
-interface EC1
-{
-    void languages();
-}
+//// Interface 1
+//interface EC1
+//{
+//    void languages();
+//}
 
-// Parent class 1
-class Enigma1 : EC1
-{
+//// Parent class 1
+//class Enigma1 : EC1
+//{
 
-    // Providing the implementation
-    // of languages() method
-    public void languages()
-    {
+//    // Providing the implementation
+//    // of languages() method
+//    public void languages()
+//    {
 
-        // Creating ArrayList
-        ArrayList My_list = new ArrayList();
+//        // Creating ArrayList
+//        ArrayList My_list = new ArrayList();
 
-        // Adding elements in the
-        // My_list ArrayList
-        My_list.Add("C");
-        My_list.Add("C++");
-        My_list.Add("C#");
-        My_list.Add("Java");
+//        // Adding elements in the
+//        // My_list ArrayList
+//        My_list.Add("C");
+//        My_list.Add("C++");
+//        My_list.Add("C#");
+//        My_list.Add("Java");
 
-        Console.WriteLine("Languages provided by EnigmaCamp:");
-        foreach (var elements in My_list)
-        {
-            Console.WriteLine(elements);
-        }
-    }
-}
+//        Console.WriteLine("Languages provided by EnigmaCamp:");
+//        foreach (var elements in My_list)
+//        {
+//            Console.WriteLine(elements);
+//        }
+//    }
+//}
 
-// Interface 2
-interface EC2
-{
-    void courses();
-}
+//// Interface 2
+//interface EC2
+//{
+//    void courses();
+//}
 
-// Parent class 2
-class Enigma2 : EC2
-{
+//// Parent class 2
+//class Enigma2 : EC2
+//{
 
-    // Providing the implementation
-    // of courses() method
-    public void courses()
-    {
+//    // Providing the implementation
+//    // of courses() method
+//    public void courses()
+//    {
 
-        // Creating ArrayList
-        ArrayList My_list = new ArrayList();
+//        // Creating ArrayList
+//        ArrayList My_list = new ArrayList();
 
-        // Adding elements in the
-        // My_list ArrayList
-        My_list.Add("System Design");
-        My_list.Add("Fork Python");
-        My_list.Add("Enigma Classes DSA");
-        My_list.Add("Fork Java");
+//        // Adding elements in the
+//        // My_list ArrayList
+//        My_list.Add("System Design");
+//        My_list.Add("Fork Python");
+//        My_list.Add("Enigma Classes DSA");
+//        My_list.Add("Fork Java");
 
-        Console.WriteLine("\nCourses provided by EnigmaCamp:");
-        foreach (var elements in My_list)
-        {
-            Console.WriteLine(elements);
-        }
-    }
-}
+//        Console.WriteLine("\nCourses provided by EnigmaCamp:");
+//        foreach (var elements in My_list)
+//        {
+//            Console.WriteLine(elements);
+//        }
+//    }
+//}
 
-// Child class
-class EnigmaCamp_Class : EC1, EC2
-{
+//// Child class
+//class EnigmaCamp_Class : EC1, EC2
+//{
 
-    // Creating objects of Geeks1 and Geeks2 class
-    Enigma1 obj1 = new Enigma1();
-    Enigma2 obj2 = new Enigma2();
+//    // Creating objects of Geeks1 and Geeks2 class
+//    Enigma1 obj1 = new Enigma1();
+//    Enigma2 obj2 = new Enigma2();
 
-    public void languages()
-    {
-        obj1.languages();
-    }
+//    public void languages()
+//    {
+//        obj1.languages();
+//    }
 
-    public void courses()
-    {
-        obj2.courses();
-    }
-}
+//    public void courses()
+//    {
+//        obj2.courses();
+//    }
+//}
 
-// Driver Class
-public class EnigmaCamp
-{
-    // Main method
-    static public void Main()
-    {
-        // Creating object of GeeksforGeeks class
-        EnigmaCamp_Class obj = new EnigmaCamp_Class();
-        obj.languages();
-        obj.courses();
-    }
-}
+//// Driver Class
+//public class EnigmaCamp
+//{
+//    // Main method
+//    static public void Main()
+//    {
+//        // Creating object of GeeksforGeeks class
+//        EnigmaCamp_Class obj = new EnigmaCamp_Class();
+//        obj.languages();
+//        obj.courses();
+//    }
+//}
 
 
 //// Hierarchical Inheritance
@@ -1250,3 +1288,252 @@ public class EnigmaCamp
 
 
 // Encapsulation
+
+
+//public abstract class Person
+//{
+//    protected string name;
+//    protected int age;
+
+//    public Person(string name, int age)
+//    {
+//        this.name = name;
+//        this.age = age;
+//    }
+
+//    public string Name
+//    {
+//        get { return name; }
+//        set { name = value; }
+//    }
+
+//    public int Age
+//    {
+//        get { return age; }
+//        set { age = value; }
+//    }
+
+//    public abstract string GetOccupation();
+//}
+
+//public class Student : Person
+//{
+//    private string major;
+
+//    public Student(string name, int age, string major)
+//        : base(name, age)
+//    {
+//        this.major = major;
+//    }
+
+//    public string Major
+//    {
+//        get { return major; }
+//        set { major = value; }
+//    }
+
+//    public override string GetOccupation()
+//    {
+//        return "Student";
+//    }
+//}
+
+//public class Teacher : Person
+//{
+//    private string subject;
+
+//    public Teacher(string name, int age, string subject)
+//        : base(name, age)
+//    {
+//        this.subject = subject;
+//    }
+
+//    public string Subject
+//    {
+//        get { return subject; }
+//        set { subject = value; }
+//    }
+
+//    public override string GetOccupation()
+//    {
+//        return "Teacher";
+//    }
+//}
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        Student student = new Student("Anton", 10, "Manajemen Informatika");
+
+//        Console.WriteLine($"{student.Name} {student.Major}");
+//    }
+//}
+
+//public interface IDrawable
+//{
+//    void Draw();
+//}
+
+//public abstract class Shape : IDrawable
+//{
+//    public abstract double Area();
+
+//    public void Draw()
+//    {
+//        Console.WriteLine("Drawing shape...");
+//    }
+//}
+
+//public class Circle : Shape
+//{
+//    private double radius;
+
+//    public Circle(double radius)
+//    {
+//        this.radius = radius;
+//    }
+
+//    public override double Area()
+//    {
+//        return Math.PI * radius * radius;
+//    }
+//}
+
+//public class Rectangle : Shape
+//{
+//    private double width;
+//    private double height;
+
+//    public Rectangle(double width, double height)
+//    {
+//        this.width = width;
+//        this.height = height;
+//    }
+
+//    public override double Area()
+//    {
+//        return width * height;
+//    }
+//}
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        Circle c = new Circle(10);
+//        var area = c.Area();
+
+//        IDrawable d = new Circle(10);
+//        d.Draw();
+
+//        Shape s = new Circle(10);
+//        double absArea = s.Area();
+
+//        Console.WriteLine(absArea);
+//    }
+//}
+
+public interface IWorkable
+{
+    int WorkHours { get; set; }
+    void Work();
+}
+
+public abstract class Person : IWorkable
+{
+    protected string name;
+    protected int age;
+    protected int workHours;
+
+    public Person(string name, int age)
+    {
+        this.name = name;
+        this.age = age;
+    }
+
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+
+    public int Age
+    {
+        get { return age; }
+        set { age = value; }
+    }
+
+    public int WorkHours
+    {
+        get { return workHours; }
+        set { workHours = value; }
+    }
+
+    public abstract string GetOccupation();
+
+    public void Work()
+    {
+        Console.WriteLine($"{name} is working for {workHours} hours.");
+    }
+}
+
+public class Student : Person
+{
+    private string major;
+
+    public Student(string name, int age, string major)
+        : base(name, age)
+    {
+        this.major = major;
+    }
+
+    public string Major
+    {
+        get { return major; }
+        set { major = value; }
+    }
+
+    public override string GetOccupation()
+    {
+        return "Student";
+    }
+}
+
+public class Teacher : Person
+{
+    private string subject;
+
+    public Teacher(string name, int age, string subject)
+        : base(name, age)
+    {
+        this.subject = subject;
+    }
+
+    public string Subject
+    {
+        get { return subject; }
+        set { subject = value; }
+    }
+
+    public override string GetOccupation()
+    {
+        return "Teacher";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student student = new Student("Anton", 20, "Sistem Informatika");
+        student.WorkHours = 20;
+        Console.WriteLine($"{student.Name} - {student.Age} - {student.Major} - {student.GetOccupation()}");
+        student.Work();
+
+        //Person student = new Student("Anton", 20, "Sistem Informatika");
+        //student.WorkHours = 20;
+        //Console.WriteLine($"{student.Name} - {student.Age} - {student.WorkHours}");
+        //student.Work();
+    }
+}
