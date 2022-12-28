@@ -298,290 +298,290 @@
 ////    }
 ////}
 
-//Contoh 3 Using Menu like basic Pascal/C++ Console
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
-using System.Xml.Linq;
+////Contoh 3 Using Menu like basic Pascal/C++ Console
+//using System.Runtime.Serialization.Formatters.Binary;
+//using System.Runtime.Serialization;
+//using System.Xml.Linq;
 
-namespace MyApplication
-{
-    [Serializable]
-    public class Perpustakaan
-    {
-        public List<Buku> listBuku { get; set; }
-        public List<Penerbit> listPenerbit { get; set; }
-    }
+//namespace MyApplication
+//{
+//    [Serializable]
+//    public class Perpustakaan
+//    {
+//        public List<Buku> listBuku { get; set; }
+//        public List<Penerbit> listPenerbit { get; set; }
+//    }
 
-    [Serializable]
-    public class Penerbit
-    {
-        public string Code { get; set; }
-        public string Name { get; set; }
-    }
+//    [Serializable]
+//    public class Penerbit
+//    {
+//        public string Code { get; set; }
+//        public string Name { get; set; }
+//    }
 
-    [Serializable]
-    public class Buku
-    {
-        public string Code { get; set; }
-        public string Name { get; set; }
-        public virtual Penerbit penerbit { get; set; }
-    }
+//    [Serializable]
+//    public class Buku
+//    {
+//        public string Code { get; set; }
+//        public string Name { get; set; }
+//        public virtual Penerbit penerbit { get; set; }
+//    }
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            bool showMenu = true;
-            while (showMenu)
-            {
-                showMenu = MainMenu();
-            }
-        }
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            bool showMenu = true;
+//            while (showMenu)
+//            {
+//                showMenu = MainMenu();
+//            }
+//        }
 
-        private static bool MainMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("Choose an option:");
-            Console.WriteLine("1) Create File Perpustakaan");
-            Console.WriteLine("2) Hapus File Perpustakaan");
-            Console.WriteLine("3) Create Penerbit");
-            Console.WriteLine("4) Create Buku");
-            Console.WriteLine("5) Get All Penerbit");
-            Console.WriteLine("6) Get All Buku");
-            Console.WriteLine("7) Get Penerbit by Name");
-            Console.WriteLine("8) Get Buku by Name");
-            Console.Write("\r\nSelect an option: ");
+//        private static bool MainMenu()
+//        {
+//            Console.Clear();
+//            Console.WriteLine("Choose an option:");
+//            Console.WriteLine("1) Create File Perpustakaan");
+//            Console.WriteLine("2) Hapus File Perpustakaan");
+//            Console.WriteLine("3) Create Penerbit");
+//            Console.WriteLine("4) Create Buku");
+//            Console.WriteLine("5) Get All Penerbit");
+//            Console.WriteLine("6) Get All Buku");
+//            Console.WriteLine("7) Get Penerbit by Name");
+//            Console.WriteLine("8) Get Buku by Name");
+//            Console.Write("\r\nSelect an option: ");
 
-            switch (Console.ReadLine())
-            {
-                case "1":
-                    CreateFilePerpustakaan();
-                    return true;
-                case "2":
-                    HapusFilePerpustakaan();
-                    return true;
-                case "3":
-                    CreatePenerbit();
-                    return true;
-                case "4":
-                    CreateBuku();
-                    return true;
-                case "5":
-                    GetAllPenerbit();
-                    return true;
-                case "6":
-                    GetAllBuku();
-                    return true;
-                case "7":
-                    GetAllBuku();
-                    return true;
-                case "8":
-                    return false;
-                default:
-                    return true;
-            }
-        }
+//            switch (Console.ReadLine())
+//            {
+//                case "1":
+//                    CreateFilePerpustakaan();
+//                    return true;
+//                case "2":
+//                    HapusFilePerpustakaan();
+//                    return true;
+//                case "3":
+//                    CreatePenerbit();
+//                    return true;
+//                case "4":
+//                    CreateBuku();
+//                    return true;
+//                case "5":
+//                    GetAllPenerbit();
+//                    return true;
+//                case "6":
+//                    GetAllBuku();
+//                    return true;
+//                case "7":
+//                    GetAllBuku();
+//                    return true;
+//                case "8":
+//                    return false;
+//                default:
+//                    return true;
+//            }
+//        }
 
-        private static void CreateFilePerpustakaan()
-        {
-            string namaFile = @"c:\Dokumen\perpustakaan.dat";
+//        private static void CreateFilePerpustakaan()
+//        {
+//            string namaFile = @"c:\Dokumen\perpustakaan.dat";
 
-            if (!File.Exists(namaFile))
-            {
-                Perpustakaan perpustakaan = new Perpustakaan()
-                {
-                    listBuku = new List<Buku>(),
-                    listPenerbit = new List<Penerbit>()
-                };
+//            if (!File.Exists(namaFile))
+//            {
+//                Perpustakaan perpustakaan = new Perpustakaan()
+//                {
+//                    listBuku = new List<Buku>(),
+//                    listPenerbit = new List<Penerbit>()
+//                };
 
-                MemoryStream stream = SerializeToStream(perpustakaan);
-                using (FileStream file = new FileStream(namaFile, FileMode.Create, System.IO.FileAccess.Write))
-                {
-                    stream.Seek(0, SeekOrigin.Begin);
-                    stream.CopyTo(file);
-                    file.Flush();
-                }
-            }
-        }
+//                MemoryStream stream = SerializeToStream(perpustakaan);
+//                using (FileStream file = new FileStream(namaFile, FileMode.Create, System.IO.FileAccess.Write))
+//                {
+//                    stream.Seek(0, SeekOrigin.Begin);
+//                    stream.CopyTo(file);
+//                    file.Flush();
+//                }
+//            }
+//        }
 
-        private static void HapusFilePerpustakaan()
-        {
-            string namaFile = @"c:\Dokumen\perpustakaan.dat";
+//        private static void HapusFilePerpustakaan()
+//        {
+//            string namaFile = @"c:\Dokumen\perpustakaan.dat";
 
-            if (File.Exists(namaFile))
-            {
-                File.Delete(namaFile);
-            }
-        }
+//            if (File.Exists(namaFile))
+//            {
+//                File.Delete(namaFile);
+//            }
+//        }
 
-        private static void SaveFile(Perpustakaan perpustakaan)
-        {
-            string namaFile = @"c:\Dokumen\perpustakaan.dat";
+//        private static void SaveFile(Perpustakaan perpustakaan)
+//        {
+//            string namaFile = @"c:\Dokumen\perpustakaan.dat";
 
-            MemoryStream stream = SerializeToStream(perpustakaan);
-            using (FileStream file = new FileStream(namaFile, FileMode.Open, System.IO.FileAccess.Write))
-            {
-                stream.Seek(0, SeekOrigin.Begin);
-                stream.CopyTo(file);
-                file.Flush();
-            }
-        }
+//            MemoryStream stream = SerializeToStream(perpustakaan);
+//            using (FileStream file = new FileStream(namaFile, FileMode.Open, System.IO.FileAccess.Write))
+//            {
+//                stream.Seek(0, SeekOrigin.Begin);
+//                stream.CopyTo(file);
+//                file.Flush();
+//            }
+//        }
 
-        private static Perpustakaan OpenFile()
-        {
-            string namaFile = @"c:\Dokumen\perpustakaan.dat";
+//        private static Perpustakaan OpenFile()
+//        {
+//            string namaFile = @"c:\Dokumen\perpustakaan.dat";
 
-            MemoryStream ms = new MemoryStream();
-            using (FileStream file = new FileStream(namaFile, FileMode.Open, FileAccess.Read))
-                file.CopyTo(ms);
+//            MemoryStream ms = new MemoryStream();
+//            using (FileStream file = new FileStream(namaFile, FileMode.Open, FileAccess.Read))
+//                file.CopyTo(ms);
 
-            var listPerpustakaan = (Perpustakaan)DeserializeFromStream(ms);
+//            var listPerpustakaan = (Perpustakaan)DeserializeFromStream(ms);
 
-            return listPerpustakaan;
-        }
+//            return listPerpustakaan;
+//        }
 
-        private static void CreatePenerbit()
-        {
-            string namaFile = @"c:\Dokumen\perpustakaan.dat";
+//        private static void CreatePenerbit()
+//        {
+//            string namaFile = @"c:\Dokumen\perpustakaan.dat";
 
-            var perpustakaan = OpenFile();
+//            var perpustakaan = OpenFile();
 
-            Console.Clear();
-            Console.WriteLine("Create Penerbit");
-            Console.WriteLine("---------------");
+//            Console.Clear();
+//            Console.WriteLine("Create Penerbit");
+//            Console.WriteLine("---------------");
 
-            Console.Write("Code:");
-            string code = Console.ReadLine();
+//            Console.Write("Code:");
+//            string code = Console.ReadLine();
 
-            Console.Write("Name:");
-            string name = Console.ReadLine();
+//            Console.Write("Name:");
+//            string name = Console.ReadLine();
 
-            var updatePenerbit = GetPenerbitByNama(name);
+//            var updatePenerbit = GetPenerbitByNama(name);
 
-            Penerbit penerbit = new Penerbit();
-            penerbit.Code = code;
-            penerbit.Name = name;
+//            Penerbit penerbit = new Penerbit();
+//            penerbit.Code = code;
+//            penerbit.Name = name;
 
-            perpustakaan.listPenerbit.Add(penerbit);
+//            perpustakaan.listPenerbit.Add(penerbit);
 
-            SaveFile(perpustakaan);
+//            SaveFile(perpustakaan);
 
-            //if (!File.Exists(namaFile))
-            //{
-            //    MemoryStream stream = SerializeToStream(perpustakaan);
-            //    using (FileStream file = new FileStream(namaFile, FileMode.Open, System.IO.FileAccess.Write))
-            //    {
-            //        stream.Seek(0, SeekOrigin.Begin);
-            //        stream.CopyTo(file);
-            //        file.Flush();
-            //    }
-            //}
+//            //if (!File.Exists(namaFile))
+//            //{
+//            //    MemoryStream stream = SerializeToStream(perpustakaan);
+//            //    using (FileStream file = new FileStream(namaFile, FileMode.Open, System.IO.FileAccess.Write))
+//            //    {
+//            //        stream.Seek(0, SeekOrigin.Begin);
+//            //        stream.CopyTo(file);
+//            //        file.Flush();
+//            //    }
+//            //}
 
-            Console.ReadKey();
-        }
+//            Console.ReadKey();
+//        }
 
-        private static Penerbit GetPenerbitByNama(string name)
-        {
-            var perpustakaan = OpenFile();
+//        private static Penerbit GetPenerbitByNama(string name)
+//        {
+//            var perpustakaan = OpenFile();
 
-            Penerbit penerbit = new Penerbit();
+//            Penerbit penerbit = new Penerbit();
 
-            for (var i = 0; i < perpustakaan.listPenerbit.Count; i++)
-            {
-                if (perpustakaan.listPenerbit[i].Name.Contains(name))
-                {
-                    penerbit = perpustakaan.listPenerbit[i];
-                }
-            }
+//            for (var i = 0; i < perpustakaan.listPenerbit.Count; i++)
+//            {
+//                if (perpustakaan.listPenerbit[i].Name.Contains(name))
+//                {
+//                    penerbit = perpustakaan.listPenerbit[i];
+//                }
+//            }
 
-            return penerbit;
-        }
+//            return penerbit;
+//        }
 
-        private static void CreateBuku()
-        {
-            var perpustakaan = OpenFile();
+//        private static void CreateBuku()
+//        {
+//            var perpustakaan = OpenFile();
 
-            Console.Clear();
-            Console.WriteLine("Create Buku");
-            Console.WriteLine("---------------");
-            Buku buku = new Buku();
+//            Console.Clear();
+//            Console.WriteLine("Create Buku");
+//            Console.WriteLine("---------------");
+//            Buku buku = new Buku();
 
-            string namaPenerbit = "";
-            var penerbit = GetPenerbitByNama(namaPenerbit);
+//            string namaPenerbit = "";
+//            var penerbit = GetPenerbitByNama(namaPenerbit);
 
-            Console.Write("Kode Buku : ");
-            var code = Console.ReadLine();
+//            Console.Write("Kode Buku : ");
+//            var code = Console.ReadLine();
 
-            Console.Write("Nama Buku : ");
-            var nama = Console.ReadLine();
+//            Console.Write("Nama Buku : ");
+//            var nama = Console.ReadLine();
 
-            buku.Code = code;
-            buku.Name = nama;
+//            buku.Code = code;
+//            buku.Name = nama;
 
-            perpustakaan.listBuku.Add(buku);
+//            perpustakaan.listBuku.Add(buku);
 
-            SaveFile(perpustakaan);
+//            SaveFile(perpustakaan);
 
-            Console.ReadKey();
-        }
+//            Console.ReadKey();
+//        }
 
-        private static void GetAllPenerbit()
-        {
-            Console.Clear();
-            Console.WriteLine("Get All Penerbit");
-            Console.WriteLine("---------------");
-            var perpustakaan = OpenFile();
+//        private static void GetAllPenerbit()
+//        {
+//            Console.Clear();
+//            Console.WriteLine("Get All Penerbit");
+//            Console.WriteLine("---------------");
+//            var perpustakaan = OpenFile();
 
-            foreach (var itemPenerbit in perpustakaan.listPenerbit)
-            {
-                Console.WriteLine($"{itemPenerbit.Code} - {itemPenerbit.Name}");
-            }
+//            foreach (var itemPenerbit in perpustakaan.listPenerbit)
+//            {
+//                Console.WriteLine($"{itemPenerbit.Code} - {itemPenerbit.Name}");
+//            }
 
-            Console.ReadKey();
-        }
+//            Console.ReadKey();
+//        }
 
-        private static void GetAllBuku()
-        {
-            Console.Clear();
-            Console.WriteLine("Get All Buku");
-            Console.WriteLine("---------------");
+//        private static void GetAllBuku()
+//        {
+//            Console.Clear();
+//            Console.WriteLine("Get All Buku");
+//            Console.WriteLine("---------------");
 
-            var perpustakaan = OpenFile();
+//            var perpustakaan = OpenFile();
 
-            foreach (var itemBuku in perpustakaan.listBuku)
-            {
-                Console.WriteLine($"{itemBuku.Code} - {itemBuku.Name} - {itemBuku.penerbit.Name}");
-            }
+//            foreach (var itemBuku in perpustakaan.listBuku)
+//            {
+//                Console.WriteLine($"{itemBuku.Code} - {itemBuku.Name} - {itemBuku.penerbit.Name}");
+//            }
 
-            Console.ReadKey();
-        }
+//            Console.ReadKey();
+//        }
 
-        public static MemoryStream SerializeToStream(object o)
-        {
-            MemoryStream ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, o);
-            return ms;
-        }
+//        public static MemoryStream SerializeToStream(object o)
+//        {
+//            MemoryStream ms = new MemoryStream();
+//            var formatter = new BinaryFormatter();
+//            formatter.Serialize(ms, o);
+//            return ms;
+//        }
 
-        public static object DeserializeFromStream(MemoryStream stream)
-        {
-            IFormatter formatter = new BinaryFormatter();
-            stream.Seek(0, SeekOrigin.Begin);
-            object o = formatter.Deserialize(stream);
-            return o;
-        }
+//        public static object DeserializeFromStream(MemoryStream stream)
+//        {
+//            IFormatter formatter = new BinaryFormatter();
+//            stream.Seek(0, SeekOrigin.Begin);
+//            object o = formatter.Deserialize(stream);
+//            return o;
+//        }
 
-        public static byte[] ReadBytes(MemoryStream input)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                input.CopyTo(ms);
-                return ms.ToArray();
-            }
-        }
-    }
-}
+//        public static byte[] ReadBytes(MemoryStream input)
+//        {
+//            using (MemoryStream ms = new MemoryStream())
+//            {
+//                input.CopyTo(ms);
+//                return ms.ToArray();
+//            }
+//        }
+//    }
+//}
 
 //using DecisionProject;
 //using System.Runtime.InteropServices;
@@ -661,3 +661,128 @@ namespace MyApplication
 //    }
 //}
 
+using System;
+
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name},{Age}";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string filePath = "c:\\Dokumen\\person.txt";
+
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1. Create a new person");
+            Console.WriteLine("2. Read all people");
+            Console.WriteLine("3. Update a person");
+            Console.WriteLine("4. Delete a person");
+            Console.WriteLine("5. Exit");
+            Console.Write("Enter your choice: ");
+            int choice = int.Parse(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    // Create a new person
+                    Console.Write("Enter the name of the person: ");
+                    string name = Console.ReadLine();
+                    Console.Write("Enter the age of the person: ");
+                    int age = int.Parse(Console.ReadLine());
+                    Person person = new Person(name, age);
+                    using (StreamWriter writer = File.AppendText(filePath))
+                    {
+                        writer.WriteLine(person.ToString());
+                    }
+                    break;
+                case 2:
+                    // Read all people
+                    using (StreamReader reader = File.OpenText(filePath))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            string[] parts = line.Split(',');
+                            string personName = parts[0];
+                            int personAge = int.Parse(parts[1]);
+                            Console.WriteLine($"Name: {personName}, Age: {personAge}");
+                        }
+                    }
+                    break;
+                case 3:
+                    // Update a person
+                    Console.Write("Enter the name of the person to update: ");
+                    string updateName = Console.ReadLine();
+                    Console.Write("Enter the new age of the person: ");
+                    int updateAge = int.Parse(Console.ReadLine());
+                    string tempFilePath = "c:\\Dokumen\\person_temp.txt";
+                    using (StreamReader reader = File.OpenText(filePath))
+                    using (StreamWriter writer = File.CreateText(tempFilePath))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            string[] parts = line.Split(',');
+                            string personName = parts[0];
+                            int personAge = int.Parse(parts[1]);
+                            if (personName == updateName)
+                            {
+                                Person updatedPerson = new Person(updateName, updateAge);
+                                writer.WriteLine(updatedPerson.ToString());
+                            }
+                            else
+                            {
+                                writer.WriteLine(line);
+                            }
+                        }
+                    }
+                    File.Delete(filePath);
+                    File.Move(tempFilePath, filePath);
+                    break;
+                case 4:
+                    // Delete a person
+                    Console.Write("Enter the name of the person to delete: ");
+                    string deleteName = Console.ReadLine();
+                    string deleteTempFilePath = "c:\\Dokumen\\person_temp.txt";
+                    using (StreamReader reader = File.OpenText(filePath))
+                    using (StreamWriter writer = File.CreateText(deleteTempFilePath))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            string[] parts = line.Split(',');
+                            string personName = parts[0];
+                            if (personName != deleteName)
+                            {
+                                writer.WriteLine(line);
+                            }
+                        }
+                    }
+                    File.Delete(filePath);
+                    File.Move(deleteTempFilePath, filePath);
+                    break;
+                case 5:
+                    // Exit
+                    return;
+            }
+        }
+
+    }
+}
