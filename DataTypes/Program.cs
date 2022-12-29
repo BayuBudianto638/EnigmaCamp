@@ -1,111 +1,111 @@
-﻿using System;
+﻿//using System;
 
-public class Person
-{
-    public string Name { get; set; }
-    public int Age { get; set; }
+//public class Person
+//{
+//    public string Name { get; set; }
+//    public int Age { get; set; }
 
-    public Person(string name, int age)
-    {
-        Name = name;
-        Age = age;
-    }
+//    public Person(string name, int age)
+//    {
+//        Name = name;
+//        Age = age;
+//    }
 
-    public override string ToString()
-    {
-        return $"Name: {Name}, Age: {Age}";
-    }
-}
+//    public override string ToString()
+//    {
+//        return $"Name: {Name}, Age: {Age}";
+//    }
+//}
 
-class Program
-{
-    static void Main()
-    {
-        List<Person> people = new List<Person>();
+//class Program
+//{
+//    static void Main()
+//    {
+//        List<Person> people = new List<Person>();
 
-        while (true)
-        {
-            Console.Clear();
-            Console.WriteLine("Menu:");
-            Console.WriteLine("1. Create a new person");
-            Console.WriteLine("2. Read all people");
-            Console.WriteLine("3. Update a person");
-            Console.WriteLine("4. Delete a person");
-            Console.WriteLine("5. Exit");
-            Console.Write("Enter your choice: ");
-            int choice = int.Parse(Console.ReadLine());
+//        while (true)
+//        {
+//            Console.Clear();
+//            Console.WriteLine("Menu:");
+//            Console.WriteLine("1. Create a new person");
+//            Console.WriteLine("2. Read all people");
+//            Console.WriteLine("3. Update a person");
+//            Console.WriteLine("4. Delete a person");
+//            Console.WriteLine("5. Exit");
+//            Console.Write("Enter your choice: ");
+//            int choice = int.Parse(Console.ReadLine());
 
-            switch (choice)
-            {
-                case 1:
-                    // Create a new person
-                    Console.Write("Enter the name of the person: ");
-                    string name = Console.ReadLine();
-                    Console.Write("Enter the age of the person: ");
-                    int age = int.Parse(Console.ReadLine());
-                    Person person = new Person(name, age);
-                    people.Add(person);
-                    break;
-                case 2:
-                    // Read all people
-                    foreach (Person p in people)
-                    {
-                        Console.WriteLine(p.ToString());
-                    }
-                    break;
-                case 3:
-                    // Update a person
-                    Console.Write("Enter the name of the person to update: ");
-                    string updateName = Console.ReadLine();
-                    Console.Write("Enter the new age of the person: ");
-                    int updateAge = int.Parse(Console.ReadLine());
-                    Person personToUpdate = null;
-                    foreach (Person p in people)
-                    {
-                        if (p.Name == updateName)
-                        {
-                            personToUpdate = p;
-                            break;
-                        }
-                    }
-                    if (personToUpdate != null)
-                    {
-                        personToUpdate.Age = updateAge;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Person not found.");
-                    }
-                    break;
-                case 4:
-                    // Delete a person
-                    Console.Write("Enter the name of the person to delete: ");
-                    string deleteName = Console.ReadLine();
-                    Person personToDelete = null;
-                    foreach (Person p in people)
-                    {
-                        if (p.Name == deleteName)
-                        {
-                            personToDelete = p;
-                            break;
-                        }
-                    }
-                    if (personToDelete != null)
-                    {
-                        people.Remove(personToDelete);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Person not found.");
-                    }
-                    break;
-                case 5:
-                    // Exit
-                    return;
-            }
-        }
-    }
-}
+//            switch (choice)
+//            {
+//                case 1:
+//                    // Create a new person
+//                    Console.Write("Enter the name of the person: ");
+//                    string name = Console.ReadLine();
+//                    Console.Write("Enter the age of the person: ");
+//                    int age = int.Parse(Console.ReadLine());
+//                    Person person = new Person(name, age);
+//                    people.Add(person);
+//                    break;
+//                case 2:
+//                    // Read all people
+//                    foreach (Person p in people)
+//                    {
+//                        Console.WriteLine(p.ToString());
+//                    }
+//                    break;
+//                case 3:
+//                    // Update a person
+//                    Console.Write("Enter the name of the person to update: ");
+//                    string updateName = Console.ReadLine();
+//                    Console.Write("Enter the new age of the person: ");
+//                    int updateAge = int.Parse(Console.ReadLine());
+//                    Person personToUpdate = null;
+//                    foreach (Person p in people)
+//                    {
+//                        if (p.Name == updateName)
+//                        {
+//                            personToUpdate = p;
+//                            break;
+//                        }
+//                    }
+//                    if (personToUpdate != null)
+//                    {
+//                        personToUpdate.Age = updateAge;
+//                    }
+//                    else
+//                    {
+//                        Console.WriteLine("Person not found.");
+//                    }
+//                    break;
+//                case 4:
+//                    // Delete a person
+//                    Console.Write("Enter the name of the person to delete: ");
+//                    string deleteName = Console.ReadLine();
+//                    Person personToDelete = null;
+//                    foreach (Person p in people)
+//                    {
+//                        if (p.Name == deleteName)
+//                        {
+//                            personToDelete = p;
+//                            break;
+//                        }
+//                    }
+//                    if (personToDelete != null)
+//                    {
+//                        people.Remove(personToDelete);
+//                    }
+//                    else
+//                    {
+//                        Console.WriteLine("Person not found.");
+//                    }
+//                    break;
+//                case 5:
+//                    // Exit
+//                    return;
+//            }
+//        }
+//    }
+//}
 
 
 //// Contoh 1
@@ -175,6 +175,78 @@ class Program
 //        }
 //    }
 //}
+
+class Program
+{
+    static void Main()
+    {
+        string filePath = @"C:\TestFile\myFile.txt";
+
+        using (FileStream stream = File.OpenWrite(filePath))
+        using (StreamWriter writer = new StreamWriter(stream))
+        {
+            // Write a list of names to the file
+            List<string> names = new List<string> { "Alice", "Bob", "Charlie" };
+            writer.WriteLine("Names:");
+            foreach (string name in names)
+            {
+                writer.WriteLine(name);
+            }
+
+            // Write a dictionary of phone numbers to the file
+            Dictionary<int, string> phoneNumbers = new Dictionary<int, string>
+    {
+        { 1, "Alice" },
+        { 2, "Bob" },
+        { 3, "Charlie" }
+    };
+            writer.WriteLine("Phone Numbers:");
+            foreach (KeyValuePair<int, string> entry in phoneNumbers)
+            {
+                writer.WriteLine($"{entry.Key}: {entry.Value}");
+            }
+        }
+
+        //string filePath = "C:\\temp\\myfile.txt";
+
+        //using (FileStream stream = File.OpenRead(filePath))
+        using (StreamReader reader = new StreamReader(filePath))
+        {
+            // Read the names from the file
+            List<string> names = new List<string>();
+            reader.ReadLine(); // skip the "Names:" line
+            string line;
+            while ((line = reader.ReadLine()) != null && line != "Phone Numbers:")
+            {
+                names.Add(line);
+            }
+
+            // Read the phone numbers from the file
+            Dictionary<int, string> phoneNumbers = new Dictionary<int, string>();
+            reader.ReadLine(); // skip the "Phone Numbers:" line
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] parts = line.Split(':');
+                int key = int.Parse(parts[0]);
+                string value = parts[1];
+                phoneNumbers.Add(key, value);
+            }
+
+            // Do something with the data
+            Console.WriteLine("Names:");
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);
+            }
+            Console.WriteLine("Phone Numbers:");
+            foreach (KeyValuePair<int, string> entry in phoneNumbers)
+            {
+                Console.WriteLine($"{entry.Key}: {entry.Value}");
+            }
+        }
+
+    }
+}
 
 
 ////Contoh 4
