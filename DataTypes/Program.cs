@@ -1,4 +1,114 @@
-﻿//// Contoh 1
+﻿using System;
+
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    public override string ToString()
+    {
+        return $"Name: {Name}, Age: {Age}";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Person> people = new List<Person>();
+
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1. Create a new person");
+            Console.WriteLine("2. Read all people");
+            Console.WriteLine("3. Update a person");
+            Console.WriteLine("4. Delete a person");
+            Console.WriteLine("5. Exit");
+            Console.Write("Enter your choice: ");
+            int choice = int.Parse(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    // Create a new person
+                    Console.Write("Enter the name of the person: ");
+                    string name = Console.ReadLine();
+                    Console.Write("Enter the age of the person: ");
+                    int age = int.Parse(Console.ReadLine());
+                    Person person = new Person(name, age);
+                    people.Add(person);
+                    break;
+                case 2:
+                    // Read all people
+                    foreach (Person p in people)
+                    {
+                        Console.WriteLine(p.ToString());
+                    }
+                    break;
+                case 3:
+                    // Update a person
+                    Console.Write("Enter the name of the person to update: ");
+                    string updateName = Console.ReadLine();
+                    Console.Write("Enter the new age of the person: ");
+                    int updateAge = int.Parse(Console.ReadLine());
+                    Person personToUpdate = null;
+                    foreach (Person p in people)
+                    {
+                        if (p.Name == updateName)
+                        {
+                            personToUpdate = p;
+                            break;
+                        }
+                    }
+                    if (personToUpdate != null)
+                    {
+                        personToUpdate.Age = updateAge;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Person not found.");
+                    }
+                    break;
+                case 4:
+                    // Delete a person
+                    Console.Write("Enter the name of the person to delete: ");
+                    string deleteName = Console.ReadLine();
+                    Person personToDelete = null;
+                    foreach (Person p in people)
+                    {
+                        if (p.Name == deleteName)
+                        {
+                            personToDelete = p;
+                            break;
+                        }
+                    }
+                    if (personToDelete != null)
+                    {
+                        people.Remove(personToDelete);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Person not found.");
+                    }
+                    break;
+                case 5:
+                    // Exit
+                    return;
+            }
+        }
+    }
+}
+
+
+//// Contoh 1
 //// Create file
 //using System;
 //using System.IO;
@@ -661,128 +771,128 @@
 //    }
 //}
 
-using System;
+//using System;
 
-public class Person
-{
-    public string Name { get; set; }
-    public int Age { get; set; }
+//public class Person
+//{
+//    public string Name { get; set; }
+//    public int Age { get; set; }
 
-    public Person(string name, int age)
-    {
-        Name = name;
-        Age = age;
-    }
+//    public Person(string name, int age)
+//    {
+//        Name = name;
+//        Age = age;
+//    }
 
-    public override string ToString()
-    {
-        return $"{Name},{Age}";
-    }
-}
+//    public override string ToString()
+//    {
+//        return $"{Name},{Age}";
+//    }
+//}
 
-class Program
-{
-    static void Main()
-    {
-        string filePath = "c:\\Dokumen\\person.txt";
+//class Program
+//{
+//    static void Main()
+//    {
+//        string filePath = "c:\\Dokumen\\person.txt";
 
-        while (true)
-        {
-            Console.Clear();
-            Console.WriteLine("Menu:");
-            Console.WriteLine("1. Create a new person");
-            Console.WriteLine("2. Read all people");
-            Console.WriteLine("3. Update a person");
-            Console.WriteLine("4. Delete a person");
-            Console.WriteLine("5. Exit");
-            Console.Write("Enter your choice: ");
-            int choice = int.Parse(Console.ReadLine());
+//        while (true)
+//        {
+//            Console.Clear();
+//            Console.WriteLine("Menu:");
+//            Console.WriteLine("1. Create a new person");
+//            Console.WriteLine("2. Read all people");
+//            Console.WriteLine("3. Update a person");
+//            Console.WriteLine("4. Delete a person");
+//            Console.WriteLine("5. Exit");
+//            Console.Write("Enter your choice: ");
+//            int choice = int.Parse(Console.ReadLine());
 
-            switch (choice)
-            {
-                case 1:
-                    // Create a new person
-                    Console.Write("Enter the name of the person: ");
-                    string name = Console.ReadLine();
-                    Console.Write("Enter the age of the person: ");
-                    int age = int.Parse(Console.ReadLine());
-                    Person person = new Person(name, age);
-                    using (StreamWriter writer = File.AppendText(filePath))
-                    {
-                        writer.WriteLine(person.ToString());
-                    }
-                    break;
-                case 2:
-                    // Read all people
-                    using (StreamReader reader = File.OpenText(filePath))
-                    {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            string[] parts = line.Split(',');
-                            string personName = parts[0];
-                            int personAge = int.Parse(parts[1]);
-                            Console.WriteLine($"Name: {personName}, Age: {personAge}");
-                        }
-                    }
-                    break;
-                case 3:
-                    // Update a person
-                    Console.Write("Enter the name of the person to update: ");
-                    string updateName = Console.ReadLine();
-                    Console.Write("Enter the new age of the person: ");
-                    int updateAge = int.Parse(Console.ReadLine());
-                    string tempFilePath = "c:\\Dokumen\\person_temp.txt";
-                    using (StreamReader reader = File.OpenText(filePath))
-                    using (StreamWriter writer = File.CreateText(tempFilePath))
-                    {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            string[] parts = line.Split(',');
-                            string personName = parts[0];
-                            int personAge = int.Parse(parts[1]);
-                            if (personName == updateName)
-                            {
-                                Person updatedPerson = new Person(updateName, updateAge);
-                                writer.WriteLine(updatedPerson.ToString());
-                            }
-                            else
-                            {
-                                writer.WriteLine(line);
-                            }
-                        }
-                    }
-                    File.Delete(filePath);
-                    File.Move(tempFilePath, filePath);
-                    break;
-                case 4:
-                    // Delete a person
-                    Console.Write("Enter the name of the person to delete: ");
-                    string deleteName = Console.ReadLine();
-                    string deleteTempFilePath = "c:\\Dokumen\\person_temp.txt";
-                    using (StreamReader reader = File.OpenText(filePath))
-                    using (StreamWriter writer = File.CreateText(deleteTempFilePath))
-                    {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            string[] parts = line.Split(',');
-                            string personName = parts[0];
-                            if (personName != deleteName)
-                            {
-                                writer.WriteLine(line);
-                            }
-                        }
-                    }
-                    File.Delete(filePath);
-                    File.Move(deleteTempFilePath, filePath);
-                    break;
-                case 5:
-                    // Exit
-                    return;
-            }
-        }
+//            switch (choice)
+//            {
+//                case 1:
+//                    // Create a new person
+//                    Console.Write("Enter the name of the person: ");
+//                    string name = Console.ReadLine();
+//                    Console.Write("Enter the age of the person: ");
+//                    int age = int.Parse(Console.ReadLine());
+//                    Person person = new Person(name, age);
+//                    using (StreamWriter writer = File.AppendText(filePath))
+//                    {
+//                        writer.WriteLine(person.ToString());
+//                    }
+//                    break;
+//                case 2:
+//                    // Read all people
+//                    using (StreamReader reader = File.OpenText(filePath))
+//                    {
+//                        string line;
+//                        while ((line = reader.ReadLine()) != null)
+//                        {
+//                            string[] parts = line.Split(',');
+//                            string personName = parts[0];
+//                            int personAge = int.Parse(parts[1]);
+//                            Console.WriteLine($"Name: {personName}, Age: {personAge}");
+//                        }
+//                    }
+//                    break;
+//                case 3:
+//                    // Update a person
+//                    Console.Write("Enter the name of the person to update: ");
+//                    string updateName = Console.ReadLine();
+//                    Console.Write("Enter the new age of the person: ");
+//                    int updateAge = int.Parse(Console.ReadLine());
+//                    string tempFilePath = "c:\\Dokumen\\person_temp.txt";
+//                    using (StreamReader reader = File.OpenText(filePath))
+//                    using (StreamWriter writer = File.CreateText(tempFilePath))
+//                    {
+//                        string line;
+//                        while ((line = reader.ReadLine()) != null)
+//                        {
+//                            string[] parts = line.Split(',');
+//                            string personName = parts[0];
+//                            int personAge = int.Parse(parts[1]);
+//                            if (personName == updateName)
+//                            {
+//                                Person updatedPerson = new Person(updateName, updateAge);
+//                                writer.WriteLine(updatedPerson.ToString());
+//                            }
+//                            else
+//                            {
+//                                writer.WriteLine(line);
+//                            }
+//                        }
+//                    }
+//                    File.Delete(filePath);
+//                    File.Move(tempFilePath, filePath);
+//                    break;
+//                case 4:
+//                    // Delete a person
+//                    Console.Write("Enter the name of the person to delete: ");
+//                    string deleteName = Console.ReadLine();
+//                    string deleteTempFilePath = "c:\\Dokumen\\person_temp.txt";
+//                    using (StreamReader reader = File.OpenText(filePath))
+//                    using (StreamWriter writer = File.CreateText(deleteTempFilePath))
+//                    {
+//                        string line;
+//                        while ((line = reader.ReadLine()) != null)
+//                        {
+//                            string[] parts = line.Split(',');
+//                            string personName = parts[0];
+//                            if (personName != deleteName)
+//                            {
+//                                writer.WriteLine(line);
+//                            }
+//                        }
+//                    }
+//                    File.Delete(filePath);
+//                    File.Move(deleteTempFilePath, filePath);
+//                    break;
+//                case 5:
+//                    // Exit
+//                    return;
+//            }
+//        }
 
-    }
-}
+//    }
+//}
