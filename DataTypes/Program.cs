@@ -598,10 +598,10 @@ using System.Data.SqlClient;
 
 public class Student
 {
-    public int Id 
-    { 
-        get; 
-        set; 
+    public int Id
+    {
+        get;
+        set;
     }
 
     public string Name
@@ -738,7 +738,7 @@ public class AdoNetDataAccess : DataAccessBase
 
 class Program
 {
-   private static readonly string ConString = @"Server=FAIRUZ-PC\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;";
+    private static readonly string ConString = @"Server=FAIRUZ-PC\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;";
 
     public static void Main()
     {
@@ -782,11 +782,28 @@ class Program
             }
             else if (choice == 2)
             {
-               // View Student By Id
+                // View Student By Id
             }
             else if (choice == 3)
             {
                 // Insert student
+                Console.Clear();
+                Console.WriteLine("Create Student");
+                Console.WriteLine("---------------");
+                Console.Write("Name:");
+                string nama = Console.ReadLine();
+                Console.Write("Address:");
+                int age = int.Parse(Console.ReadLine());
+
+                var student = new Student()
+                {
+                    Name = nama,
+                    Age = age
+                };
+
+                dataAccess.InsertStudent(student);
+
+                Console.ReadKey();
             }
             else if (choice == 4)
             {
