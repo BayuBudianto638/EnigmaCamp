@@ -359,53 +359,53 @@ ALTER TABLE SalesPromotion ADD nik varchar(10);
 
 // CONTOH 3
 // Get Data via ADONET
-using System;
-using System.Data.SqlClient;
-namespace EnigmaCampADONetConsole
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            new Program().CreateTable();
-        }
-        public void CreateTable()
-        {
-            SqlConnection con = null;
-            SqlTransaction sqlTransaction = null;
-            try
-            {
-                // Creating Connection  
-                con = new SqlConnection("data source=---NAMA LOCALHOST---; database=student; integrated security=SSPI");
+//using System;
+//using System.Data.SqlClient;
+//namespace EnigmaCampADONetConsole
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            new Program().CreateTable();
+//        }
+//        public void CreateTable()
+//        {
+//            SqlConnection con = null;
+//            SqlTransaction sqlTransaction = null;
+//            try
+//            {
+//                // Creating Connection  
+//                con = new SqlConnection("data source=---NAMA LOCALHOST---; database=student; integrated security=SSPI");
 
-                sqlTransaction = con.BeginTransaction();
-                // writing sql query  
-                SqlCommand cm = new SqlCommand("Select * from student", con);
-                // Opening Connection  
-                con.Open();
-                // Executing the SQL query  
-                SqlDataReader sdr = cm.ExecuteReader();
-                sqlTransaction.Commit();
-                
-                // Iterating Data  
-                while (sdr.Read())
-                {
-                    Console.WriteLine(sdr["id"] + " " + sdr["name"] + " "); // Displaying Record  
-                }
-            }
-            catch (Exception e)
-            {
-                sqlTransaction.Rollback();
-                Console.WriteLine("OOPs, something went wrong.\n" + e);
-            }
-            // Closing the connection  
-            finally
-            {
-                con.Close();
-            }
-        }
-    }
-}
+//                sqlTransaction = con.BeginTransaction();
+//                // writing sql query  
+//                SqlCommand cm = new SqlCommand("Select * from student", con);
+//                // Opening Connection  
+//                con.Open();
+//                // Executing the SQL query  
+//                SqlDataReader sdr = cm.ExecuteReader();
+//                sqlTransaction.Commit();
+
+//                // Iterating Data  
+//                while (sdr.Read())
+//                {
+//                    Console.WriteLine(sdr["id"] + " " + sdr["name"] + " "); // Displaying Record  
+//                }
+//            }
+//            catch (Exception e)
+//            {
+//                sqlTransaction.Rollback();
+//                Console.WriteLine("OOPs, something went wrong.\n" + e);
+//            }
+//            // Closing the connection  
+//            finally
+//            {
+//                con.Close();
+//            }
+//        }
+//    }
+//}
 
 
 //// CONTOH 4
@@ -592,77 +592,210 @@ namespace EnigmaCampADONetConsole
 //    }
 //}
 
-// CONTOH 9
-//// DATASET
-//using System;
-//using System.Data.SqlClient;
-//using System.Data;
-//namespace DataSetExample
-//{
-//    public partial class DataSetDemo : System.Web.UI.Page
-//    {
-//        protected void Page_Load(object sender, EventArgs e)
-//        {
-//            using (SqlConnection con = new SqlConnection("data source=.; database=student; integrated security=SSPI"))
-//            {
-//                SqlDataAdapter sde = new SqlDataAdapter("Select * from student", con);
-//                DataSet ds = new DataSet();
-//                sde.Fill(ds);
-//                GridView1.DataSource = ds;
-//                GridView1.DataBind();
-//            }
-//        }
-//    }
-//}
 
-// CONTOH 10
-// DataAdapter
-//using System;
-//using System.Data.SqlClient;
-//using System.Data;
-//namespace DataSetExample
-//{
-//    public partial class DataSetDemo : System.Web.UI.Page
-//    {
-//        protected void Page_Load(object sender, EventArgs e)
-//        {
-//            using (SqlConnection con = new SqlConnection("data source=.; database=student; integrated security=SSPI"))
-//            {
-//                SqlDataAdapter sde = new SqlDataAdapter("Select * from student", con);
-//                DataSet ds = new DataSet();
-//                sde.Fill(ds);
-//                GridView1.DataSource = ds;
-//                GridView1.DataBind();
-//            }
-//        }
-//    }
-//}
+using System.Data.Common;
+using System.Data.SqlClient;
 
-//// CONTOH11
-//// DATATABLE
-//using System;
-//using System.Collections.Generic;
-//using System.Data;
-//using System.Linq;
-//using System.Web;
-//using System.Web.UI;
-//using System.Web.UI.WebControls;
-//namespace DataTableDemo
-//{
-//    public partial class DataTableForm : System.Web.UI.Page
-//    {
-//        protected void Page_Load(object sender, EventArgs e)
-//        {
-//            DataTable table = new DataTable();
-//            table.Columns.Add("ID");
-//            table.Columns.Add("Name");
-//            table.Columns.Add("Email");
-//            table.Rows.Add("101", "Rameez", "rameez@example.com");
-//            table.Rows.Add("102", "Sam Nicolus", "sam@example.com");
-//            table.Rows.Add("103", "Subramanium", "subramanium@example.com");
-//            table.Rows.Add("104", "Ankur Kumar", "ankur@example.com");
-//            GridView1.DataSource = table;
-//            GridView1.DataBind();
-//        }
-//    }
-//}
+public class Student
+{
+    public int Id 
+    { 
+        get; 
+        set; 
+    }
+
+    public string Name
+    {
+        get; set;
+    }
+
+    public int Age
+    {
+        get;
+        set;
+    }
+}
+
+// Define the interface for the data access layer
+public interface IDataAccess
+{
+    List<Student> GetAllStudents();
+    Student GetStudentById(int id);
+    void InsertStudent(Student student);
+    void UpdateStudent(Student student);
+    void DeleteStudent(Student student);
+}
+
+// Define the abstract base class for the data access layer
+public abstract class DataAccessBase : IDataAccess
+{
+    // Implement the interface methods as abstract methods
+    public abstract List<Student> GetAllStudents();
+    public abstract Student GetStudentById(int id);
+    public abstract void InsertStudent(Student student);
+    public abstract void UpdateStudent(Student student);
+    public abstract void DeleteStudent(Student student);
+}
+
+// Define the concrete class for the data access layer using ADO.NET
+public class AdoNetDataAccess : DataAccessBase
+{
+    private readonly SqlConnection _connection;
+
+    public AdoNetDataAccess(SqlConnection connection)
+    {
+        _connection = connection;
+    }
+
+    // Implement the abstract methods using ADO.NET
+    public override List<Student> GetAllStudents()
+    {
+        // Code to retrieve all students using ADO.NET goes here
+        using (var command = _connection.CreateCommand())
+        {
+            command.CommandText = "SELECT * FROM Students";
+
+            using (var reader = command.ExecuteReader())
+            {
+                var students = new List<Student>();
+
+                while (reader.Read())
+                {
+                    students.Add(new Student
+                    {
+                        Id = (int)reader["Id"],
+                        Name = (string)reader["Name"],
+                        Age = (int)reader["Age"]
+                    });
+                }
+
+                return students;
+            }
+        }
+    }
+
+    public override Student GetStudentById(int id)
+    {
+        // Code to retrieve a student by ID using ADO.NET goes here
+        using (var command = _connection.CreateCommand())
+        {
+            command.CommandText = "SELECT * FROM Students WHERE Id = @id";
+            command.Parameters.AddWithValue("@id", id);
+
+            using (var reader = command.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    return new Student
+                    {
+                        Id = (int)reader["Id"],
+                        Name = (string)reader["Name"],
+                        Age = (int)reader["Age"]
+                    };
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public override void InsertStudent(Student student)
+    {
+        // Code to insert a student using ADO.NET goes here
+        using (var command = _connection.CreateCommand())
+        {
+            command.CommandText = "INSERT INTO Students (Name, Age) VALUES (@name, @age)";
+            command.Parameters.AddWithValue("@name", student.Name);
+            command.Parameters.AddWithValue("@age", student.Age);
+            command.ExecuteNonQuery();
+        }
+    }
+
+    public override void UpdateStudent(Student student)
+    {
+        // Code to update a student using ADO.NET goes here
+        using (var command = _connection.CreateCommand())
+        {
+            command.CommandText = "UPDATE Students SET Name = @name, Age = @age WHERE Id = @id";
+            command.Parameters.AddWithValue("@id", student.Id);
+            command.Parameters.AddWithValue("@name", student.Name);
+            command.Parameters.AddWithValue("@age", student.Age);
+            command.ExecuteNonQuery();
+        }
+    }
+
+    public override void DeleteStudent(Student student)
+    {
+        // Code to delete a student using ADO.NET goes here
+        using (var command = _connection.CreateCommand())
+        {
+            command.CommandText = "DELETE FROM Students WHERE Id = @id";
+            command.Parameters.AddWithValue("@id", student.Id);
+            command.ExecuteNonQuery();
+        }
+    }
+}
+
+class Program
+{
+   private static readonly string ConString = @"";
+
+    public static void Main()
+    {
+        SqlConnection sqlConnection = new SqlConnection(ConString);
+
+        // Create an instance of the data access layer
+        IDataAccess dataAccess = new AdoNetDataAccess(sqlConnection);
+
+        while (true)
+        {
+            Console.WriteLine("1. View all students");
+            Console.WriteLine("2. View student by ID");
+            Console.WriteLine("3. Add new student");
+            Console.WriteLine("4. Update student");
+            Console.WriteLine("5. Delete student");
+            Console.WriteLine("6. Exit");
+            Console.WriteLine();
+            Console.Write("Enter your choice: ");
+
+            int choice = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+
+            if (choice == 1)
+            {
+                // Call the GetAllStudents method
+                List<Student> students = dataAccess.GetAllStudents();
+
+                // Display the students
+                foreach (Student student in students)
+                {
+                    Console.WriteLine("ID: {0}", student.Id);
+                    Console.WriteLine("Name: {0}", student.Name);
+                    Console.WriteLine("Age: {0}", student.Age);
+                    Console.WriteLine();
+                }
+            }
+            else if (choice == 2)
+            {
+                // Edit student
+            }
+            else if (choice == 3)
+            {
+                // Delete student
+            }
+            else if (choice == 4)
+            {
+                // View students
+            }
+            else if (choice == 5)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection");
+            }
+        }
+    }
+}
