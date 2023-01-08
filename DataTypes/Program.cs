@@ -738,17 +738,19 @@ public class AdoNetDataAccess : DataAccessBase
 
 class Program
 {
-   private static readonly string ConString = @"";
+   private static readonly string ConString = @"Server=FAIRUZ-PC\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;";
 
     public static void Main()
     {
         SqlConnection sqlConnection = new SqlConnection(ConString);
+        sqlConnection.Open();
 
         // Create an instance of the data access layer
         IDataAccess dataAccess = new AdoNetDataAccess(sqlConnection);
 
         while (true)
         {
+            Console.Clear();
             Console.WriteLine("1. View all students");
             Console.WriteLine("2. View student by ID");
             Console.WriteLine("3. Add new student");
@@ -775,20 +777,26 @@ class Program
                     Console.WriteLine("Age: {0}", student.Age);
                     Console.WriteLine();
                 }
+
+                Console.ReadKey();
             }
             else if (choice == 2)
             {
-                // Edit student
+               // View Student By Id
             }
             else if (choice == 3)
             {
-                // Delete student
+                // Insert student
             }
             else if (choice == 4)
             {
-                // View students
+                // Update students
             }
             else if (choice == 5)
+            {
+                // Delete students
+            }
+            else if (choice == 6)
             {
                 break;
             }
