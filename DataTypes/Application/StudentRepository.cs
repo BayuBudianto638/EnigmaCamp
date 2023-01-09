@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using DataTypes.Repositories;
 using DataTypes.Application.Dto;
+using DapperExample;
 
 namespace DataTypes.Application
 {

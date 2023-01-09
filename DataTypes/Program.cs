@@ -131,3 +131,111 @@
 ////        //studentRepo.Insert(student);
 ////    }
 ////}
+///
+using System;
+using System.Collections.Generic;
+using System.Data;
+using Dapper;
+using System.Data.SqlClient;
+
+namespace DapperExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Replace with your connection string
+            string connectionString = "server=localhost;user=root;password=password;database=testdb";
+
+            // Create a repository for students
+            IStudentRepository repository = new StudentRepository(connectionString);
+
+            // Insert a new student
+            Student newStudent = new Student
+            {
+                Name = "John Smith",
+                Age = 30,
+                Gender = "Male"
+            };
+            repository.Insert(newStudent);
+
+            // Select all students
+            var students = repository.SelectAll();
+            foreach (var student in students)
+            {
+                Console.WriteLine(student.Name);
+            }
+
+            // Select a single student by ID
+            Student student1 = repository.SelectById(1);
+            Console.WriteLine(student1.Name);
+
+            // Update a student
+            student1.Name = "Jane Smith";
+            repository.Update(student1);
+
+            // Delete a student
+            repository.Delete(1);
+        }
+    }
+
+    // A simple POCO class to represent a student
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Gender { get; set; }
+    }
+
+    // An interface for a student repository
+    public interface IStudentRepository
+    {
+        void Insert(Student student);
+        void Update(Student student);
+        void Delete(int id);
+        Student SelectById(int id);
+        IEnumerable<Student> SelectAll();
+    }
+
+    // A concrete implementation of the student repository using Dapper
+    public class StudentRepository : IStudentRepository
+    {
+        private readonly IDbConnection _connection;
+
+        public StudentRepository(string connectionString)
+        {
+            _connection = new SqlConnection(connectionString);
+        }
+
+        public void Insert(Student student)
+        {
+            string sql = "INSERT INTO students (name, age, gender) VALUES (@Name, @Age, @Gender)";
+            _connection.Execute(sql, student);
+        }
+
+        public void Update(Student student)
+        {
+            string sql = "UPDATE students SET name = @Name, age = @Age, gender = @Gender WHERE id = @Id";
+            _connection.Execute(sql, student);
+        }
+
+        public void Delete(int id)
+        {
+            string sql = "DELETE FROM students WHERE id = @Id";
+            _connection.Execute(sql, new { Id = id });
+        }
+
+        public Student SelectById(int id)
+        {
+            string sql = "SELECT * FROM students WHERE id = @Id";
+            return _connection.QuerySingle<Student>(sql, new { Id = id });
+        }
+
+        public IEnumerable<Student> SelectAll()
+        {
+            string sql = "SELECT * FROM students WHERE id = @Id";
+            return _connection.Query<Student>(sql).AsEnumerable();
+        }
+    }
+}
